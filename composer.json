@@ -1,0 +1,15 @@
+{
+  "name": "fei/api-server",
+  "description": "FEI server side API helpers",
+  "type": "library",
+  "license": "Proprietary",
+  "require-dev": {
+    "codeception/codeception": "^2.2",
+    "league/fractal": "^0.13.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fei\\ApiServer\\": "src/"
+    }
+  }
+}
