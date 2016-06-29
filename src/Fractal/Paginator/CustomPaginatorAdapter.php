@@ -170,7 +170,7 @@
          */
         public function getUrl($page)
         {
-            $url = $this->url ?: $_SERVER['REQUEST_URI'];
+            $url = $this->url ?: 'http://' . rtrim($_SERVER['HTTP_HOST'], '/') . '/' . ltrim($_SERVER['REQUEST_URI'], '/');
 
             preg_match('/[\?\&](page=(\d+))/', $url, $matches);
 

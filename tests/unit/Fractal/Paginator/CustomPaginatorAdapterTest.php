@@ -25,7 +25,8 @@
         public function testPageUrlBuildingBasedOnCurrentUrl()
         {
             $paginator = new CustomPaginatorAdapter(1, 10, 10, 37);
-            $_SERVER['REQUEST_URI'] = 'http://test.com/api/test?page=4&filter=value';
+            $_SERVER['REQUEST_URI'] = '/api/test?page=4&filter=value';
+            $_SERVER['HTTP_HOST'] = 'test.com';
 
             $this->assertEquals("http://test.com/api/test?page=5&filter=value", $paginator->getUrl(5));
         }
