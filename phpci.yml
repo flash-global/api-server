@@ -1,0 +1,15 @@
+build_settings: 
+  ignore: 
+    - vendor
+    - tests
+setup: 
+  composer: 
+    action: install
+test: 
+  codeception: 
+    args: " --coverage-html"
+    config: codeception.yml
+  php_loc: ~
+  php_mess_detector: 
+    allow_failures: true
+  technical_debt: ~
