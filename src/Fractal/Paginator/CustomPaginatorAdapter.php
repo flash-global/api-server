@@ -174,12 +174,22 @@
 
             preg_match('/[\?\&](page=(\d+))/', $url, $matches);
 
-            if(!$matches[0])
+            if(!empty($matches[0]))
             {
-                throw new Exception('Unable to build URL for page #' . $page . ': no "page" parameter has been found in URI');
+                $builtUrl = str_replace($matches[1], 'page=' . $page, $url);
+            }
+            else
+            {
+                if(strpos($url, '?'))
+                {
+                    $builtUrl = $url .= '&page=' . $page;
+                }
+                else {
+                    $builtUrl = $url .= '?page=' . $page;
+                }
             }
 
-            return str_replace($matches[1], 'page=' . $page, $url);
+             return $builtUrl;
 
         }
 

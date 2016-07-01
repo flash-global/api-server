@@ -39,6 +39,17 @@
             $this->assertEquals("http://test.com/api/test?page=5&filter=value", $paginator->getUrl(5));
         }
 
+        public function testPageUrlBuildingBasedOnArbitraryUrlWitDefaultValues()
+        {
+            $paginator = new CustomPaginatorAdapter(1, 10, 10, 37);
+
+            $paginator->setUrl('http://test.com/api/test');
+            $this->assertEquals("http://test.com/api/test?page=5", $paginator->getUrl(5));
+
+            $paginator->setUrl('http://test.com/api/test?any=param');
+            $this->assertEquals("http://test.com/api/test?any=param&page=5", $paginator->getUrl(5));
+        }
+
         public function testPerPageCannotBeLowerThanOne()
         {
             $this->expectException(Exception::class);
