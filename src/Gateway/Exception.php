@@ -7,4 +7,5 @@ class Exception extends \Fei\ApiServer\Exception
 {
 
     const INVALID_RESOURCE = 1;
+    const SQL_ERROR = 2;
 }

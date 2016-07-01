@@ -3,6 +3,7 @@
     namespace Fei\ApiServer\Fractal\Paginator;
     
     
+    use Fei\ApiServer\Entity\PaginatedEntitySet;
     use League\Fractal\Pagination\PaginatorInterface;
 
     /**
@@ -56,6 +57,10 @@
             $this->setTotal($total);
         }
 
+        static public function factory(PaginatedEntitySet $set)
+        {
+            return new self($set->getCurrentPage(), $set->getPerPage(), count($set), $set->getTotal());
+        }
 
         /**
          * @return mixed
