@@ -3,6 +3,9 @@
   "description": "FEI server side API helpers",
   "type": "library",
   "license": "Proprietary",
+  "require": {
+      "aura/sqlquery": "2.6.*"
+  },
   "require-dev": {
     "codeception/codeception": "^2.2",
     "league/fractal": "^0.13.0"

@@ -5,10 +5,10 @@
      * Date: 05/04/16
      * Time: 17:56
      */
-
+    
     namespace Fei\ApiServer\Gateway;
-
-
+    
+    
     use Aura\SqlQuery\AbstractQuery;
     use Aura\SqlQuery\Common\SelectInterface;
     use Aura\SqlQuery\Mysql\Insert;
@@ -18,7 +18,7 @@
     use Fei\ApiServer\Entity\EntitySet;
     use Fei\ApiServer\Entity\PaginatedEntitySet;
     use Fei\ApiServer\Gateway\MySQLException;
-
+    
     /**
      * Class AbstractMySqlGateway
      *
@@ -26,54 +26,56 @@
      */
     class AbstractMySqlGateway extends AbstractGateway
     {
-
+        
         /**
          * Link to master identifier
          */
         const READ_WRITE = 1;
-
+        
         /**
          * Link to slave identifier
          */
         const READ_ONLY = 2;
-
+        
         /**
          * @var \PDO
          */
         protected $readLink;
-
+        
         /**
          * @var \PDO
          */
         protected $link;
-
+        
         /**
          * @var \PDO
          */
         protected $lastUsedLink;
-
-
+        
+        
         /**
          * @var bool
          */
-        protected $paginateNextQuery = false;
-
+        protected $paginateNextQuery    = false;
+        
+        protected $paginateCurrentQuery = false;
+        
         /**
          * @var
          */
         protected $currentPage;
-
+        
         /**
          * @var
          */
-        protected $resultsPerPage;
-
+        protected $perPage;
+        
         /**
          * @var int
          */
-        protected $defaultResultPerPage = 20;
-
-
+        protected $defaultPerPage = 20;
+        
+        
         /**
          * @param      $page
          * @param null $resultsPerPage
@@ -82,19 +84,19 @@
          */
         public function paginate($page, $resultsPerPage = null)
         {
-
+            
             $this->paginateNextQuery = true;
-
+            
             $this->currentPage = $page;
-
+            
             if (!is_null($resultsPerPage))
             {
-                $this->resultsPerPage = $resultsPerPage;
+                $this->perPage = $resultsPerPage;
             }
-
+            
             return $this;
         }
-
+        
         /**
          * @return \PDO
          */
@@ -102,7 +104,7 @@
         {
             return $this->link;
         }
-
+        
         /**
          * @param \PDO $link
          *
@@ -115,12 +117,12 @@
             {
                 throw new Exception('Link is not a PDO link', Exception::INVALID_RESOURCE);
             }
-
+            
             $this->link = $link;
-
+            
             return $this;
         }
-
+        
         /**
          * @return mixed
          */
@@ -128,7 +130,7 @@
         {
             return $this->readLink;
         }
-
+        
         /**
          * @param \PDO $readLink
          *
@@ -141,12 +143,12 @@
             {
                 throw new Exception('Link is not a PDO link', Exception::INVALID_RESOURCE);
             }
-
+            
             $this->readLink = $readLink;
-
+            
             return $this;
         }
-
+        
         /**
          * @param AbstractQuery|string $query
          * @param int                  $link
@@ -157,76 +159,47 @@
          */
         public function query($query, $link = self::READ_WRITE)
         {
-
+            
             $result = null;
-            if (
-                ($this->cachingStrategy == self::CACHE_BY_DEFAULT && !$this->cacheNextQuery === false)
-                ||
-                ($this->cachingStrategy == self::CACHE_ON_DEMAND && $this->cacheNextQuery === true)
-                &&
-                ($this->loadFromCache($this->getQueryCacheId($query)))
-            )
+            if ($this->shouldCache() && $this->loadFromCache($this->getQueryCacheId($query)))
             {
                 return $this->loadFromCache($this->getQueryCacheId($query));
             }
-
+            
             switch ($link)
             {
                 case self::READ_ONLY:
                     $link = $this->readLink;
                     break;
-
+                
                 default:
                 case self::READ_WRITE:
                     $link = $this->link;
                     break;
             }
-
+            
             if (!$link instanceof \PDO)
             {
                 throw new Exception('Selected link is not a PDO link', Exception::INVALID_RESOURCE);
             }
-
+            
             $this->lastUsedLink = $link;
-            $paginate           = false;
 
-            // handle pagination
-            if ($this->paginateNextQuery)
-            {
-
-                $paginate = true;
-
-                if (!$query instanceof Select)
-                {
-                    throw new Exception('Cannot paginate string queries. Please use aura/sqlquery.');
-                }
-
-                $currentPage    = $this->currentPage;
-                $resultsPerPage = ($this->resultsPerPage ?: $this->defaultResultPerPage);
-
-                $offset = ($currentPage - 1) * $resultsPerPage;
-                $limit  = $resultsPerPage;
-
-                $query->limit($limit)->offset($offset);
-
-                $this->resultsPerPage    = null;
-                $this->currentPage       = null;
-                $this->paginateNextQuery = false;
-            }
-
+            $this->preparePagination($query);
+            
             try
             {
                 if ($query instanceof AbstractQuery)
                 {
                     $statement = $query->getStatement();
-                    if($paginate)
+                    if ($this->paginateCurrentQuery)
                     {
                         $statement = 'SELECT SQL_CALC_FOUND_ROWS ' . substr($statement, 7);
                     }
-
+                    
                     $sth = $link->prepare($statement);
                     $sth->execute($query->getBindValues());
-
+                    
                     if ($query instanceof SelectInterface)
                     {
                         $rows = $sth->fetchAll(\PDO::FETCH_ASSOC);
@@ -241,43 +214,25 @@
                 throw new Exception(sprintf("SQL Query failed : %s - %s",
                     $query, $this->getLastError()), Exception::SQL_ERROR);
             }
-
-
+            
+            
             if (isset($rows))
             {
-                $entities = $paginate ? new PaginatedEntitySet() : new EntitySet();
-                foreach ($rows as $row)
-                {
-                    $entities[] = $this->entityFactory($row);
-                }
+                $entities = $this->prepareResultSet($rows);
 
-                // inject pagination data into EntitySet
-                if($paginate)
-                {
-                    $entities->setCurrentPage($currentPage);
-                    $entities->setPerPage($resultsPerPage);
-                    $totalQuery = "SELECT FOUND_ROWS() as total";
-                    $total = $this->lastUsedLink->query($totalQuery)->fetchColumn(0);
-                    $entities->setTotal($total);
-                }
-                
-                if (
-                    ($this->cachingStrategy == self::CACHE_BY_DEFAULT && !$this->cacheNextQuery === false)
-                    ||
-                    ($this->cachingStrategy == self::CACHE_ON_DEMAND && $this->cacheNextQuery === true)
-                )
+                if ($this->shouldCache())
                 {
                     $this->storeInCache($this->getQueryCacheId($query), $entities);
                 }
-
+                
                 $result = $entities;
             }
-
+            
             $this->reset();
-
+            
             return $result;
         }
-
+        
         /**
          * @param $query
          *
@@ -296,6 +251,39 @@
         }
 
         /**
+         * @param Select $query
+         *
+         * @return Select
+         * @throws Exception
+         */
+        protected function preparePagination(Select $query)
+        {
+            // handle pagination
+            if ($this->paginateNextQuery)
+            {
+                
+                $this->paginateCurrentQuery = true;
+                
+                if (!$query instanceof Select)
+                {
+                    throw new Exception('Cannot paginate string queries. Please use aura/sqlquery.');
+                }
+                
+                
+            }
+            
+            $currentPage    = $this->currentPage;
+            $resultsPerPage = ($this->perPage ?: $this->defaultPerPage);
+            
+            $offset = ($currentPage - 1) * $resultsPerPage;
+            $limit  = $resultsPerPage;
+            
+            $query->limit($limit)->offset($offset);
+
+            return $query;
+        }
+        
+        /**
          * @param null $link
          *
          * @return string
@@ -303,19 +291,20 @@
         public function getLastError($link = null)
         {
             $link = $link ?: $this->lastUsedLink;
-
+            
             return implode(' - ', $link->errorInfo());
         }
-
+        
         protected function reset()
         {
             parent::reset();
-
-            $this->paginateNextQuery = false;
-            $this->currentPage       = null;
-            $this->resultsPerPage    = null;
+            
+            $this->paginateNextQuery    = false;
+            $this->paginateCurrentQuery = false;
+            $this->currentPage          = null;
+            $this->perPage              = null;
         }
-
+        
         /**
          * @param null $link
          *
@@ -324,10 +313,10 @@
         public function getLastErrorNo($link = null)
         {
             $link = $link ?: $this->lastUsedLink;
-
+            
             return $link->errorCode();
         }
-
+        
         /**
          * @param null $link
          *
@@ -336,10 +325,10 @@
         public function getLastInsertId($link = null)
         {
             $link = $link ?: $this->lastUsedLink;
-
+            
             return $link->lastInsertId();
         }
-
+        
         /**
          * @param array $columns
          *
@@ -348,30 +337,51 @@
         protected function select(array $columns = array('*'))
         {
             $select = new Select(new Quoter("`", "`"));
-
+            
             $select->cols($columns);
-
+            
             return $select;
         }
-
+        
         /**
          * @return Insert
          */
         protected function insert()
         {
             $insert = new Insert(new Quoter("`", "`"));
-
+            
             return $insert;
         }
-
+        
         /**
          * @return Update
          */
         protected function update()
         {
             $update = new Update(new Quoter("`", "`"));
-
+            
             return $update;
+        }
+
+        public function prepareResultSet($rows)
+        {
+            $entities = $this->paginateCurrentQuery ? new PaginatedEntitySet() : new EntitySet();
+            foreach ($rows as $row)
+            {
+                $entities[] = $this->entityFactory($row);
+            }
+
+            // inject pagination data into EntitySet
+            if ($entities instanceof PaginatedEntitySet)
+            {
+                $entities->setCurrentPage($this->currentPage);
+                $entities->setPerPage($this->perPage ?: $this->defaultPerPage);
+                $totalQuery = "SELECT FOUND_ROWS() as total";
+                $total      = $this->lastUsedLink->query($totalQuery)->fetchColumn(0);
+                $entities->setTotal($total);
+            }
+
+            return $entities;
         }
 
 

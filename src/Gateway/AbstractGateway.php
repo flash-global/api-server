@@ -35,7 +35,7 @@
         /**
          * @var bool Tells whether new query results should be return as is
          */
-        protected $returnRawResultForNextQuery = false;
+        protected $rawDataForNextQuery = false;
 
         /**
          * @var
@@ -76,7 +76,7 @@
          */
         public function raw()
         {
-            $this->returnRawResultForNextQuery = true;
+            $this->rawDataForNextQuery = true;
 
             return $this;
         }
@@ -129,9 +129,9 @@
         {
             $targetEntityClass = $this->targetEntity ?: $this->defaultTargetEntity;
 
-            if ($this->returnRawResultForNextQuery || is_null($targetEntityClass))
+            if ($this->rawDataForNextQuery || is_null($targetEntityClass))
             {
-                $this->returnRawResultForNextQuery = false;
+                $this->rawDataForNextQuery = false;
 
                 return $data;
             }
@@ -214,8 +214,18 @@
          */
         protected function reset()
         {
-            $this->cacheNextQuery              = null;
-            $this->returnRawResultForNextQuery = false;
-            $this->targetEntity = $this->defaultTargetEntity;
+            $this->cacheNextQuery      = null;
+            $this->rawDataForNextQuery = false;
+            $this->targetEntity        = $this->defaultTargetEntity;
+        }
+
+        /**
+         * @return bool
+         */
+        protected function shouldCache()
+        {
+            return ($this->cachingStrategy == self::CACHE_BY_DEFAULT && !$this->cacheNextQuery === false)
+            ||
+            ($this->cachingStrategy == self::CACHE_ON_DEMAND && $this->cacheNextQuery === true);
         }
     }
