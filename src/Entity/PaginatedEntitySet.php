@@ -7,7 +7,7 @@ namespace Fei\ApiServer\Entity;
  * Class EntitySet
  * @package Pricer\Entity
  */
-class PaginatedEntitySet extends EntitySet
+class PaginatedEntitySet extends EntitySet implements PaginatedEntitySetInterface
 {
 
     protected $currentPage;
@@ -19,7 +19,7 @@ class PaginatedEntitySet extends EntitySet
     /**
      * @return mixed
      */
-    public function getCurrentPage()
+    public function getCurrentPage() : int
     {
         return $this->currentPage;
     }
@@ -39,7 +39,7 @@ class PaginatedEntitySet extends EntitySet
     /**
      * @return mixed
      */
-    public function getPerPage()
+    public function getPerPage() : int
     {
         return $this->perPage;
     }
@@ -59,7 +59,7 @@ class PaginatedEntitySet extends EntitySet
     /**
      * @return mixed
      */
-    public function getTotal()
+    public function getTotal() : int
     {
         return $this->total;
     }

@@ -7,12 +7,12 @@ namespace Fei\ApiServer\Entity;
  * Class EntitySet
  * @package Pricer\Entity
  */
-class EntitySet extends \ArrayObject
+class EntitySet extends \ArrayObject implements EntitySetInterface
 {
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray() : array
     {
         $set = array();
 
@@ -24,7 +24,8 @@ class EntitySet extends \ArrayObject
         return $set;
     }
 
-    public function isEmpty(){
+    public function isEmpty() : bool 
+    {
         return !(bool) count($this);
     }
 
