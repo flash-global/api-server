@@ -187,10 +187,10 @@
             {
                 if(strpos($url, '?'))
                 {
-                    $builtUrl = $url .= '&page=' . $page;
+                    $builtUrl = $url . '&page=' . $page;
                 }
                 else {
-                    $builtUrl = $url .= '?page=' . $page;
+                    $builtUrl = $url . '?page=' . $page;
                 }
             }
 
