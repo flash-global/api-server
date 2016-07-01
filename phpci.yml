@@ -13,3 +13,6 @@ test:
   php_mess_detector: 
     allow_failures: true
   technical_debt: ~
+success:
+  shell:
+    - "cd /var/www/satis && ./update.sh"
