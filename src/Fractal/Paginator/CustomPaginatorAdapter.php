@@ -177,11 +177,11 @@
         {
             $url = $this->url ?: 'http://' . rtrim($_SERVER['HTTP_HOST'], '/') . '/' . ltrim($_SERVER['REQUEST_URI'], '/');
 
-            preg_match('/[\?\&](page=(\d+))/', $url, $matches);
+            preg_match('/(([\?&])page=(\d+))/', $url, $matches);
 
             if(!empty($matches[0]))
             {
-                $builtUrl = str_replace($matches[1], 'page=' . $page, $url);
+                $builtUrl = str_replace($matches[1], $matches[2] . 'page=' . $page, $url);
             }
             else
             {
