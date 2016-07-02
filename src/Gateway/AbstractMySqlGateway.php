@@ -66,7 +66,7 @@
         /**
          * @var int
          */
-        protected $defaultPerPage = 20;
+        protected $defaultPerPage = 30;
         
         
         /**
@@ -77,16 +77,17 @@
          */
         public function paginate($page, $resultsPerPage = null)
         {
-            
-            $this->paginateNextQuery = true;
-            
-            $this->currentPage = $page;
-            
-            if (!is_null($resultsPerPage))
+            if($page)
             {
-                $this->perPage = $resultsPerPage;
+                $this->paginateNextQuery = true;
+
+                $this->currentPage = $page;
+
+                if (!is_null($resultsPerPage))
+                {
+                    $this->perPage = $resultsPerPage;
+                }
             }
-            
             return $this;
         }
         
@@ -204,7 +205,7 @@
                 }
             } catch (\PDOException $e)
             {
-                throw new Exception(sprintf("SQL Query failed : %s - %s",
+                throw new Exception(sprintf("SQL Query failed : \"%s\" (Error code: \"%s\")",
                     $query, $this->getLastError()), Exception::SQL_ERROR);
             }
             
@@ -254,25 +255,24 @@
             // handle pagination
             if ($this->paginateNextQuery)
             {
-                
+
                 $this->paginateCurrentQuery = true;
-                
+
                 if (!$query instanceof Select)
                 {
                     throw new Exception('Cannot paginate string queries. Please use aura/sqlquery.');
                 }
-                
-                
+
+
+                $currentPage    = $this->currentPage;
+                $resultsPerPage = ($this->perPage ?: $this->defaultPerPage);
+
+                $offset = ($currentPage - 1) * $resultsPerPage;
+                $limit  = $resultsPerPage;
+
+                $query->limit($limit)->offset($offset);
             }
             
-            $currentPage    = $this->currentPage;
-            $resultsPerPage = ($this->perPage ?: $this->defaultPerPage);
-            
-            $offset = ($currentPage - 1) * $resultsPerPage;
-            $limit  = $resultsPerPage;
-            
-            $query->limit($limit)->offset($offset);
-
             return $query;
         }
         
