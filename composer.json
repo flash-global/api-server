@@ -3,6 +3,15 @@
   "description": "FEI server side API helpers",
   "type": "library",
   "license": "Proprietary",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://satis.test.flash-global.net"
+    }
+  ],
+  "config": {
+    "secure-http": false
+  },
   "require": {
       "aura/sqlquery": "2.6.*",
       "fei/entities": "dev-develop"

@@ -2,7 +2,7 @@
 
     namespace Fei\ApiServer\Gateway;
 
-    use Fei\ApiServer\Entity\EntityInterface;
+    use Fei\Entity\EntityInterface;
 
 
     /**
@@ -161,9 +161,9 @@
                 throw new Exception(sprintf('"%s" is not a valid entity class name', $entity));
             }
 
-            if (!in_array('Fei\ApiServer\Entity\EntityInterface', class_implements($entity)))
+            if (!in_array('Fei\Entity\EntityInterface', class_implements($entity)))
             {
-                throw new Exception(sprintf('Entity class "%s" does not implement "Fei\ApiServer\Entity\EntityInterface"', $entity));
+                throw new Exception(sprintf('Entity class "%s" does not implement "Fei\Entity\EntityInterface"', $entity));
             }
 
             $this->validatedEntities[] = $entity;

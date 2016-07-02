@@ -3,26 +3,23 @@
     namespace Fei\ApiServer\Fractal;
     
     
-    use Fei\ApiServer\Entity\EntityInterface;
-    use Fei\ApiServer\Entity\EntitySetInterface;
-    use Fei\ApiServer\Entity\PaginatedEntitySetInterface;
+    use Fei\Entity\EntityInterface;
+    use Fei\Entity\EntitySetInterface;
+    use Fei\Entity\PaginatedEntitySetInterface;
     use Fei\ApiServer\Fractal\Paginator\CustomPaginatorAdapter;
     use League\Fractal\Manager;
     use League\Fractal\Resource\Collection;
     use League\Fractal\Resource\Item;
     use League\Fractal\TransformerAbstract;
-    use ObjectivePHP\ServicesFactory\Annotation\Inject;
-    use ObjectivePHP\ServicesFactory\Specs\InjectionAnnotationProvider;
 
     /**
      * Class ApiData
      *
      * @package Fei\ApiServer
      */
-    class ApiData implements InjectionAnnotationProvider
+    class ApiData
     {
         /**
-         * @Inject(service="fractal.manager")
          * @var Manager
          */
         protected $manager;

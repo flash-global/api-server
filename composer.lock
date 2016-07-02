@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a518e7b95961103b0ea8ed5e358ec80e",
-    "content-hash": "23d612842d80b66fbc2a581f7b972240",
+    "hash": "898b68171a01e0e9a843333a95f28e5f",
+    "content-hash": "ca0a6d604ea67a2033a955d37f5bbb26",
     "packages": [
         {
             "name": "aura/sqlquery",
@@ -70,6 +70,40 @@
                 "update"
             ],
             "time": "2015-11-09 15:38:26"
+        },
+        {
+            "name": "fei/entities",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:flash-global/entities.git",
+                "reference": "865e9c6cd9b37e0c9ef0dee497121b9792145c78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flash-global/entities/zipball/865e9c6cd9b37e0c9ef0dee497121b9792145c78",
+                "reference": "865e9c6cd9b37e0c9ef0dee497121b9792145c78",
+                "shasum": ""
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.2",
+                "league/fractal": "^0.13.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fei\\Entity\\": "src/"
+                }
+            },
+            "license": [
+                "Proprietary"
+            ],
+            "description": "Entities descriptors and helpers",
+            "support": {
+                "source": "https://github.com/flash-global/entities/tree/develop",
+                "issues": "https://github.com/flash-global/entities/issues"
+            },
+            "time": "2016-07-02 09:05:29"
         }
     ],
     "packages-dev": [
@@ -2242,7 +2276,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "fei/entities": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

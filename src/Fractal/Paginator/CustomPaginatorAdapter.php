@@ -3,7 +3,7 @@
     namespace Fei\ApiServer\Fractal\Paginator;
     
     
-    use Fei\ApiServer\Entity\PaginatedEntitySet;
+    use Fei\Entity\PaginatedEntitySet;
     use League\Fractal\Pagination\PaginatorInterface;
 
     /**

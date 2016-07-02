@@ -1,11 +1,5 @@
 <?php
-    /**
-     * Created by PhpStorm.
-     * User: fmagyari
-     * Date: 05/04/16
-     * Time: 17:56
-     */
-    
+
     namespace Fei\ApiServer\Gateway;
     
     
@@ -15,9 +9,8 @@
     use Aura\SqlQuery\Mysql\Select;
     use Aura\SqlQuery\Mysql\Update;
     use Aura\SqlQuery\Quoter;
-    use Fei\ApiServer\Entity\EntitySet;
-    use Fei\ApiServer\Entity\PaginatedEntitySet;
-    use Fei\ApiServer\Gateway\MySQLException;
+    use Fei\Entity\EntitySet;
+    use Fei\Entity\PaginatedEntitySet;
     
     /**
      * Class AbstractMySqlGateway
