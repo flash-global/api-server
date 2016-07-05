@@ -6,12 +6,9 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "http://satis.test.flash-global.net"
+      "url": "https://composer.flash-global.net"
     }
   ],
-  "config": {
-    "secure-http": false
-  },
   "require": {
       "aura/sqlquery": "2.6.*",
       "fei/entities": "dev-develop"
