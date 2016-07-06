@@ -11,7 +11,7 @@
   ],
   "require": {
       "aura/sqlquery": "2.6.*",
-      "fei/gateways": "dev-develop"
+      "fei/gateways": "1.*"
   },
   "require-dev": {
     "codeception/codeception": "^2.2",
