@@ -15,7 +15,8 @@
   },
   "require-dev": {
     "codeception/codeception": "^2.2",
-    "league/fractal": "^0.13.0"
+    "league/fractal": "^0.13.0",
+    "fei/entities": "1.*"
   },
   "autoload": {
     "psr-4": {

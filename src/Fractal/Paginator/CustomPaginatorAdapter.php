@@ -40,6 +40,11 @@
         protected $url;
 
         /**
+         * @var int
+         */
+        protected $lastPage;
+
+        /**
          * CustomPaginatorAdapter constructor.
          *
          * @param $currentPage
@@ -55,6 +60,8 @@
             $this->setPerPage($perPage);
             $this->setCount($count);
             $this->setTotal($total);
+
+            $this->updateLastPage();
         }
 
         static public function factory(PaginatedEntitySet $set)
@@ -87,7 +94,7 @@
          */
         public function getLastPage()
         {
-            return ceil($this->total / $this->perPage);
+            return $this->lastPage;
         }
 
         /**
@@ -95,7 +102,7 @@
          *
          * @return $this
          */
-        public function setLastPage($lastPage)
+        protected function setLastPage($lastPage)
         {
             $this->lastPage = $lastPage;
 
@@ -118,6 +125,7 @@
         public function setTotal($total)
         {
             $this->total = $total;
+            $this->updateLastPage();
 
             return $this;
         }
@@ -163,7 +171,8 @@
                 throw new Exception('Items per page must be greater than 0');
             }
             $this->perPage = $perPage;
-
+            $this->updateLastPage();
+            
             return $this;
         }
     
@@ -206,6 +215,13 @@
         public function setUrl($url)
         {
             $this->url = $url;
+
+            return $this;
+        }
+
+        protected function updateLastPage()
+        {
+            $this->setLastPage(ceil($this->total / $this->perPage));
 
             return $this;
         }

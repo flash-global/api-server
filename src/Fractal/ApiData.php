@@ -37,7 +37,7 @@
             $item = new Item($entity, $transformer);
             $item->setMetaValue('entity', get_class($entity));
 
-            return $this->manager->createData($item, $scope);
+            return $this->getManager()->createData($item, $scope);
         }
 
 
@@ -60,7 +60,7 @@
             // TODO find a way to handle meta per resource
             $collection->setMetaValue('entity', get_class($entitySet[0]));
 
-            return $this->manager->createData($collection);
+            return $this->getManager()->createData($collection);
         }
 
         /**

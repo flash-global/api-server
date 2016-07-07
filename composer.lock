@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f05d4922fb98e873fc45bbef83eb2196",
-    "content-hash": "65080763d9d5517ec2258133285d36e8",
+    "hash": "adc2c730503717ca7e60dfacf2ca5357",
+    "content-hash": "e459d519490e7cb2ed52dda9b9abd6a6",
     "packages": [
         {
             "name": "aura/sqlquery",
@@ -73,7 +73,7 @@
         },
         {
             "name": "fei/entities",
-            "version": "dev-develop",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:flash-global/entities.git",
@@ -104,6 +104,44 @@
                 "issues": "https://github.com/flash-global/entities/issues"
             },
             "time": "2016-07-04 15:21:46"
+        },
+        {
+            "name": "fei/gateways",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:flash-global/gateways.git",
+                "reference": "fbcccede30959c1e08d1b6a21fb7ba43dcc16143"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flash-global/gateways/zipball/fbcccede30959c1e08d1b6a21fb7ba43dcc16143",
+                "reference": "fbcccede30959c1e08d1b6a21fb7ba43dcc16143",
+                "shasum": ""
+            },
+            "require": {
+                "aura/sqlquery": "2.6.0",
+                "fei/entities": "1.*"
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.2",
+                "league/fractal": "^0.13.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fei\\Gateway\\": "src/"
+                }
+            },
+            "license": [
+                "Proprietary"
+            ],
+            "description": "Gateways descriptors and helpers",
+            "support": {
+                "source": "https://github.com/flash-global/gateways/tree/develop",
+                "issues": "https://github.com/flash-global/gateways/issues"
+            },
+            "time": "2016-07-06 11:36:40"
         }
     ],
     "packages-dev": [
@@ -2276,9 +2314,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "fei/entities": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

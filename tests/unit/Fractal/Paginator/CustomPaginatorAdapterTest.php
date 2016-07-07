@@ -6,6 +6,7 @@
     use Codeception\Test\Unit;
     use Fei\ApiServer\Fractal\Paginator\CustomPaginatorAdapter;
     use Fei\ApiServer\Fractal\Paginator\Exception;
+    use Fei\Entity\PaginatedEntitySet;
 
     class CustomPaginatorAdapterTest extends Unit
     {
@@ -54,5 +55,25 @@
         {
             $this->expectException(Exception::class);
             new CustomPaginatorAdapter(1, 0, 10, 37);
+        }
+        
+        public function testFactory()
+        {
+            $entitySet = $this->createMock(PaginatedEntitySet::class);
+
+            $entitySet->method('getTotal')->willReturn(56);
+            $entitySet->method('getCurrentPage')->willReturn(2);
+            $entitySet->method('getPerPage')->willReturn(10);
+            $entitySet->method('count')->willReturn(10);
+
+            $paginator = CustomPaginatorAdapter::factory($entitySet);
+
+            $this->assertEquals(6, $paginator->getLastPage());
+            $this->assertEquals(10, $paginator->getCount());
+            $this->assertEquals(2, $paginator->getCurrentPage());
+            $this->assertEquals(56, $paginator->getTotal());
+            $this->assertEquals(10, $paginator->getPerPage());
+
+
         }
     }
