@@ -21,7 +21,7 @@
             (new SapiEmitter())->emit(
              new JsonResponse(
                 [
-                    'code' => -1,
+                    'code' => $code,
                     'error' => $e->getMessage(),
                     'type' => get_class($e),
                     'file' => $e->getFile(),
