@@ -4,144 +4,71 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "84c3475e41b2cf0714688058bdd42939",
-    "content-hash": "8980ec314edd4bd758254db3aa457e6a",
+    "hash": "5e48c87a7d43581cafaec3c7fc93e3de",
+    "content-hash": "3a1ba4b70abbf17bdc34e52f8c21ba34",
     "packages": [
         {
-            "name": "aura/sqlquery",
-            "version": "2.6.0",
+            "name": "league/fractal",
+            "version": "0.13.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/auraphp/Aura.SqlQuery.git",
-                "reference": "f87f36785d1f6303996c1ac705b0f26a4d8785c0"
+                "url": "https://github.com/thephpleague/fractal.git",
+                "reference": "3caeefbad51bce7a06947321938128512f42346c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/auraphp/Aura.SqlQuery/zipball/f87f36785d1f6303996c1ac705b0f26a4d8785c0",
-                "reference": "f87f36785d1f6303996c1ac705b0f26a4d8785c0",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/3caeefbad51bce7a06947321938128512f42346c",
+                "reference": "3caeefbad51bce7a06947321938128512f42346c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "~0.9",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5",
+                "zendframework/zend-paginator": "~2.3"
             },
             "suggest": {
-                "aura/sql": "Provides an extension to the native PDO along with a profiler and connection locator. Use version 2.*."
+                "illuminate/pagination": "The Illuminate Pagination component.",
+                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+                "zendframework/zend-paginator": "Zend Framework Paginator"
             },
             "type": "library",
             "extra": {
-                "aura": {
-                    "type": "library"
+                "branch-alias": {
+                    "dev-master": "0.13-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Aura\\SqlQuery\\": "src/"
+                    "League\\Fractal\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-2-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Aura.SqlQuery Contributors",
-                    "homepage": "https://github.com/auraphp/Aura.SqlQuery/contributors"
+                    "name": "Phil Sturgeon",
+                    "email": "me@philsturgeon.uk",
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
                 }
             ],
-            "description": "Object-oriented query builders for MySQL, Postgres, SQLite, and SQLServer; can be used with any database connection library.",
-            "homepage": "https://github.com/auraphp/Aura.SqlQuery",
+            "description": "Handle the output of complex data structures ready for API output.",
+            "homepage": "http://fractal.thephpleague.com/",
             "keywords": [
-                "database",
-                "db",
-                "delete",
-                "dml",
-                "insert",
-                "mysql",
-                "pdo",
-                "pgsql",
-                "postgres",
-                "postgresql",
-                "query",
-                "select",
-                "sql",
-                "sql server",
-                "sqlite",
-                "sqlserver",
-                "update"
+                "api",
+                "json",
+                "league",
+                "rest"
             ],
-            "time": "2015-11-09 15:38:26"
-        },
-        {
-            "name": "fei/entities",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:flash-global/entities.git",
-                "reference": "12eec5928f115d75f13fcbfe756a58baa58e43f0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/flash-global/entities/zipball/12eec5928f115d75f13fcbfe756a58baa58e43f0",
-                "reference": "12eec5928f115d75f13fcbfe756a58baa58e43f0",
-                "shasum": ""
-            },
-            "require-dev": {
-                "codeception/codeception": "^2.2",
-                "league/fractal": "^0.13.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Fei\\Entity\\": "src/"
-                }
-            },
-            "license": [
-                "Proprietary"
-            ],
-            "description": "Entities descriptors and helpers",
-            "support": {
-                "source": "https://github.com/flash-global/entities/tree/develop",
-                "issues": "https://github.com/flash-global/entities/issues"
-            },
-            "time": "2016-07-04 15:21:46"
-        },
-        {
-            "name": "fei/gateways",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:flash-global/gateways.git",
-                "reference": "fbcccede30959c1e08d1b6a21fb7ba43dcc16143"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/flash-global/gateways/zipball/fbcccede30959c1e08d1b6a21fb7ba43dcc16143",
-                "reference": "fbcccede30959c1e08d1b6a21fb7ba43dcc16143",
-                "shasum": ""
-            },
-            "require": {
-                "aura/sqlquery": "2.6.0",
-                "fei/entities": "1.*"
-            },
-            "require-dev": {
-                "codeception/codeception": "^2.2",
-                "league/fractal": "^0.13.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Fei\\Gateway\\": "src/"
-                }
-            },
-            "license": [
-                "Proprietary"
-            ],
-            "description": "Gateways descriptors and helpers",
-            "support": {
-                "source": "https://github.com/flash-global/gateways/tree/develop",
-                "issues": "https://github.com/flash-global/gateways/issues"
-            },
-            "time": "2016-07-06 11:36:40"
+            "time": "2015-10-07 14:48:58"
         }
     ],
     "packages-dev": [
@@ -625,6 +552,40 @@
             "time": "2016-06-04 00:02:34"
         },
         {
+            "name": "fei/entities",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:flash-global/entities.git",
+                "reference": "12eec5928f115d75f13fcbfe756a58baa58e43f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flash-global/entities/zipball/12eec5928f115d75f13fcbfe756a58baa58e43f0",
+                "reference": "12eec5928f115d75f13fcbfe756a58baa58e43f0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.2",
+                "league/fractal": "^0.13.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fei\\Entity\\": "src/"
+                }
+            },
+            "license": [
+                "Proprietary"
+            ],
+            "description": "Entities descriptors and helpers",
+            "support": {
+                "source": "https://github.com/flash-global/entities/tree/develop",
+                "issues": "https://github.com/flash-global/entities/issues"
+            },
+            "time": "2016-07-04 15:21:46"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.2.0",
             "source": {
@@ -794,69 +755,6 @@
                 "uri"
             ],
             "time": "2016-06-24 23:00:38"
-        },
-        {
-            "name": "league/fractal",
-            "version": "0.13.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/fractal.git",
-                "reference": "3caeefbad51bce7a06947321938128512f42346c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/3caeefbad51bce7a06947321938128512f42346c",
-                "reference": "3caeefbad51bce7a06947321938128512f42346c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "illuminate/contracts": "~5.0",
-                "mockery/mockery": "~0.9",
-                "pagerfanta/pagerfanta": "~1.0.0",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~1.5",
-                "zendframework/zend-paginator": "~2.3"
-            },
-            "suggest": {
-                "illuminate/pagination": "The Illuminate Pagination component.",
-                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
-                "zendframework/zend-paginator": "Zend Framework Paginator"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.13-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\Fractal\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Phil Sturgeon",
-                    "email": "me@philsturgeon.uk",
-                    "homepage": "http://philsturgeon.uk/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Handle the output of complex data structures ready for API output.",
-            "homepage": "http://fractal.thephpleague.com/",
-            "keywords": [
-                "api",
-                "json",
-                "league",
-                "rest"
-            ],
-            "time": "2015-10-07 14:48:58"
         },
         {
             "name": "myclabs/deep-copy",
