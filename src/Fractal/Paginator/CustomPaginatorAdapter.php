@@ -1,8 +1,8 @@
 <?php
 
     namespace Fei\ApiServer\Fractal\Paginator;
-    
-    
+
+
     use Fei\Entity\PaginatedEntitySet;
     use League\Fractal\Pagination\PaginatorInterface;
 
@@ -172,10 +172,10 @@
             }
             $this->perPage = $perPage;
             $this->updateLastPage();
-            
+
             return $this;
         }
-    
+
         /**
          * @param int $page
          *
@@ -184,7 +184,13 @@
          */
         public function getUrl($page)
         {
-            $url = $this->url ?: 'http://' . rtrim($_SERVER['HTTP_HOST'], '/') . '/' . ltrim($_SERVER['REQUEST_URI'], '/');
+            $url = $this->url ?: 'http://' .
+                rtrim(
+                    (isset($_SERVER['HTTP_X_FORWARDED_HOST']) ?
+                        $_SERVER['HTTP_X_FORWARDED_HOST'] :
+                        $_SERVER['HTTP_HOST']), '/'
+                ) .
+                '/' . ltrim($_SERVER['REQUEST_URI'], '/');
 
             preg_match('/(([\?&])page=(\d+))/', $url, $matches);
 
