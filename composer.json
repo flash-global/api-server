@@ -10,14 +10,13 @@
     }
   ],
   "require": {
-      "aura/sqlquery": "2.6.*",
-      "fei/gateways": "1.*"
+    "league/fractal": "^0.14.0"
   },
   "require-dev": {
     "codeception/codeception": "^2.2",
-    "league/fractal": "^0.13.0",
     "objective-php/application": "1.0.*",
-    "objective-php/message": "0.9.*"
+    "objective-php/message": "0.9.*",
+    "fei/entities": "1.0.*"
   },
   "autoload": {
     "psr-4": {
