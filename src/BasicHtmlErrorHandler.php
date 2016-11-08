@@ -1,17 +1,21 @@
 <?php
-
-namespace Fei\ApiServer\ErrorHandler;
-
+namespace Fei\ApiServer;
 
 use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Middleware\AbstractMiddleware;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Diactoros\Response\SapiEmitter;
+use Zend\Diactoros\Response\{
+    HtmlResponse, SapiEmitter
+};
 
-class ProdErrorHandler extends AbstractMiddleware
+/**
+ * Class BasicHtmlErrorHandler
+ * @package Fei\ApiServer
+ */
+class BasicHtmlErrorHandler
 {
-
-    public function run(ApplicationInterface $app)
+    /**
+     * @param ApplicationInterface $app
+     */
+    public function __invoke(ApplicationInterface $app)
     {
         $error = $app->getException()->getPrevious() ?: $app->getException();
         $code = $error->getCode() && $error->getCode() > 199 && $error->getCode() < 599 ? $error->getCode() : 500;
