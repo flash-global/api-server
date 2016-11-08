@@ -2,8 +2,8 @@
 namespace Fei\ApiServer;
 
 use ObjectivePHP\Application\ApplicationInterface;
-use Zend\Diactoros\Response\{
-    HtmlResponse, SapiEmitter
+use Zend\Diactoros\{
+    Response\HtmlResponse, Response\SapiEmitter, Stream
 };
 
 /**
@@ -19,8 +19,13 @@ class BasicHtmlErrorHandler
     {
         $error = $app->getException()->getPrevious() ?: $app->getException();
         $code = $error->getCode() && $error->getCode() > 199 && $error->getCode() < 599 ? $error->getCode() : 500;
+
         $res = new HtmlResponse("", $code);
 
-        (new SapiEmitter())->emit($res->withBody($res->getReasonPhrase()));
+        // The stream is needed for writting a new body.
+        $stream = new Stream("php://memory", 'rw');
+        $stream->write($res->getReasonPhrase());
+
+        (new SapiEmitter())->emit($res->withBody($stream));
     }
 }
