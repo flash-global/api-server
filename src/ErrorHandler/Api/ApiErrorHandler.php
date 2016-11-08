@@ -1,6 +1,6 @@
 <?php
     
-    namespace Fei\ApiServer\Api;
+    namespace Fei\ApiServer\ErrorHandler\Api;
 
     use ObjectivePHP\Application\ApplicationInterface;
     use ObjectivePHP\Application\Middleware\AbstractMiddleware;
