@@ -5,6 +5,7 @@
 
     use Fei\Entity\PaginatedEntitySet;
     use League\Fractal\Pagination\PaginatorInterface;
+    use ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
 
     /**
      * Class CustomPaginatorAdapter
@@ -64,9 +65,9 @@
             $this->updateLastPage();
         }
 
-        static public function factory(PaginatedEntitySet $set)
+        static public function factory(PaginatedResultSetInterface $set)
         {
-            return new self($set->getCurrentPage(), $set->getPerPage(), count($set), $set->getTotal());
+            return new self($set->getCurrentPage(), $set->getPageSize(), count($set), $set->getTotal());
         }
 
         /**
