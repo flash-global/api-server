@@ -59,7 +59,10 @@
             }
 
             // TODO find a way to handle meta per resource
-            $collection->setMetaValue('entity', get_class(reset($entitySet)));
+            $entity = reset($entitySet);
+            if ($entity) {
+                $collection->setMetaValue('entity', get_class($entity));
+            }
 
             return $this->getManager()->createData($collection);
         }
