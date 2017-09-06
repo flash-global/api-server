@@ -3,14 +3,15 @@
     namespace Fei\ApiServer\Fractal;
     
     
-    use Fei\Entity\EntityInterface;
-    use Fei\Entity\EntitySetInterface;
-    use Fei\Entity\PaginatedEntitySetInterface;
     use Fei\ApiServer\Fractal\Paginator\CustomPaginatorAdapter;
     use League\Fractal\Manager;
     use League\Fractal\Resource\Collection;
     use League\Fractal\Resource\Item;
+    use League\Fractal\Scope;
     use League\Fractal\TransformerAbstract;
+    use ObjectivePHP\Gateway\Entity\EntityInterface;
+    use ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
+    use ObjectivePHP\Gateway\ResultSet\ResultSetInterface;
 
     /**
      * Class ApiData
@@ -30,7 +31,7 @@
          *
          * @param null                $scope
          *
-         * @return Item
+         * @return Scope
          */
         public function buildResource(EntityInterface $entity, TransformerAbstract $transformer, $scope = null)
         {
@@ -42,23 +43,23 @@
 
 
         /**
-         * @param EntitySetInterface  $entitySet
+         * @param ResultSetInterface|PaginatedResultSetInterface  $entitySet
          * @param TransformerAbstract $transformer
          *
-         * @return Collection
+         * @return Scope
          */
-        public function buildResourceSet(EntitySetInterface $entitySet, TransformerAbstract $transformer, $scope = null)
+        public function buildResourceSet(ResultSetInterface $entitySet, TransformerAbstract $transformer, $scope = null)
         {
             $collection = new Collection($entitySet, $transformer);
 
-            if ($entitySet instanceof PaginatedEntitySetInterface)
+            if ($entitySet instanceof PaginatedResultSetInterface)
             {
                 $paginator = CustomPaginatorAdapter::factory($entitySet);
                 $collection->setPaginator($paginator);
             }
 
             // TODO find a way to handle meta per resource
-            $collection->setMetaValue('entity', get_class($entitySet[0]));
+            $collection->setMetaValue('entity', get_class(reset($entitySet)));
 
             return $this->getManager()->createData($collection);
         }
