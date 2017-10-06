@@ -6,7 +6,7 @@ namespace Tests\Fei\ApiServer\Fractal;
 use Codeception\Test\Unit;
 use Fei\ApiServer\Fractal\ApiData;
 use Fei\Entity\AbstractEntity;
-use ObjectivePHP\Gateway\Entity\EntityInterface;
+use ObjectivePHP\Gateway\Entity\Entity;
 use Fei\Entity\EntitySet;
 use Fei\Entity\EntitySetInterface;
 use Fei\Entity\PaginatedEntitySet;
@@ -72,11 +72,9 @@ class ApiDataTest extends Unit
 
 // HELPERS
 
-class TestEntity extends EntityInterface
+class TestEntity extends Entity
 {
     protected $prop;
-
-
 
     /**
      * @return mixed
