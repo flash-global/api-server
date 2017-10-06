@@ -11,8 +11,7 @@ namespace Fei\ApiServer\Fractal;
 use League\Fractal\Manager;
 use ObjectivePHP\ServicesFactory\Annotation\Inject;
 
-
-trait ManagerAwareTrait
+trait FractalManagerAwareTrait
 {
 
     /**

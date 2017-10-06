@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\Fractal;
 
-
 use Fei\ApiServer\Fractal\Paginator\CustomPaginatorAdapter;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
@@ -110,5 +109,4 @@ class ApiData
 
         return $this;
     }
-
 }

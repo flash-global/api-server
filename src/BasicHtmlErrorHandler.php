@@ -2,9 +2,9 @@
 namespace Fei\ApiServer;
 
 use ObjectivePHP\Application\ApplicationInterface;
-use Zend\Diactoros\{
-    Response\HtmlResponse, Response\SapiEmitter, Stream
-};
+use Zend\Diactoros\Response\HtmlResponse;
+use Zend\Diactoros\Response\SapiEmitter;
+use Zend\Diactoros\Stream;
 
 /**
  * Class BasicHtmlErrorHandler

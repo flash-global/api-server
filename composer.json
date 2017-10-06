@@ -16,7 +16,9 @@
     "codeception/codeception": "^2.2",
     "objective-php/application": "1.0.*",
     "objective-php/message": "0.9.*",
-    "objective-php/gateway" : "^1.0"
+    "objective-php/gateway" : "^1.0",
+    "friendsofphp/php-cs-fixer": "^2",
+    "squizlabs/php_codesniffer": "^2.5"
   },
   "autoload": {
     "psr-4": {

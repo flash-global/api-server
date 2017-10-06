@@ -8,8 +8,21 @@
 
 namespace Fei\ApiServer\Fractal;
 
+use League\Fractal\Manager;
 
-interface ManagerAwareInterface
+interface FractalManagerAwareInterface
 {
 
+    /**
+     * @return Manager
+     */
+    public function getFractalManager(): Manager;
+
+
+    /**
+     * @param Manager $fractalManager
+     *
+     * @return $this
+     */
+    public function setFractalManager(Manager $fractalManager);
 }
