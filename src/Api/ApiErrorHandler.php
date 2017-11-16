@@ -1,25 +1,27 @@
 <?php
-    
-    namespace Fei\ApiServer\Api;
 
-    use ObjectivePHP\Application\ApplicationInterface;
-    use ObjectivePHP\Application\Middleware\AbstractMiddleware;
-    use Zend\Diactoros\Response;
-    use Zend\Diactoros\Response\JsonResponse;
-    use Zend\Diactoros\Response\SapiEmitter;
+namespace Fei\ApiServer\Api;
 
-    class ApiErrorHandler extends AbstractMiddleware
+use ObjectivePHP\Application\ApplicationInterface;
+use ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use Zend\Diactoros\Response\JsonResponse;
+use Zend\Diactoros\Response\SapiEmitter;
+
+/**
+ * Class ApiErrorHandler
+ *
+ * @package Fei\ApiServer\Api
+ */
+class ApiErrorHandler extends AbstractMiddleware
+{
+    public function run(ApplicationInterface $app)
     {
 
+        $e = $app->getException()->getPrevious() ?: $app->getException();
 
-        public function run(ApplicationInterface $app)
-        {
-
-            $e = $app->getException()->getPrevious() ?: $app->getException();
-
-            $code = $e->getCode() && $e->getCode() > 199 && $e->getCode() < 599 ? $e->getCode() : 500;
-            (new SapiEmitter())->emit(
-             new JsonResponse(
+        $code = $e->getCode() && $e->getCode() > 199 && $e->getCode() < 599 ? $e->getCode() : 500;
+        (new SapiEmitter())->emit(
+            new JsonResponse(
                 [
                     'code' => $code,
                     'error' => $e->getMessage(),
@@ -30,5 +32,5 @@
                 $code
             ));
 
-        }
     }
+}
