@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
-        "objective-php/message": "0.9.*"
+        "doctrine/instantiator": "~1.0.0"
     },
     "autoload": {
         "psr-4": {
