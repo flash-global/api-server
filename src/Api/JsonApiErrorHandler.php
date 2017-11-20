@@ -1,8 +1,7 @@
 <?php
 
-namespace Fei\ApiServer\Middleware;
+namespace Fei\ApiServer\Api;
 
-use Fei\ApiServer\Api\ApiErrorHandler;
 use ObjectivePHP\Application\ApplicationInterface;
 use Zend\Diactoros\Response\JsonResponse;
 use Zend\Diactoros\Response\SapiEmitter;
