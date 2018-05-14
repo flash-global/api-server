@@ -3,6 +3,7 @@
 namespace Fei\ApiServer\Middleware;
 
 use ObjectivePHP\Application\Action\SubRoutingAction;
+use ObjectivePHP\Primitives\String\Str;
 
 /**
  * Class RestfulAction
@@ -13,7 +14,10 @@ class RestfulAction extends SubRoutingAction
 {
     /**
      * @param array ...$args
+     *
      * @return mixed
+     *
+     * @throws \ObjectivePHP\Application\Exception
      */
     public function __invoke(...$args)
     {
@@ -25,6 +29,15 @@ class RestfulAction extends SubRoutingAction
      */
     public function route()
     {
+        $methodName = (new Str($this->getApplication()->getRequest()->getMatchedRoute()->getName()))
+            ->snakeCase()
+            ->camelCase()
+            ->getInternalValue();
+        $callable = $this->getCallable();
+        if (method_exists($callable, $methodName)) {
+            return $methodName;
+        }
+
         $verb = $this->getApplication()->getRequest()->getMethod();
 
         return strtolower($verb);
