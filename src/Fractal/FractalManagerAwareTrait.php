@@ -2,8 +2,8 @@
 /**
  * ManagerAwareTrait.php
  *
- * @date        6/10/17
- * @file        ManagerAwareTrait.php
+ * @date 6/10/17
+ * @file ManagerAwareTrait.php
  */
 
 namespace Fei\ApiServer\Fractal;

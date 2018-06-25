@@ -2,14 +2,16 @@
   "name": "fei/api-server",
   "description": "FEI server side API helpers",
   "type": "library",
-  "license": "Proprietary",
-  "repositories": [
+  "license": "GPL-3.0",
+  "authors": [
     {
-      "type": "composer",
-      "url": "https://composer.flash.global"
+      "name": "Yoctu",
+      "email": "contact@yoctu.com",
+      "homepage": "http://yoctu.com/"
     }
   ],
   "require": {
+    "php": "^7.0",
     "league/fractal": "^0.14.0"
   },
   "require-dev": {

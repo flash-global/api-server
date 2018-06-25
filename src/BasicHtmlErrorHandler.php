@@ -8,6 +8,7 @@ use Zend\Diactoros\Stream;
 
 /**
  * Class BasicHtmlErrorHandler
+ *
  * @package Fei\ApiServer
  */
 class BasicHtmlErrorHandler
