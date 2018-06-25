@@ -22,6 +22,11 @@
     "friendsofphp/php-cs-fixer": "^2",
     "squizlabs/php_codesniffer": "^2.5"
   },
+  "config": {
+    "platform": {
+      "php": "7.0"
+    }
+  },
   "autoload": {
     "psr-4": {
       "Fei\\ApiServer\\": "src/"
