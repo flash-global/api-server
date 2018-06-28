@@ -1,15 +1,9 @@
 <?php
-/**
- * ManagerAwareTraitTest.php
- *
- * @date        6/10/17
- * @file        ManagerAwareTraitTest.php
- */
 
 namespace Tests\ApiServer\Fractal;
 
 use Codeception\Test\Unit;
-use Fei\ApiServer\Fractal\ManagerAwareTrait;
+use Fei\ApiServer\Fractal\FractalManagerAwareTrait;
 use League\Fractal\Manager;
 
 /**
@@ -17,18 +11,13 @@ use League\Fractal\Manager;
  */
 class ManagerAwareTraitTest extends Unit
 {
-
     public function testGetSetManager()
     {
-        $mockManagerTrait = $this->getMockForTrait(ManagerAwareTrait::class);
-        
+        $mockManagerTrait = $this->getMockForTrait(FractalManagerAwareTrait::class);
+
         $stubanager = new Manager();
-
-
 
         $this->assertSame($mockManagerTrait, $mockManagerTrait->setFractalManager($stubanager));
         $this->assertSame($stubanager, $mockManagerTrait->getFractalManager());
-
     }
-
 }

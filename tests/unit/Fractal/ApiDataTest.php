@@ -2,17 +2,19 @@
 
 namespace Tests\Fei\ApiServer\Fractal;
 
-
 use Codeception\Test\Unit;
 use Fei\ApiServer\Fractal\ApiData;
-use Fei\Entity\AbstractEntity;
 use ObjectivePHP\Gateway\Entity\Entity;
-use Fei\Entity\EntitySet;
-use Fei\Entity\EntitySetInterface;
-use Fei\Entity\PaginatedEntitySet;
 use League\Fractal\Manager;
 use League\Fractal\TransformerAbstract;
+use ObjectivePHP\Gateway\ResultSet\PaginatedResultSet;
+use ObjectivePHP\Gateway\ResultSet\ResultSet;
 
+/**
+ * Class ApiDataTest
+ *
+ * @package Tests\Fei\ApiServer\Fractal
+ */
 class ApiDataTest extends Unit
 {
     public function testResourceBuilding()
@@ -24,11 +26,10 @@ class ApiDataTest extends Unit
         $entity = (new TestEntity())->setProp('test');
 
         $scope = $apiData->buildResource($entity, new TestTransformer());
-        // var_dump($scope); exit;
+
         $this->assertEquals(TestEntity::class, $scope->toArray()['meta']['entity']);
 
         $this->assertCount(1, $scope->toArray()['data']);
-
     }
 
     public function testResourceSetBuilding()
@@ -40,7 +41,7 @@ class ApiDataTest extends Unit
         $entity = (new TestEntity())->setProp('test');
         $entity2 = (new TestEntity())->setProp('test2');
 
-        $entitySet = new EntitySet([$entity, $entity2]);
+        $entitySet = new ResultSet([$entity, $entity2]);
         $scope = $apiData->buildResourceSet($entitySet, new TestTransformer());
 
         $this->assertEquals(TestEntity::class, $scope->toArray()['meta']['entity']);
@@ -60,14 +61,13 @@ class ApiDataTest extends Unit
         $entity = (new TestEntity())->setProp('test');
         $entity2 = (new TestEntity())->setProp('test2');
 
-        $entitySet = (new PaginatedEntitySet([$entity, $entity2]))->setTotal(12)->setCurrentPage(1)->setPerPage(10);
+        $entitySet = (new PaginatedResultSet([$entity, $entity2]))->setTotal(12)->setCurrentPage(1)->setPerPage(10);
         $scope = $apiData->buildResourceSet($entitySet, new TestTransformer());
 
         $this->assertEquals(TestEntity::class, $scope->toArray()['meta']['entity']);
 
         $this->assertCount(2, $scope->toArray()['data']);
     }
-
 }
 
 // HELPERS
@@ -86,6 +86,8 @@ class TestEntity extends Entity
 
     /**
      * @param mixed $prop
+     *
+     * @return TestEntity
      */
     public function setProp($prop)
     {
@@ -93,7 +95,6 @@ class TestEntity extends Entity
 
         return $this;
     }
-
 }
 
 class TestTransformer extends TransformerAbstract
