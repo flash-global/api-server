@@ -4,14 +4,12 @@ namespace Tests\ApiServer;
 
 use Codeception\Test\Unit;
 use Fei\ApiServer\BasicHtmlErrorHandler;
-use ObjectivePHP\Application\AbstractApplication;
 use ObjectivePHP\Application\ApplicationInterface;
 
 /**
- * Created by OPCODING for Flash.
- * User: Neofox
- * Date: 08/11/2016
- * Time: 15:30
+ * Class BasicHtmlErrorHandlerTest
+ *
+ * @package Tests\ApiServer
  */
 class BasicHtmlErrorHandlerTest extends Unit
 {
@@ -23,8 +21,5 @@ class BasicHtmlErrorHandlerTest extends Unit
         $app->expects($this->exactly(2))->method('getException')->willReturn(new \Exception("Exception."));
 
         $errorHandler->__invoke($app);
-
-
     }
-
 }
