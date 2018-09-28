@@ -57,9 +57,9 @@ class ApiData
             $paginator = CustomPaginatorAdapter::factory($entitySet);
             $collection->setPaginator($paginator);
         }
-
-        // TODO find a way to handle meta per resource
-        $collection->setMetaValue('entity', get_class($entitySet[0]));
+        if (!$entitySet->isEmpty()) {
+            $collection->setMetaValue('entity', get_class($entitySet[0]));
+        }
 
         return $this->getManager()->createData($collection);
     }
