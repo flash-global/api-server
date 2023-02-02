@@ -28,6 +28,9 @@
     }
   },
   "autoload": {
+    "files": [
+      "objective-php-polyfill.php"
+    ],
     "psr-4": {
       "Fei\\ApiServer\\": "src/"
     }
