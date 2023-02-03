@@ -3,24 +3,24 @@
     namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet;
 
 /**
-     * Interface PaginatedResultSetInterface
-     *
-     * @package Fei\ApiServer\ObjectivePHP\Gateway\Entity
+ * Interface PaginatedResultSetInterface
+ *
+ * @package Fei\ApiServer\ObjectivePHP\Gateway\Entity
+ */
+interface PaginatedResultSetInterface extends ResultSetInterface
+{
+    /**
+     * @return int
      */
-    interface PaginatedResultSetInterface extends ResultSetInterface
-    {
-        /**
-         * @return int
-         */
-        public function getCurrentPage();
+    public function getCurrentPage();
 
-        /**
-         * @return int
-         */
-        public function getTotal();
+    /**
+     * @return int
+     */
+    public function getTotal();
 
-        /**
-         * @return int
-         */
-        public function getPageSize();
-    }
+    /**
+     * @return int
+     */
+    public function getPageSize();
+}
