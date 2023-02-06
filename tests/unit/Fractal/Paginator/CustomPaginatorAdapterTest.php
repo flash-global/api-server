@@ -5,7 +5,7 @@ namespace Tests\ApiServer\Fractal\Paginator;
 use Codeception\Test\Unit;
 use Fei\ApiServer\Fractal\Paginator\CustomPaginatorAdapter;
 use Fei\ApiServer\Fractal\Paginator\Exception;
-use ObjectivePHP\Gateway\ResultSet\PaginatedResultSet;
+use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\PaginatedResultSet;
 
 /**
  * Class CustomPaginatorAdapterTest

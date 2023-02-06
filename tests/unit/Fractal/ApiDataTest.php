@@ -4,11 +4,11 @@ namespace Tests\Fei\ApiServer\Fractal;
 
 use Codeception\Test\Unit;
 use Fei\ApiServer\Fractal\ApiData;
-use ObjectivePHP\Gateway\Entity\Entity;
+use Fei\ApiServer\ObjectivePHP\Gateway\Entity\Entity;
 use League\Fractal\Manager;
 use League\Fractal\TransformerAbstract;
-use ObjectivePHP\Gateway\ResultSet\PaginatedResultSet;
-use ObjectivePHP\Gateway\ResultSet\ResultSet;
+use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\PaginatedResultSet;
+use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\ResultSet;
 
 /**
  * Class ApiDataTest

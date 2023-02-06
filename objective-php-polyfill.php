@@ -252,3 +252,15 @@ if (!interface_exists('ObjectivePHP\Matcher\Exception')) {
     class_alias('Fei\ApiServer\ObjectivePHP\Matcher\Exception', 'ObjectivePHP\Matcher\Exception');
 }
 
+if (!interface_exists('ObjectivePHP\Gateway\ResultSet\PaginatedResultSet')) {
+    class_alias('Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\PaginatedResultSet', 'ObjectivePHP\Gateway\ResultSet\PaginatedResultSet');
+}
+
+if (!interface_exists('ObjectivePHP\Gateway\ResultSet\ResultSet')) {
+    class_alias('Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\ResultSet', 'ObjectivePHP\Gateway\ResultSet\ResultSet');
+}
+
+if (!interface_exists('ObjectivePHP\Gateway\Exception\ResultSetException')) {
+    class_alias('Fei\ApiServer\ObjectivePHP\Gateway\Exception\ResultSetException', 'ObjectivePHP\Gateway\Exception\ResultSetException');
+}
+
