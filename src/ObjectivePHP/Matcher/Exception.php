@@ -1,8 +1,8 @@
 <?php
 
-namespace Fei\ApiServer;
+namespace Fei\ApiServer\ObjectivePHP\Matcher;
 
 class Exception extends \Exception
 {
-    
+
 }
