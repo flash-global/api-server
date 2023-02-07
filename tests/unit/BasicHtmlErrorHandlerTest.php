@@ -16,11 +16,10 @@ class BasicHtmlErrorHandlerTest extends Unit
 
     public function testCode()
     {
-        //TO DO: Fix it later
-        // $errorHandler = new BasicHtmlErrorHandler();
-        // $app = $this->getMockBuilder(ApplicationInterface::class)->getMock();
-        // $app->expects($this->exactly(2))->method('getException')->willReturn(new \Exception("Exception."));
+        $errorHandler = new BasicHtmlErrorHandler();
+        $app = $this->getMockBuilder(ApplicationInterface::class)->getMock();
+        $app->expects($this->exactly(2))->method('getException')->willReturn(new \Exception("Exception."));
 
-        // $errorHandler($app);
+        $errorHandler($app);
     }
 }

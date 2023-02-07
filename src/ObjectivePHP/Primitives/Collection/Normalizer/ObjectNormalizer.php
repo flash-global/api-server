@@ -1,4 +1,5 @@
 <?php
+
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection\Normalizer;
 
 use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;

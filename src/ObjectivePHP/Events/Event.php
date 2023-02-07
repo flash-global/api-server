@@ -1,4 +1,5 @@
 <?php
+
 namespace Fei\ApiServer\ObjectivePHP\Events;
 
 use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;

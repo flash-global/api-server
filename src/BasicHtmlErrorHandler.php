@@ -1,4 +1,5 @@
 <?php
+
 namespace Fei\ApiServer;
 
 use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
