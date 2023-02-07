@@ -216,7 +216,7 @@ class Str extends AbstractPrimitive
     }
     
     /**
-     * @param string|\ObjectivePHP\Primitives\String $string Needle
+     * @param string|Fei\ApiServer\ObjectivePHP\Primitives\String $string Needle
      * @param int                                    $offset Offset to start search
      * @param null                                   $flags
      *

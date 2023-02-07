@@ -35,7 +35,7 @@ class Stack extends Collection implements MessageInterface
      * @param $filter
      *
      * @return Stack
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function for($filter)
     {
@@ -75,7 +75,7 @@ class Stack extends Collection implements MessageInterface
      * @param MessageInterface $message
      *
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function addMessage($key, MessageInterface $message)
     {
@@ -98,7 +98,7 @@ class Stack extends Collection implements MessageInterface
      * @param string|null $filter
      *
      * @return int
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function count($filter = null)
     {

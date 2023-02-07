@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\ServicesFactory;
 /**
  * Interface ServicesFactoryAwareInterface
  *
- * @package ObjectivePHP\ServicesFactory
+ * @package Fei\ApiServer\ObjectivePHP\ServicesFactory
  */
 interface ServicesFactoryAwareInterface
 {

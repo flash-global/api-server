@@ -327,7 +327,7 @@ class ServicesFactory implements ContainerInterface
      * @param $instance
      * @param $serviceSpecs
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function injectDependencies($instance, $serviceSpecs = null)
     {

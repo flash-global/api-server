@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection;
 
-use ObjectivePHP\Primitives\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Exception;
 
 /**
  * Class BreakException

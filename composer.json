@@ -19,7 +19,8 @@
     "zendframework/zend-filter": "^2.9",
     "zendframework/zend-eventmanager": "^3.2",
     "erusev/parsedown": "^1.7",
-    "erusev/parsedown-extra": "^0.8.1"
+    "erusev/parsedown-extra": "^0.8.1",
+    "zendframework/zend-diactoros": "^1.8"
   },
   "require-dev": {
     "codeception/codeception": "^2.2",

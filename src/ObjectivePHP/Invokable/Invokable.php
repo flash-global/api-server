@@ -74,7 +74,7 @@ class Invokable extends AbstractInvokable
      * @return callable
      *
      * @throws Exception
-     * @throws \ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException
+     * @throws Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException
      */
     public function getCallable()
     {
