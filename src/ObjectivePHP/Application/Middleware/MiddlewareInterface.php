@@ -1,20 +1,21 @@
 <?php
 
-namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
+    namespace ObjectivePHP\Application\Middleware;
 
-use Fei\ApiServer\ObjectivePHP\Invokable\InvokableInterface;
-use Fei\ApiServer\ObjectivePHP\Notification\Stack;
+    use ObjectivePHP\Application\ApplicationInterface;
+    use ObjectivePHP\Invokable\InvokableInterface;
+    use ObjectivePHP\Notification\Stack;
 
-/**
- * Interface MiddlewareInterface
- *
- * @package ObjectivePHP\Application\Hook
- */
-interface MiddlewareInterface extends InvokableInterface
-{
-    public function getLabel();
+    /**
+     * Interface MiddlewareInterface
+     *
+     * @package ObjectivePHP\Application\Hook
+     */
+    interface MiddlewareInterface extends InvokableInterface
+    {
+        public function getLabel();
 
-    public function getReference();
+        public function getReference();
 
-    public function getNotifications() : Stack;
-}
+        public function getNotifications() : Stack;
+    }

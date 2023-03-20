@@ -1,14 +1,23 @@
 <?php
+/**
+ * This file is part of the Objective PHP project
+ *
+ * More info about Objective PHP on www.objective-php.org
+ *
+ * @license http://opensource.org/licenses/GPL-3.0 GNU GPL License 3.0
+ */
 
-namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
+namespace ObjectivePHP\Application\Workflow\Filter;
 
-use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
-use Fei\ApiServer\ObjectivePHP\Invokable\Invokable;
-use Fei\ApiServer\ObjectivePHP\Invokable\InvokableInterface;
-use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+
+use ObjectivePHP\Application\ApplicationInterface;
+use ObjectivePHP\Invokable\Invokable;
+use ObjectivePHP\Invokable\InvokableInterface;
+use ObjectivePHP\Primitives\Collection\Collection;
 
 trait FiltersHandler
 {
+    
     /**
      * @var Collection
      */
@@ -19,8 +28,10 @@ trait FiltersHandler
      */
     public function addFilter($filter)
     {
-        if (is_null($this->filters)) {
+        if (is_null($this->filters))
+        {
             $this->initFiltersCollection();
+            
         }
         $this->filters->append(Invokable::cast($filter));
     }
@@ -43,7 +54,8 @@ trait FiltersHandler
     public function runFilters(ApplicationInterface $app)
     {
         
-        if (is_null($this->filters)) {
+        if(is_null($this->filters))
+        {
             // no filter has been set
             return true;
         }
@@ -51,12 +63,15 @@ trait FiltersHandler
         /**
          * @var callable $filter
          */
-        foreach ($this->getFilters() as $filter) {
-            if ($filter instanceof InvokableInterface) {
+        foreach ($this->getFilters() as $filter)
+        {
+            if ($filter instanceof InvokableInterface)
+            {
                 $filter->setApplication($app);
             }
             
-            if (!$filter($app)) {
+            if (!$filter($app))
+            {
                 return false;
             }
         }
@@ -80,9 +95,11 @@ trait FiltersHandler
     public function setFilters($filters)
     {
         
-        Collection::cast($filters)->each(function ($filter) {
+        Collection::cast($filters)->each(function ($filter)
+        {
             $this->addFilter($filter);
-        });
+        })
+        ;
         
         return $this;
     }

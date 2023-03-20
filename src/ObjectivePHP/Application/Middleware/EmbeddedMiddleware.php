@@ -1,10 +1,11 @@
 <?php
 
-namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
+namespace ObjectivePHP\Application\Middleware;
 
-use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
-use Fei\ApiServer\ObjectivePHP\Invokable\Invokable;
-use Fei\ApiServer\ObjectivePHP\Invokable\InvokableInterface;
+
+use ObjectivePHP\Application\ApplicationInterface;
+use ObjectivePHP\Invokable\Invokable;
+use ObjectivePHP\Invokable\InvokableInterface;
 
 /**
  * Class EmbeddedMiddleware

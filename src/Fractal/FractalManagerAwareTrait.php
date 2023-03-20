@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ManagerAwareTrait.php
  *
@@ -9,7 +10,7 @@
 namespace Fei\ApiServer\Fractal;
 
 use League\Fractal\Manager;
-use Fei\ApiServer\ObjectivePHP\ServicesFactory\Annotation\Inject;
+use ObjectivePHP\ServicesFactory\Annotation\Inject;
 
 trait FractalManagerAwareTrait
 {

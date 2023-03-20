@@ -1,59 +1,59 @@
 <?php
 
-    namespace Fei\ApiServer\Fractal\Paginator;
+namespace Fei\ApiServer\Fractal\Paginator;
 
-    use Fei\Entity\PaginatedEntitySet;
-    use League\Fractal\Pagination\PaginatorInterface;
-    use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
+use Fei\Entity\PaginatedEntitySet;
+use League\Fractal\Pagination\PaginatorInterface;
+use ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
 
-    /**
-     * Class CustomPaginatorAdapter
-     *
-     * @package Fei\ApiServer\Fractal\Paginator
-     */
+/**
+ * Class CustomPaginatorAdapter
+ *
+ * @package Fei\ApiServer\Fractal\Paginator
+ */
 class CustomPaginatorAdapter implements PaginatorInterface
 {
 
     /**
-         * @var int
-         */
+     * @var int
+     */
     protected $currentPage;
 
     /**
-         * @var int
-         */
+     * @var int
+     */
     protected $total;
 
     /**
-         * @var int
-         */
+     * @var int
+     */
     protected $count;
 
     /**
-         * @var int
-         */
+     * @var int
+     */
     protected $perPage;
 
     /**
-         * @var string
-         */
+     * @var string
+     */
     protected $url;
 
     /**
-         * @var int
-         */
+     * @var int
+     */
     protected $lastPage;
 
     /**
-         * CustomPaginatorAdapter constructor.
-         *
-         * @param $currentPage
-         * @param $perPage
-         * @param $count
-         * @param $total
-         *
-         * @throws Exception
-         */
+     * CustomPaginatorAdapter constructor.
+     *
+     * @param $currentPage
+     * @param $perPage
+     * @param $count
+     * @param $total
+     *
+     * @throws Exception
+     */
     public function __construct($currentPage, $perPage, $count, $total)
     {
         $this->setCurrentPage($currentPage);
@@ -70,18 +70,18 @@ class CustomPaginatorAdapter implements PaginatorInterface
     }
 
     /**
-         * @return mixed
-         */
+     * @return mixed
+     */
     public function getCurrentPage()
     {
         return $this->currentPage;
     }
 
     /**
-         * @param mixed $currentPage
-         *
-         * @return $this
-         */
+     * @param mixed $currentPage
+     *
+     * @return $this
+     */
     public function setCurrentPage($currentPage)
     {
         $this->currentPage = $currentPage;
@@ -90,18 +90,18 @@ class CustomPaginatorAdapter implements PaginatorInterface
     }
 
     /**
-         * @return mixed
-         */
+     * @return mixed
+     */
     public function getLastPage()
     {
         return $this->lastPage;
     }
 
     /**
-         * @param mixed $lastPage
-         *
-         * @return $this
-         */
+     * @param mixed $lastPage
+     *
+     * @return $this
+     */
     protected function setLastPage($lastPage)
     {
         $this->lastPage = $lastPage;
@@ -110,18 +110,18 @@ class CustomPaginatorAdapter implements PaginatorInterface
     }
 
     /**
-         * @return mixed
-         */
+     * @return mixed
+     */
     public function getTotal()
     {
         return $this->total;
     }
 
     /**
-         * @param mixed $total
-         *
-         * @return $this
-         */
+     * @param mixed $total
+     *
+     * @return $this
+     */
     public function setTotal($total)
     {
         $this->total = $total;
@@ -131,18 +131,18 @@ class CustomPaginatorAdapter implements PaginatorInterface
     }
 
     /**
-         * @return mixed
-         */
+     * @return mixed
+     */
     public function getCount()
     {
         return $this->count;
     }
 
     /**
-         * @param mixed $count
-         *
-         * @return $this
-         */
+     * @param mixed $count
+     *
+     * @return $this
+     */
     public function setCount($count)
     {
         $this->count = $count;
@@ -151,19 +151,19 @@ class CustomPaginatorAdapter implements PaginatorInterface
     }
 
     /**
-         * @return mixed
-         */
+     * @return mixed
+     */
     public function getPerPage()
     {
         return $this->perPage;
     }
 
     /**
-         * @param mixed $perPage
-         *
-         * @return $this
-         * @throws Exception
-         */
+     * @param mixed $perPage
+     *
+     * @return $this
+     * @throws Exception
+     */
     public function setPerPage($perPage)
     {
         if ($perPage < 1) {
@@ -176,20 +176,22 @@ class CustomPaginatorAdapter implements PaginatorInterface
     }
 
     /**
-         * @param int $page
-         *
-         * @return mixed
-         * @throws Exception
-         */
+     * @param int $page
+     *
+     * @return mixed
+     * @throws Exception
+     */
     public function getUrl($page)
     {
         $proto = 'http://';
 
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
+        if (
+            isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
             || isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'https'
         ) {
             $proto = 'https://';
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO'])
+        } elseif (
+            !empty($_SERVER['HTTP_X_FORWARDED_PROTO'])
             && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
             || !empty($_SERVER['HTTP_X_FORWARDED_SSL'])
             && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on'
@@ -222,10 +224,10 @@ class CustomPaginatorAdapter implements PaginatorInterface
     }
 
     /**
-         * @param mixed $url
-         *
-         * @return $this
-         */
+     * @param mixed $url
+     *
+     * @return $this
+     */
     public function setUrl($url)
     {
         $this->url = $url;

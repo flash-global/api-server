@@ -12,20 +12,15 @@
   ],
   "require": {
     "php": "^7.0",
-    "league/fractal": "^0.14.0",
-    "zendframework/zend-stdlib": "^3.2",
-    "zendframework/zend-servicemanager": "^3.4",
-    "zendframework/zend-hydrator": "^2.4",
-    "zendframework/zend-filter": "^2.9",
-    "zendframework/zend-eventmanager": "^3.2",
-    "erusev/parsedown": "^1.7",
-    "erusev/parsedown-extra": "^0.8.1",
-    "zendframework/zend-diactoros": "^1.8"
+    "league/fractal": "^0.14.0"
   },
   "require-dev": {
     "codeception/codeception": "^2.2",
     "friendsofphp/php-cs-fixer": "^2",
-    "squizlabs/php_codesniffer": "^2.5"
+    "squizlabs/php_codesniffer": "^2.5",
+    "objective-php/application": "1.0.*",
+    "objective-php/message": "0.9.*",
+    "objective-php/gateway" : "^1.0"
   },
   "config": {
     "platform": {
@@ -33,9 +28,6 @@
     }
   },
   "autoload": {
-    "files": [
-      "objective-php-polyfill.php"
-    ],
     "psr-4": {
       "Fei\\ApiServer\\": "src/"
     }

@@ -8,9 +8,9 @@ use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use League\Fractal\Scope;
 use League\Fractal\TransformerAbstract;
-use Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface;
-use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
-use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\ResultSetInterface;
+use ObjectivePHP\Gateway\Entity\EntityInterface;
+use ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
+use ObjectivePHP\Gateway\ResultSet\ResultSetInterface;
 
 /**
  * Class ApiData

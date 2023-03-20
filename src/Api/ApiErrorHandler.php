@@ -2,8 +2,8 @@
     
 namespace Fei\ApiServer\Api;
 
-use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
-use Fei\ApiServer\ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use ObjectivePHP\Application\ApplicationInterface;
+use ObjectivePHP\Application\Middleware\AbstractMiddleware;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\Response\JsonResponse;
 use Zend\Diactoros\Response\SapiEmitter;
