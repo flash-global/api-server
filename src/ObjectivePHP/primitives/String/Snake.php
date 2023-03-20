@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Primitives\String;
+namespace Fei\ApiServer\ObjectivePHP\Primitives\String;
 
 
 class Snake

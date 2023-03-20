@@ -1,21 +1,20 @@
 <?php
 
-    namespace ObjectivePHP\DataProcessor;
-    
-    
-    use ObjectivePHP\Primitives\String\Str;
+namespace Fei\ApiServer\ObjectivePHP\DataProcessor;
 
-    class StringProcessor extends AbstractDataProcessor
+
+use ObjectivePHP\Primitives\String\Str;
+
+class StringProcessor extends AbstractDataProcessor
+{
+
+    /**
+     * @param $value
+     *
+     * @return int
+     */
+    public function process($value)
     {
-
-        /**
-         * @param $value
-         *
-         * @return int
-         */
-        public function process($value)
-        {
-            return Str::cast($value);
-        }
-
+        return Str::cast($value);
     }
+}

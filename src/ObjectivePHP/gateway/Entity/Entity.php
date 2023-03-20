@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Gateway\Entity;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Entity;
 
 use ObjectivePHP\Primitives\String\Camel;
 use ObjectivePHP\Primitives\String\Snake;

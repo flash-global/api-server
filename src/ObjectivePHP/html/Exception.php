@@ -1,8 +1,8 @@
 <?php
 
-    namespace ObjectivePHP\Html;
-    
-    
-    class Exception extends \Exception
-    {
-    }
+namespace Fei\ApiServer\ObjectivePHP\Html;
+
+
+class Exception extends \Exception
+{
+}

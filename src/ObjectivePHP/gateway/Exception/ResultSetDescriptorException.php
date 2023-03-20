@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,10 +7,9 @@
  * Time: 11:52
  */
 
-namespace ObjectivePHP\Gateway\Exception;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Exception;
 
 
 class ResultSetDescriptorException extends GatewayException
 {
-    
 }

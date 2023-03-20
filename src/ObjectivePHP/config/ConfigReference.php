@@ -1,5 +1,5 @@
 <?php
-namespace ObjectivePHP\Config;
+namespace Fei\ApiServer\ObjectivePHP\Config;
 
 class ConfigReference
 {

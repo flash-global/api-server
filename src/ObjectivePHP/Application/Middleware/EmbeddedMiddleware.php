@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Middleware;
+namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
 
 use ObjectivePHP\Application\ApplicationInterface;

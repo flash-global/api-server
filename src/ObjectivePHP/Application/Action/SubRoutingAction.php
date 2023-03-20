@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,7 +7,7 @@
  * Time: 09:17
  */
 
-namespace ObjectivePHP\Application\Action;
+namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
 
 use ObjectivePHP\Application\ApplicationInterface;
@@ -42,12 +43,11 @@ abstract class SubRoutingAction extends HttpAction
         // auto inject dependencies
         $servicesFactory = $app->getServicesFactory();
 
-        if ($servicesFactory)
-        {
+        if ($servicesFactory) {
             $normalizedMiddleware = null;
             switch (true) {
 
-                // middlewares can be an array containing [$object, 'method']
+                    // middlewares can be an array containing [$object, 'method']
                 case is_array($middleware) && !empty($middleware[0]) && is_object($middleware[0]):
                     $normalizedMiddleware = $middleware[0];
                     break;
@@ -61,20 +61,20 @@ abstract class SubRoutingAction extends HttpAction
                     break;
             }
 
-            if($normalizedMiddleware)
-            {
+            if ($normalizedMiddleware) {
                 $servicesFactory->injectDependencies($normalizedMiddleware);
             }
         }
 
         // TODO fix http return code (probably 405) 
         if (!is_callable($middleware)) {
-            throw new Exception(sprintf('No middleware matching routed reference "%s" has been registered',
-                $middlewareReference));
+            throw new Exception(sprintf(
+                'No middleware matching routed reference "%s" has been registered',
+                $middlewareReference
+            ));
         }
 
         return $middleware($app);
-
     }
 
 
@@ -97,7 +97,6 @@ abstract class SubRoutingAction extends HttpAction
         $this->getMiddlewareStack()[$reference] = $middleware;
 
         return $this;
-
     }
 
     /**
@@ -120,6 +119,4 @@ abstract class SubRoutingAction extends HttpAction
 
         return $this->middlewareStack;
     }
-
-
 }

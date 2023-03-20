@@ -6,7 +6,7 @@
  * Time: 10:03
  */
 
-namespace ObjectivePHP\Gateway\Entity;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Entity;
 
 interface EntityInterface extends \ArrayAccess
 {

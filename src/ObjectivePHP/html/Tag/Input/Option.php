@@ -1,19 +1,19 @@
 <?php
 
-    namespace ObjectivePHP\Html\Tag\Input;
-    
-    
-    class Option extends Input
+namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Input;
+
+
+class Option extends Input
+{
+    public function isSelected()
     {
-        public function isSelected()
-        {
-            return $this->getAttribute('selected');
-        }
-
-        public function setSelected($switch = true)
-        {
-            $this->addAttribute('selected', (bool) $switch);
-
-            return $this;
-        }
+        return $this->getAttribute('selected');
     }
+
+    public function setSelected($switch = true)
+    {
+        $this->addAttribute('selected', (bool) $switch);
+
+        return $this;
+    }
+}

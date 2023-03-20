@@ -1,6 +1,6 @@
 <?php
     
-    namespace ObjectivePHP\Message\Request\Parameter\Container;
+    namespace Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container;
 
     use ObjectivePHP\Message\Request\RequestInterface;
 

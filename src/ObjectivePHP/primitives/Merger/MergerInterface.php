@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Primitives\Merger;
+    namespace Fei\ApiServer\ObjectivePHP\Primitives\Merger;
 
 
     interface MergerInterface

@@ -1,16 +1,16 @@
 <?php
 
-    namespace ObjectivePHP\Application;
+namespace Fei\ApiServer\ObjectivePHP\Application;
 
+/**
+ * Interface ApplicationAwareInterface
+ *
+ * @package ObjectivePHP\Application
+ */
+interface ApplicationAwareInterface
+{
     /**
-     * Interface ApplicationAwareInterface
-     *
-     * @package ObjectivePHP\Application
+     * @param ApplicationInterface $application
      */
-    interface ApplicationAwareInterface
-    {
-        /**
-         * @param ApplicationInterface $application
-         */
-        public function setApplication(ApplicationInterface $application);
-    }
+    public function setApplication(ApplicationInterface $application);
+}

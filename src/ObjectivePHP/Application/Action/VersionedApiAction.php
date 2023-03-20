@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Action;
+namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
 abstract class VersionedApiAction extends SubRoutingAction
 {
@@ -27,6 +27,4 @@ abstract class VersionedApiAction extends SubRoutingAction
     {
         return $this->getMiddlewareStack()->keys()->toArray();
     }
-
-
 }

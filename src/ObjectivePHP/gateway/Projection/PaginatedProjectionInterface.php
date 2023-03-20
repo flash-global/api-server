@@ -1,28 +1,28 @@
 <?php
 
-    namespace ObjectivePHP\Gateway\Projection;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Projection;
 
-    use ObjectivePHP\Gateway\Projection\ProjectionInterface;
+use ObjectivePHP\Gateway\Projection\ProjectionInterface;
+
+/**
+ * Interface PaginatedResultSetInterface
+ *
+ * @package ObjectivePHP\Gateway\Entity
+ */
+interface PaginatedProjectionInterface extends ProjectionInterface
+{
+    /**
+     * @return int
+     */
+    public function getCurrentPage();
 
     /**
-     * Interface PaginatedResultSetInterface
-     *
-     * @package ObjectivePHP\Gateway\Entity
+     * @return int
      */
-    interface PaginatedProjectionInterface extends ProjectionInterface
-    {
-        /**
-         * @return int
-         */
-        public function getCurrentPage();
+    public function getTotal();
 
-        /**
-         * @return int
-         */
-        public function getTotal();
-
-        /**
-         * @return int
-         */
-        public function getPageSize();
-    }
+    /**
+     * @return int
+     */
+    public function getPageSize();
+}

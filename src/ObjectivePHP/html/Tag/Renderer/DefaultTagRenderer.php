@@ -1,49 +1,39 @@
 <?php
 
-    namespace ObjectivePHP\Html\Tag\Renderer;
-    
-    
-    use ObjectivePHP\Html\Tag\Tag;
-    use ObjectivePHP\Primitives\Collection\Collection;
+namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Renderer;
 
-    class DefaultTagRenderer implements TagRendererInterface
+
+use ObjectivePHP\Html\Tag\Tag;
+use ObjectivePHP\Primitives\Collection\Collection;
+
+class DefaultTagRenderer implements TagRendererInterface
+{
+    public function render(Tag $tag)
     {
-        public function render(Tag $tag)
-        {
 
-            if ($tag->isClosingTag())
-            {
-                $tag->close(false);
+        if ($tag->isClosingTag()) {
+            $tag->close(false);
 
-                return '</' . $tag->getTag() . '>';
+            return '</' . $tag->getTag() . '>';
+        } else {
+            $html = '<' . trim(implode(' ', [$tag->getTag(), $tag->getAttributes()])) . '>';
+
+
+            if (!$tag->getContent()->isEmpty()) {
+                $chunks = new Collection();
+                $tag->getContent()->each(function ($chunk) use (&$chunks) {
+                    $content = (string) $chunk;
+                    if ($content) $chunks[] = $content;
+                });
+
+                $html .= $chunks->join($tag->getSeparator())->trim();
+
+                $html .= '</' . $tag->getTag() . '>';
+            } elseif ($tag->isAlwaysClosed()) {
+                $html .= '</' . $tag->getTag() . '>';
             }
-            else
-            {
-                $html = '<' . trim(implode(' ', [$tag->getTag(), $tag->getAttributes()])) . '>';
 
-
-                if (!$tag->getContent()->isEmpty())
-                {
-                    $chunks = new Collection();
-                    $tag->getContent()->each(function ($chunk) use (&$chunks)
-                    {
-                        $content = (string) $chunk;
-                        if($content) $chunks[] = $content;
-                    })
-                    ;
-
-                    $html .= $chunks->join($tag->getSeparator())->trim();
-
-                    $html .= '</' . $tag->getTag() . '>';
-                }
-                elseif ($tag->isAlwaysClosed())
-                {
-                    $html .= '</' . $tag->getTag() . '>';
-                }
-
-                return $html;
-
-            }
+            return $html;
         }
-
     }
+}

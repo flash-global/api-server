@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Gateway\Event\MetaGateway;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Event\MetaGateway;
 
 use ObjectivePHP\Events\Event;
 

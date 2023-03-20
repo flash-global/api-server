@@ -1,6 +1,6 @@
 <?php
     
-    namespace ObjectivePHP\Application;
+    namespace Fei\ApiServer\ObjectivePHP\Application;
 
     use ObjectivePHP\Application\Workflow\Step;
     use ObjectivePHP\Application\Workflow\WorkflowInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Action;
+namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
 
 use ObjectivePHP\Application\Action\HttpAction;
@@ -33,7 +33,6 @@ abstract class RestfulAction extends SubRoutingAction
         $verb = $this->getApplication()->getRequest()->getMethod();
 
         return strtolower($verb);
-
     }
 
     /**
@@ -42,10 +41,8 @@ abstract class RestfulAction extends SubRoutingAction
      */
     public function getMiddleware($reference)
     {
-        if(method_exists($this, $reference))
-        {
+        if (method_exists($this, $reference)) {
             return [$this, $reference];
         }
     }
-
 }

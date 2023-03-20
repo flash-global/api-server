@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Operation;
+namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 
 use ObjectivePHP\Application\Action\RenderableActionInterface;
@@ -41,14 +41,10 @@ class ViewResolver extends AbstractMiddleware
 
         $action = $actionMiddleware->getCallable($this->getApplication());
 
-        if(!$action instanceof RenderableActionInterface)
-        {
+        if (!$action instanceof RenderableActionInterface) {
             return null;
         }
 
         return $action->getViewTemplate();
-
-
     }
-
 }

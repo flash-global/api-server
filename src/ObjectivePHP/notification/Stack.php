@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Notification;
+namespace Fei\ApiServer\ObjectivePHP\Notification;
 
 use ObjectivePHP\Matcher\Matcher;
 use ObjectivePHP\Primitives\Collection\Collection;

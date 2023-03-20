@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Primitives\Collection\Validator;
+    namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection\Validator;
 
 
     class ObjectValidator

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gde
@@ -6,7 +7,7 @@
  * Time: 16:13
  */
 
-namespace ObjectivePHP\Config;
+namespace Fei\ApiServer\ObjectivePHP\Config;
 
 
 class SingleDirective extends AbstractDirective
@@ -25,14 +26,13 @@ class SingleDirective extends AbstractDirective
     public function mergeInto(ConfigInterface $config): DirectiveInterface
     {
 
-        if(is_null($this->identifier)) {
+        if (is_null($this->identifier)) {
             $this->identifier = static::class;
         }
 
         $config->set($this->identifier, $this);
 
-        foreach($this->aliases as $alias)
-        {
+        foreach ($this->aliases as $alias) {
             $config->set($alias, $this);
         }
 
@@ -103,11 +103,10 @@ class SingleDirective extends AbstractDirective
 
     public function removeAlias($alias)
     {
-        if($key = array_search($alias, $this->aliases)) {
+        if ($key = array_search($alias, $this->aliases)) {
             unset($this->aliases[$key]);
         }
 
         return $this;
     }
-
 }

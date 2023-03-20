@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Operation;
+namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 
 use ObjectivePHP\Application\ApplicationInterface;
@@ -24,5 +24,4 @@ class ResponseSender
 
         $emitter->emit($response);
     }
-
 }

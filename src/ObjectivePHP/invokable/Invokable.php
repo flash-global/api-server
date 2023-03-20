@@ -1,5 +1,5 @@
 <?php
-namespace ObjectivePHP\Invokable;
+namespace Fei\ApiServer\ObjectivePHP\Invokable;
 
 use Interop\Container\ContainerInterface;
 use ObjectivePHP\ServicesFactory\Exception\Exception as ServicesFactoryException;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gde
@@ -6,7 +7,7 @@
  * Time: 16:13
  */
 
-namespace ObjectivePHP\Config;
+namespace Fei\ApiServer\ObjectivePHP\Config;
 
 
 class StackedDirective extends AbstractDirective
@@ -25,7 +26,7 @@ class StackedDirective extends AbstractDirective
     public function mergeInto(ConfigInterface $config): DirectiveInterface
     {
 
-        if(is_null($this->identifier)) {
+        if (is_null($this->identifier)) {
             $this->identifier = static::class;
         }
 
@@ -33,8 +34,7 @@ class StackedDirective extends AbstractDirective
         $stack[] = $this;
         $config->set($this->identifier, $stack);
 
-        foreach($this->aliases as $alias)
-        {
+        foreach ($this->aliases as $alias) {
             $stack = $config->get($alias, []);
             $stack[] = $this;
             $config->set($alias, $stack);
@@ -107,11 +107,10 @@ class StackedDirective extends AbstractDirective
 
     public function removeAlias($alias)
     {
-        if($key = array_search($alias, $this->aliases)) {
+        if ($key = array_search($alias, $this->aliases)) {
             unset($this->aliases[$key]);
         }
 
         return $this;
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\ServicesFactory\Specs;
+namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
 
 use ObjectivePHP\Primitives\Collection\Collection;
@@ -52,27 +52,23 @@ class ClassServiceSpecs extends AbstractServiceSpecs
         $rawDefinition = Collection::cast($rawDefinition);
 
         // then check check a class has been provided
-        if (!$rawDefinition->has('class'))
-        {
+        if (!$rawDefinition->has('class')) {
             throw new Exception('Missing \'class\' parameter', Exception::INCOMPLETE_SERVICE_SPECS);
         }
 
-        if (!is_string($class = $rawDefinition['class']))
-        {
+        if (!is_string($class = $rawDefinition['class'])) {
             throw new Exception('\'class\' parameter has to be a string', Exception::INVALID_SERVICE_SPECS);
         }
 
         $serviceDefinition = new ClassServiceSpecs($rawDefinition['id'], $class);
 
         // constructor params
-        if ($rawDefinition->has('params'))
-        {
+        if ($rawDefinition->has('params')) {
             $serviceDefinition->setParams($rawDefinition['params']);
         }
 
         // setters
-        if ($rawDefinition->has('setters'))
-        {
+        if ($rawDefinition->has('setters')) {
             $serviceDefinition->setSetters($rawDefinition['setters']);
         }
 
@@ -98,6 +94,4 @@ class ClassServiceSpecs extends AbstractServiceSpecs
 
         return $this;
     }
-
-
 }

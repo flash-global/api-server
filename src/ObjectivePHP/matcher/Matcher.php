@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Matcher;
+    namespace Fei\ApiServer\ObjectivePHP\Matcher;
 
     class Matcher
     {

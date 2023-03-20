@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\ServicesFactory\Builder;
+namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\ServicesFactory\Exception\Exception;
@@ -28,8 +28,7 @@ class ClassServiceBuilder extends AbstractServiceBuilder
     {
 
         // check compatibility with the service definition
-        if (!$this->doesHandle($serviceSpecs))
-        {
+        if (!$this->doesHandle($serviceSpecs)) {
             throw new Exception(sprintf('"%s" service definition is not handled by this builder.', get_class($serviceSpecs)), Exception::INCOMPATIBLE_SERVICE_DEFINITION);
         }
 
@@ -37,8 +36,7 @@ class ClassServiceBuilder extends AbstractServiceBuilder
 
 
         // check class existence
-        if(!class_exists($serviceClassName))
-        {
+        if (!class_exists($serviceClassName)) {
             throw new Exception(sprintf('Unable to build service: class "%s" is unknown', $serviceClassName), Exception::INVALID_SERVICE_SPECS);
         }
 
@@ -52,10 +50,8 @@ class ClassServiceBuilder extends AbstractServiceBuilder
         $service = new $serviceClassName(...$constructorParams->values());
 
         // call setters if any
-        if($setters = $serviceSpecs->getSetters())
-        {
-            foreach($setters as $setter => $setterParams)
-            {
+        if ($setters = $serviceSpecs->getSetters()) {
+            foreach ($setters as $setter => $setterParams) {
                 $instanceSetterParams = clone Collection::cast($setterParams);
                 $this->substituteReferences($instanceSetterParams);
 
@@ -65,5 +61,4 @@ class ClassServiceBuilder extends AbstractServiceBuilder
 
         return $service;
     }
-
 }

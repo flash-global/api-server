@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Gateway\Exception;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Exception;
 
 class GatewayException extends \Exception
 {

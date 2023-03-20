@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Application;
+    namespace Fei\ApiServer\ObjectivePHP\Application;
     
     
     class Exception extends \Exception

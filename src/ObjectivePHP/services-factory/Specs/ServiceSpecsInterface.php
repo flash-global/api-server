@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\ServicesFactory\Specs;
+namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
 
 interface ServiceSpecsInterface

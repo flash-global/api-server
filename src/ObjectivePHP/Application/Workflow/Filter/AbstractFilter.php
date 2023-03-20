@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Workflow\Filter;
+namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
 
 use ObjectivePHP\Invokable\AbstractInvokable;
 

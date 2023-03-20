@@ -1,10 +1,11 @@
 <?php
 
-namespace ObjectivePHP\Application\Operation;
+namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 
 use ObjectivePHP\Application\{
-    ApplicationInterface, Exception
+    ApplicationInterface,
+    Exception
 };
 use Zend\Diactoros\{
     Response,
@@ -44,7 +45,8 @@ class ExceptionHandler
         $this->app = $app;
         $exception = $this->app->getException();
 
-        if ($exception instanceof Exception
+        if (
+            $exception instanceof Exception
             && preg_match('/^Failed running hook "(.*)" of type:/', $exception->getMessage(), $m)
             && $exception->getPrevious()
         ) {
@@ -141,7 +143,6 @@ class ExceptionHandler
             $html .= "<td class=''>{$item}</td>";
             $html .= "<td class=''><pre>" . json_encode($value, JSON_PRETTY_PRINT) . "</pre></td>";
             $html .= '</tr>';
-
         }
         $html .= '</table>';
 
@@ -150,8 +151,7 @@ class ExceptionHandler
             <div class="config">
                 <div class="quote togglable"><h2>Configuration (click to show)</h2></div>
                 <div class="config panel">' . $html . '</div>
-            </div>'
-        ;
+            </div>';
 
         return $output;
     }

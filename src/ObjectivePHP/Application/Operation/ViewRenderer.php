@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Operation;
+namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\Config\LayoutsLocation;
@@ -33,8 +33,7 @@ class ViewRenderer extends AbstractMiddleware
         $this->setApplication($app);
 
         $viewName = $this->getViewName($app);
-        if(!$viewName)
-        {
+        if (!$viewName) {
             return;
         }
 
@@ -45,8 +44,7 @@ class ViewRenderer extends AbstractMiddleware
         $output = $this->render($viewPath);
 
         // handle layout
-        if($layoutName = $this->getLayoutName())
-        {
+        if ($layoutName = $this->getLayoutName()) {
             $layoutPath = $this->resolveLayoutPath($layoutName);
 
             Vars::set('view.output', $output);
@@ -80,13 +78,11 @@ class ViewRenderer extends AbstractMiddleware
     public function render($viewPath, $vars = [])
     {
 
-        foreach($vars as $reference => $value)
-        {
+        foreach ($vars as $reference => $value) {
             Vars::set($reference, $value);
         }
 
-        if(!file_exists($viewPath))
-        {
+        if (!file_exists($viewPath)) {
             throw new Exception(sprintf('View script "%s" does not exist', $viewPath));
         }
 
@@ -108,7 +104,7 @@ class ViewRenderer extends AbstractMiddleware
 
         $viewPath = $viewName . '.phtml';
 
-        if(!is_file($viewPath)) throw new Exception(sprintf('View script "%s" does not exist', $viewPath));
+        if (!is_file($viewPath)) throw new Exception(sprintf('View script "%s" does not exist', $viewPath));
 
         return $viewPath;
     }
@@ -121,7 +117,6 @@ class ViewRenderer extends AbstractMiddleware
         $config = $this->getApplication()->getConfig();
 
         return $config->get(ViewsLocation::class, []);
-
     }
 
     /**
@@ -132,7 +127,6 @@ class ViewRenderer extends AbstractMiddleware
         $config = $this->getApplication()->getConfig();
 
         return $config->get(LayoutsLocation::class, []);
-
     }
 
     /**
@@ -143,13 +137,11 @@ class ViewRenderer extends AbstractMiddleware
         // FIXME layout.default config directive does not exist
         $layout = $this->getApplication()->getParam('layout.name');
 
-        if($layout === false)
-        {
+        if ($layout === false) {
             return null;
         }
 
-        if(is_null($layout))
-        {
+        if (is_null($layout)) {
             $layout = $this->getApplication()->getConfig()->get('layouts.default', 'layout');
         }
 
@@ -166,11 +158,9 @@ class ViewRenderer extends AbstractMiddleware
 
         $layoutsLocations = $this->getLayoutsLocations();
 
-        foreach($layoutsLocations as $location)
-        {
+        foreach ($layoutsLocations as $location) {
             $layoutPath = $location . '/' . $layoutName . '.phtml';
-            if(file_exists($layoutPath))
-            {
+            if (file_exists($layoutPath)) {
                 // make layout path available to the rest of the application
                 $this->getApplication()->setParam('layout.script', $layoutPath);
 
@@ -181,6 +171,4 @@ class ViewRenderer extends AbstractMiddleware
         // no mathcing layout script has been found
         throw new Exception(sprintf('No layout script matching layout name "%s" has been found (layouts locations: %s)', $layoutName, implode($layoutsLocations)));
     }
-
-
 }

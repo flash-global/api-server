@@ -1,5 +1,6 @@
 <?php
-namespace ObjectivePHP\Application\Operation;
+
+namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 
 use ObjectivePHP\Application\ApplicationInterface;
@@ -34,13 +35,11 @@ class ActionPlugger extends AbstractMiddleware
         $this->application = $app;
 
         $action = $app->getRequest()->getAction();
-        if($action)
-        {
+        if ($action) {
             $actionMiddleware = new ActionMiddleware(Invokable::cast($action));
             $serviceId = ($action instanceof ServiceReference) ? $action->getId() : $this->computeServiceName($app->getRequest()->getUri()->getPath());
             $app->getStep('action')->plug($actionMiddleware);
-        } else
-        {
+        } else {
             $route = $app->getRequest()->getRoute();
 
             // compute service id
@@ -48,14 +47,12 @@ class ActionPlugger extends AbstractMiddleware
 
             // if no service matching the route has been registered,
             // try to locate a class that could be used as service
-            if(!$app->getServicesFactory()->isServiceRegistered($serviceId))
-            {
+            if (!$app->getServicesFactory()->isServiceRegistered($serviceId)) {
                 $actionClass = $this->resolveActionClassName($route);
 
                 $action = $this->resolveActionFullyQualifiedName($actionClass);
 
-                if(!$action)
-                {
+                if (!$action) {
                     throw new Exception(sprintf('No callback found to map the requested route "%s"', $route), Exception::ACTION_NOT_FOUND);
                 }
 
@@ -88,11 +85,9 @@ class ActionPlugger extends AbstractMiddleware
 
         $namespaces = $path->split('/');
 
-        $namespaces->each(function (&$namespace)
-        {
+        $namespaces->each(function (&$namespace) {
             $parts = explode('-', $namespace);
-            array_walk($parts, function (&$part)
-            {
+            array_walk($parts, function (&$part) {
                 $part = ucfirst($part);
             });
 
@@ -115,11 +110,9 @@ class ActionPlugger extends AbstractMiddleware
     {
         $registeredActionNamespaces = $this->application->getConfig()->get(ActionNamespace::class);
 
-        foreach((array) $registeredActionNamespaces as $namespace)
-        {
+        foreach ((array) $registeredActionNamespaces as $namespace) {
             $fullClassName = $namespace . '\\' . $className;
-            if(class_exists('\\' . $fullClassName))
-            {
+            if (class_exists('\\' . $fullClassName)) {
                 return $fullClassName;
             }
         }

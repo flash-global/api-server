@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,7 +7,7 @@
  * Time: 11:19
  */
 
-namespace ObjectivePHP\Gateway\ResultSet\Descriptor;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\Descriptor;
 
 /**
  * Class ResultSetDescriptor
@@ -19,42 +20,42 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
      * @var array
      */
     protected $filters = [];
-    
+
     /**
      * @var int
      */
     protected $page = 0;
-    
+
     /**
      * @var int
      */
     protected $pageSize = self::DEFAULT_PAGE_SIZE;
-    
+
     /**
      * @var array
      */
     protected $sort = [];
-    
+
     /**
      * @var string
      */
     protected $groupBy = '';
-    
+
     /**
      * @var array
      */
     protected $aggregationRules = [];
-    
+
     /**
      * @var int
      */
     protected $size = 0;
-    
+
     /**
      * @var string
      */
     protected $collectionName = null;
-    
+
     /**
      * ResultSetDescriptor constructor.
      *
@@ -64,8 +65,8 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     {
         $this->collectionName = $collectionName;
     }
-    
-    
+
+
     /**
      * @param        $property
      * @param        $value
@@ -76,18 +77,18 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     public function addFilter($property, $value, $operator = self::OP_EQUALS)
     {
         $this->filters[] = compact('property', 'value', 'operator');
-        
+
         return $this;
     }
-    
+
     public function removeFilter($id)
     {
         unset($this->filters[$id]);
         $this->filters = array_values($this->filters);
-        
+
         return $this;
     }
-    
+
     /**
      * @param int $page
      * @param int $pageSize
@@ -98,10 +99,10 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     {
         $this->page     = $page;
         $this->pageSize = $pageSize;
-        
+
         return $this;
     }
-    
+
     /**
      * @param     $property
      * @param int $direction
@@ -111,12 +112,12 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     public function sort($property, $direction = SORT_ASC)
     {
         $this->sort[$property] = $direction;
-        
+
         return $this;
     }
 
 
-    
+
     /**
      * @param $property
      *
@@ -125,10 +126,10 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     public function groupBy($property)
     {
         $this->groupBy = $property;
-        
+
         return $this;
     }
-    
+
     /**
      * @param $property
      * @param $aggregationType
@@ -138,17 +139,17 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     public function aggregateOn($property, $aggregationType)
     {
         $this->aggregationRules[$property] = $aggregationType;
-        
+
         return $this;
     }
-    
+
     public function from(string $collectionName)
     {
         $this->collectionName = $collectionName;
-        
+
         return $this;
     }
-    
+
     /**
      * @return array
      */
@@ -156,7 +157,7 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     {
         return $this->filters;
     }
-    
+
     /**
      * @return int
      */
@@ -164,7 +165,7 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     {
         return $this->page;
     }
-    
+
     /**
      * @return int
      */
@@ -172,7 +173,7 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     {
         return $this->pageSize;
     }
-    
+
     /**
      * @return array
      */
@@ -180,7 +181,7 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     {
         return $this->aggregationRules;
     }
-    
+
     /**
      * @return string
      */
@@ -188,7 +189,7 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     {
         return $this->groupBy;
     }
-    
+
     /**
      * @return int
      */
@@ -196,7 +197,7 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     {
         return $this->size;
     }
-    
+
     /**
      * @param $size
      *
@@ -205,15 +206,15 @@ class ResultSetDescriptor implements ResultSetDescriptorInterface
     public function limitTo($size)
     {
         $this->size = $size;
-        
+
         return $this;
     }
-    
+
     public function getCollectionName(): string
     {
         return $this->collectionName;
     }
-    
+
     public function getSort()
     {
         return $this->sort;

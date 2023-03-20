@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,10 +7,9 @@
  * Time: 10:09
  */
 
-namespace ObjectivePHP\Application\Middleware;
+namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
 
 class Exception extends \ObjectivePHP\Application\Exception
 {
-    
 }

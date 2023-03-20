@@ -1,89 +1,82 @@
 <?php
 
-    namespace ObjectivePHP\Application\Action;
+namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
-    use ObjectivePHP\Application\Middleware\AbstractMiddleware;
-    use ObjectivePHP\Application\Middleware\MiddlewareInterface;
+use ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use ObjectivePHP\Application\Middleware\MiddlewareInterface;
+
+/**
+ * Class DefaultAction
+ *
+ * @package ObjectivePHP\Application\Action
+ */
+abstract class RenderableAction extends HttpAction implements RenderableActionInterface
+{
 
     /**
-     * Class DefaultAction
-     *
-     * @package ObjectivePHP\Application\Action
+     * @var string
      */
-    abstract class RenderableAction extends HttpAction implements RenderableActionInterface
+    protected $viewTemplate;
+
+
+    static protected $viewExtensions = ['phtml'];
+
+
+    /**
+     * @return string
+     */
+    public function getViewTemplate()
     {
+        // set default view name
+        if (is_null($this->viewTemplate)) {
 
-        /**
-         * @var string
-         */
-        protected $viewTemplate;
+            $reflected = new \ReflectionObject($this);
 
+            $viewTemplate = substr($reflected->getFileName(), 0, -4);
 
-        static protected $viewExtensions = ['phtml'];
+            $templateFound = false;
 
-
-        /**
-         * @return string
-         */
-        public function getViewTemplate()
-        {
-            // set default view name
-            if (is_null($this->viewTemplate))
-            {
-
-                $reflected = new \ReflectionObject($this);
-
-                $viewTemplate = substr($reflected->getFileName(), 0, -4);
-
-                $templateFound = false;
-
-                foreach(self::$viewExtensions as $extension)
-                {
-                    if(file_exists($viewTemplate . '.' . ltrim($extension, '.')))
-                    {
-                        $templateFound = true;
-                        break;
-                    }
+            foreach (self::$viewExtensions as $extension) {
+                if (file_exists($viewTemplate . '.' . ltrim($extension, '.'))) {
+                    $templateFound = true;
+                    break;
                 }
-
-                if(!$templateFound)
-                {
-                    // try to get parent template if any
-                    $parentReflectedClass = $reflected->getParentClass();
-                    if($parentReflectedClass->isInstantiable() && $parentReflectedClass->implementsInterface(RenderableActionInterface::class))
-                    {
-                        $parentViewTemplate = $parentReflectedClass->newInstance()->getViewTemplate();
-
-                        $viewTemplate = $parentViewTemplate;
-                    }
-
-                }
-
-                $this->viewTemplate = $viewTemplate;
-
             }
 
-            return $this->viewTemplate;
-        }
+            if (!$templateFound) {
+                // try to get parent template if any
+                $parentReflectedClass = $reflected->getParentClass();
+                if ($parentReflectedClass->isInstantiable() && $parentReflectedClass->implementsInterface(RenderableActionInterface::class)) {
+                    $parentViewTemplate = $parentReflectedClass->newInstance()->getViewTemplate();
 
-        /**
-         * @param string $viewTemplate
-         *
-         * @return $this
-         */
-        public function setViewTemplate($viewTemplate)
-        {
+                    $viewTemplate = $parentViewTemplate;
+                }
+            }
+
             $this->viewTemplate = $viewTemplate;
-
-            return $this;
         }
 
-        /**
-         * @param $extension
-         */
-        static public function registerTemplateExtension($extension)
-        {
-            self::$viewExtensions[] = $extension;
-            self::$viewExtensions   = array_unique(self::$viewExtensions);
-        }
+        return $this->viewTemplate;
     }
+
+    /**
+     * @param string $viewTemplate
+     *
+     * @return $this
+     */
+    public function setViewTemplate($viewTemplate)
+    {
+        $this->viewTemplate = $viewTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @param $extension
+     */
+    static public function registerTemplateExtension($extension)
+    {
+        self::$viewExtensions[] = $extension;
+        self::$viewExtensions   = array_unique(self::$viewExtensions);
+    }
+}

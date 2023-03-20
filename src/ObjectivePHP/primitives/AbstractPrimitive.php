@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Primitives;
+    namespace Fei\ApiServer\ObjectivePHP\Primitives;
 
 
     /**

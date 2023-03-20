@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Operation;
+namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 
 use ObjectivePHP\Application\ApplicationInterface;
@@ -26,8 +26,7 @@ class ServiceLoader extends AbstractInvokable
 
         $this->injectInitialServices($app);
 
-        foreach($config->get(Service::class, []) as $serviceSpec)
-        {
+        foreach ($config->get(Service::class, []) as $serviceSpec) {
             $servicesFactory->registerService($serviceSpec);
         }
     }

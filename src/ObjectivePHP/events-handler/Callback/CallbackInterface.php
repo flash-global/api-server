@@ -1,13 +1,12 @@
 <?php
 
-    namespace ObjectivePHP\Events\Callback;
-    
-    
-    use ObjectivePHP\Events\EventInterface;
+namespace Fei\ApiServer\ObjectivePHP\Events\Callback;
 
-    interface CallbackInterface
-    {
 
-        public function __invoke(EventInterface $event);
+use ObjectivePHP\Events\EventInterface;
 
-    }
+interface CallbackInterface
+{
+
+    public function __invoke(EventInterface $event);
+}

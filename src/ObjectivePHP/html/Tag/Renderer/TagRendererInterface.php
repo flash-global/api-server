@@ -1,11 +1,11 @@
 <?php
 
-    namespace ObjectivePHP\Html\Tag\Renderer;
-    
-    
-    use ObjectivePHP\Html\Tag\Tag;
+namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Renderer;
 
-    interface TagRendererInterface
-    {
-        public function render(Tag $tag);
-    }
+
+use ObjectivePHP\Html\Tag\Tag;
+
+interface TagRendererInterface
+{
+    public function render(Tag $tag);
+}

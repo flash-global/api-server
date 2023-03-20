@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Operation;
+namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Message\Response\HttpResponse;

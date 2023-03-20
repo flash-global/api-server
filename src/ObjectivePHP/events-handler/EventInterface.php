@@ -1,57 +1,54 @@
 <?php
+
+/**
+ * Created by PhpStorm.
+ * User: gauthier
+ * Date: 14/08/15
+ * Time: 18:40
+ */
+
+namespace Fei\ApiServer\ObjectivePHP\Events;
+
+
+use ObjectivePHP\Primitives\Collection\Collection;
+
+interface EventInterface
+{
+
+    public function setName($name);
+
+    public function getName();
+
+    public function setOrigin($origin);
+
+    public function getOrigin();
+
+    public function setPrevious(EventInterface $previous);
+
+    public function getPrevious();
+
     /**
-     * Created by PhpStorm.
-     * User: gauthier
-     * Date: 14/08/15
-     * Time: 18:40
+     * @return Collection
      */
-    
-    namespace ObjectivePHP\Events;
-    
-    
-    use ObjectivePHP\Primitives\Collection\Collection;
+    public function getResults();
 
-    interface EventInterface
-    {
+    /**
+     * @return Collection
+     */
+    public function getContext();
 
-        public function setName($name);
+    public function setContext($context);
 
-        public function getName();
+    public function getStatus();
 
-        public function setOrigin($origin);
+    /**
+     * @return Collection
+     */
+    public function getExceptions();
 
-        public function getOrigin();
+    public function halt();
 
-        public function setPrevious(EventInterface $previous);
+    public function isHalted();
 
-        public function getPrevious();
-
-        /**
-         * @return Collection
-         */
-        public function getResults();
-
-        /**
-         * @return Collection
-         */
-        public function getContext();
-
-        public function setContext($context);
-
-        public function getStatus();
-
-        /**
-         * @return Collection
-         */
-        public function getExceptions();
-
-        public function halt();
-
-        public function isHalted();
-
-        public function isFaulty();
-
-
-
-
-    }
+    public function isFaulty();
+}

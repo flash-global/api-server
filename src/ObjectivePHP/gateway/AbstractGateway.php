@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Gateway;
+namespace Fei\ApiServer\ObjectivePHP\Gateway;
 
 use ObjectivePHP\Events\EventsHandler;
 use ObjectivePHP\Events\EventsHandlerAwareInterface;

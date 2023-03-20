@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\ServicesFactory;
+namespace Fei\ApiServer\ObjectivePHP\ServicesFactory;
 
 
 class ServiceReference
@@ -28,5 +28,4 @@ class ServiceReference
     {
         return (string) $this->id;
     }
-
 }

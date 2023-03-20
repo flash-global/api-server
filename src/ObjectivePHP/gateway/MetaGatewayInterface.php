@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,11 +7,11 @@
  * Time: 11:11
  */
 
-namespace ObjectivePHP\Gateway;
+namespace Fei\ApiServer\ObjectivePHP\Gateway;
 
 interface MetaGatewayInterface extends GatewayInterface
 {
-    
+
     /**
      * @param                  $id
      * @param GatewayInterface $gateway

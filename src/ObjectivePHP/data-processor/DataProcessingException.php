@@ -1,9 +1,8 @@
 <?php
 
-    namespace ObjectivePHP\DataProcessor;
-    
-    
-    class DataProcessingException extends \Exception
-    {
-        
-    }
+namespace Fei\ApiServer\ObjectivePHP\DataProcessor;
+
+
+class DataProcessingException extends \Exception
+{
+}

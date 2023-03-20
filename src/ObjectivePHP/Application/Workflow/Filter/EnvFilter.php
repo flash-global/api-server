@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,7 +7,7 @@
  * Time: 19:36
  */
 
-namespace ObjectivePHP\Application\Workflow\Filter;
+namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
 
 
 use ObjectivePHP\Application\ApplicationInterface;
@@ -17,7 +18,7 @@ class EnvFilter extends AbstractFilter
      * @param ApplicationInterface $app
      * @return bool
      */
-    public function run(ApplicationInterface $app) : bool
+    public function run(ApplicationInterface $app): bool
     {
         $env = (array) $this->getFilter();
 

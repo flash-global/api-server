@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Primitives\String;
+namespace Fei\ApiServer\ObjectivePHP\Primitives\String;
 
 use ObjectivePHP\Primitives\AbstractPrimitive;
 use ObjectivePHP\Primitives\Collection\Collection;

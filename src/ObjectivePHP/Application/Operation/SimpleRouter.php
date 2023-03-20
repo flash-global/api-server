@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Operation;
+namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 
 use ObjectivePHP\Application\ApplicationInterface;
@@ -28,15 +28,13 @@ class SimpleRouter extends AbstractMiddleware
         $path = rtrim($app->getRequest()->getUri()->getPath(), '/');
 
         // default to home
-        if(!$path)
-        {
+        if (!$path) {
             $path = '/';
         }
 
         // check if path is routed
         $aliases = $app->getConfig()->subset(UrlAlias::class);
-        if($aliases)
-        {
+        if ($aliases) {
             $path = $aliases[$path] ?? $path;
         }
 
@@ -44,10 +42,8 @@ class SimpleRouter extends AbstractMiddleware
         $routes = $app->getConfig()->subset(SimpleRoute::class)->reverse();
         /** @var SimpleRoute $route */
         $routed = false;
-        foreach($routes as $alias => $route)
-        {
-            if($route->matches($app->getRequest()))
-            {
+        foreach ($routes as $alias => $route) {
+            if ($route->matches($app->getRequest())) {
                 $app->getRequest()->setAction($route->getAction());
                 $app->getRequest()->setRoute($alias);
                 $routed = true;
@@ -56,11 +52,8 @@ class SimpleRouter extends AbstractMiddleware
         }
 
         // inject route if none matched
-        if(!$routed)
-        {
+        if (!$routed) {
             $app->getRequest()->setRoute($path);
         }
-
     }
-
 }

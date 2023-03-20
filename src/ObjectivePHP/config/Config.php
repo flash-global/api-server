@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Config;
+    namespace Fei\ApiServer\ObjectivePHP\Config;
 
 
     use ObjectivePHP\Application\ApplicationInterface;

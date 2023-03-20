@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Invokable;
+    namespace Fei\ApiServer\ObjectivePHP\Invokable;
 
     /**
      * Class Exception

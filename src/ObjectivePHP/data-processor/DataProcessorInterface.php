@@ -1,47 +1,46 @@
 <?php
 
-    namespace ObjectivePHP\DataProcessor;
-    
+namespace Fei\ApiServer\ObjectivePHP\DataProcessor;
 
-    use ObjectivePHP\Primitives\Collection\Collection;
 
-    interface DataProcessorInterface
-    {
+use ObjectivePHP\Primitives\Collection\Collection;
 
-        /**
-         * Process a value
-         *
-         * The processed value will be stored as parameter value
-         *
-         * @param mixed $value
-         *
-         * @return mixed
-         */
-        public function process($value);
+interface DataProcessorInterface
+{
 
-        /**
-         * @return Collection
-         */
-        public function getMessages();
+    /**
+     * Process a value
+     *
+     * The processed value will be stored as parameter value
+     *
+     * @param mixed $value
+     *
+     * @return mixed
+     */
+    public function process($value);
 
-        /**
-         * Get error message for given error code
-         *
-         * @param       $code
-         * @param array $variables Variables to be injected into message string (Str instance)
-         *
-         * @return mixed
-         */
-        public function getMessage($code, $variables = []);
+    /**
+     * @return Collection
+     */
+    public function getMessages();
 
-        /**
-         * Set error message for given error code
-         *
-         * @param mixed  $code
-         * @param string $message
-         *
-         * @return mixed
-         */
-        public function setMessage($code, $message);
+    /**
+     * Get error message for given error code
+     *
+     * @param       $code
+     * @param array $variables Variables to be injected into message string (Str instance)
+     *
+     * @return mixed
+     */
+    public function getMessage($code, $variables = []);
 
-    }
+    /**
+     * Set error message for given error code
+     *
+     * @param mixed  $code
+     * @param string $message
+     *
+     * @return mixed
+     */
+    public function setMessage($code, $message);
+}

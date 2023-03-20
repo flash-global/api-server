@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\ServicesFactory\Specs;
+namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
 
 use ObjectivePHP\Primitives\Collection\Collection;
@@ -29,8 +29,7 @@ class PrefabServiceSpecs extends AbstractServiceSpecs
     {
         $rawDefinition = Collection::cast($rawDefinition);
 
-        if (!$rawDefinition->has('instance'))
-        {
+        if (!$rawDefinition->has('instance')) {
             throw new Exception('Missing \'instance\' parameter', Exception::INCOMPLETE_SERVICE_SPECS);
         }
 
@@ -57,5 +56,4 @@ class PrefabServiceSpecs extends AbstractServiceSpecs
         $this->instance = $instance;
         return $this;
     }
-
 }

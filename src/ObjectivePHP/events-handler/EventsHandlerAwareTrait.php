@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Events;
+namespace Fei\ApiServer\ObjectivePHP\Events;
 
 /**
  * Trait EventsHandlerAwareTrait

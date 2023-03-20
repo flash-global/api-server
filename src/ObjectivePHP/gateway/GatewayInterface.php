@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Gateway;
+namespace Fei\ApiServer\ObjectivePHP\Gateway;
 
 use ObjectivePHP\Gateway\Entity\EntityInterface;
 use ObjectivePHP\Gateway\Projection\ProjectionInterface;
@@ -22,13 +22,13 @@ interface GatewayInterface
     const UPDATE    = 32;
     const DELETE    = 64;
     const PURGE     = 128;
-    
+
     const WRITE = self::PERSIST | self::CREATE | self::UPDATE | self::DELETE | self::PURGE;
     const READ  = self::FETCH | self::FETCH_ONE | self::FETCH_ALL;
     const ALL   = self::READ | self::WRITE;
-    
+
     public function fetch(ResultSetDescriptorInterface $resultSetDescriptor): ProjectionInterface;
-    
+
     /**
      * Retrieve projections from persistence layer
      *
@@ -37,14 +37,14 @@ interface GatewayInterface
      * @return ResultSetInterface
      */
     public function fetchAll(ResultSetDescriptorInterface $descriptor): ResultSetInterface;
-    
+
     /**
      * Retrieve one single projection from persistence layer
      *
      * @return EntityInterface
      */
     public function fetchOne($key): EntityInterface;
-    
+
     /**
      * Persist one or more entities
      *
@@ -66,7 +66,7 @@ interface GatewayInterface
      * @return bool
      */
     public function create(EntityInterface $entity): bool;
-    
+
     /**
      * @param ResultSetDescriptorInterface $descriptor
      * @param mixed                        $data Traversable data container (['field' => 'value'])
@@ -74,7 +74,7 @@ interface GatewayInterface
      * @return mixed
      */
     public function update(ResultSetDescriptorInterface $descriptor, $data);
-    
+
     /**
      * Delete one or more entities
      *
@@ -83,7 +83,7 @@ interface GatewayInterface
      * @return bool
      */
     public function delete(EntityInterface ...$entities);
-    
+
     /**
      * Delete entities matching descriptor
      *

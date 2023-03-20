@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,7 +7,7 @@
  * Time: 17:34
  */
 
-namespace ObjectivePHP\Gateway\Exception;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Exception;
 
 class MetaGatewayException extends \Exception
 {

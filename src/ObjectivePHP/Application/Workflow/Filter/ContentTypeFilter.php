@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,7 +7,7 @@
  * Time: 10:21
  */
 
-namespace ObjectivePHP\Application\Workflow\Filter;
+namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
 
 
 use ObjectivePHP\Application\ApplicationInterface;
@@ -19,8 +20,7 @@ class ContentTypeFilter extends AbstractFilter
     {
         $response = $app->getResponse();
 
-        if(!$response)
-        {
+        if (!$response) {
             throw new Exception(sprintf('Cannot filter response ContentType against "%s" because no response has been set', $this->getFilter()->join(', ')));
         }
 
@@ -28,11 +28,9 @@ class ContentTypeFilter extends AbstractFilter
 
         $result = false;
 
-        $this->getFilter()->each(function ($filter) use ($contentTypes, &$result)
-        {
-            foreach($contentTypes as $contentType) {
-                if(strpos($contentType, $filter) === 0)
-                {
+        $this->getFilter()->each(function ($filter) use ($contentTypes, &$result) {
+            foreach ($contentTypes as $contentType) {
+                if (strpos($contentType, $filter) === 0) {
                     $result = true;
                     break;
                 }
@@ -40,10 +38,9 @@ class ContentTypeFilter extends AbstractFilter
         });
 
         return $result;
-
     }
 
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return sprintf('Filter based on Response ContentType header (validates "%s" content type)', $this->getFilter()->join(', '));
     }
@@ -52,6 +49,4 @@ class ContentTypeFilter extends AbstractFilter
     {
         return Collection::cast($this->filter);
     }
-
-
 }

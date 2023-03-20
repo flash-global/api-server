@@ -6,7 +6,7 @@
      * Time: 18:31
      */
 
-    namespace ObjectivePHP\Matcher;
+    namespace Fei\ApiServer\ObjectivePHP\Matcher;
 
 
     class Exception extends \Exception

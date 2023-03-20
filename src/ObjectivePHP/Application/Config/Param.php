@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Config;
+namespace Fei\ApiServer\ObjectivePHP\Application\Config;
 
 use ObjectivePHP\Config\SingleValueDirectiveGroup;
 

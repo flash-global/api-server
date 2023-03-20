@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\ServicesFactory\Builder;
+namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
 
 use ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
@@ -26,5 +26,4 @@ interface ServiceBuilderInterface
      * @return mixed
      */
     public function build(ServiceSpecsInterface $serviceSpecs, $params = null);
-
 }

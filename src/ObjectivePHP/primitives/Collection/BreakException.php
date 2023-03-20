@@ -7,7 +7,7 @@
  * @license http://opensource.org/licenses/GPL-3.0 GNU GPL License 3.0
  */
 
-namespace ObjectivePHP\Primitives\Collection;
+namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection;
 
 
 use ObjectivePHP\Primitives\Exception;

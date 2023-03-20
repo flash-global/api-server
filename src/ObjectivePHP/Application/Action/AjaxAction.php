@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Application\Action;
+namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
 
 use Zend\Diactoros\Response\JsonResponse;
@@ -22,6 +22,4 @@ abstract class AjaxAction extends HttpAction
         $this->getApplication()->setParam('layout.name', false);
         return ($response instanceof JsonResponse) ? $response : new JsonResponse($response);
     }
-
-
 }

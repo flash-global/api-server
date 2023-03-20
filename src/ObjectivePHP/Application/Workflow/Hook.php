@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Application\Workflow;
+    namespace Fei\ApiServer\ObjectivePHP\Application\Workflow;
 
     use ObjectivePHP\Application\ApplicationInterface;
     use ObjectivePHP\Application\Exception;

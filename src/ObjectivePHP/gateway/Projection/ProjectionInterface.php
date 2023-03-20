@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Gateway\Projection;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Projection;
 
 interface ProjectionInterface
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,7 +7,7 @@
  * Time: 11:01
  */
 
-namespace ObjectivePHP\Gateway\ResultSet\Descriptor;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\Descriptor;
 
 /**
  * Interface ResultSetDescriptorInterface
@@ -25,12 +26,12 @@ interface ResultSetDescriptorInterface
     const OP_BINARY_AND = '&';
     const OP_BINARY_OR  = '|';
     const OP_IN         = 'in';
-    
+
     const SORT_ASC  = 'asc';
     const SORT_DESC = 'desc';
-    
+
     const DEFAULT_PAGE_SIZE = 20;
-    
+
     /**
      * @param        $property
      * @param        $value
@@ -39,7 +40,7 @@ interface ResultSetDescriptorInterface
      * @return $this
      */
     public function addFilter($property, $value, $operator = self::OP_EQUALS);
-    
+
     /**
      * @param int $page
      * @param int $pageSize
@@ -47,7 +48,7 @@ interface ResultSetDescriptorInterface
      * @return $this
      */
     public function paginate($page = 1, $pageSize = self::DEFAULT_PAGE_SIZE);
-    
+
     /**
      * @param     $property
      * @param int $direction
@@ -55,14 +56,14 @@ interface ResultSetDescriptorInterface
      * @return $this
      */
     public function sort($property, $direction = SORT_ASC);
-    
+
     /**
      * @param $property
      *
      * @return $this
      */
     public function groupBy($property);
-    
+
     /**
      * @param $property
      * @param $aggregationType
@@ -70,53 +71,53 @@ interface ResultSetDescriptorInterface
      * @return mixed
      */
     public function aggregateOn($property, $aggregationType);
-    
+
     /**
      * @param string $collectionName
      *
      * @return $this
      */
     public function from(string $collectionName);
-    
+
     /**
      * @param $size
      *
      * @return $this
      */
     public function limitTo($size);
-    
+
     /**
      * @return $this
      */
-    public function getFilters() : array;
-    
+    public function getFilters(): array;
+
     /**
      * @return int
      */
-    public function getPage() : int;
-    
+    public function getPage(): int;
+
     /**
      * @return int
      */
-    public function getPageSize() : int;
-    
+    public function getPageSize(): int;
+
     /**
      * @return array
      */
-    public function getAggregationRules() : array;
-    
-    /**
-     * @return string
-     */
-    public function getGroupedByProperty() : string;
-    
-    /**
-     * @return int Entity set size (== LIMIT in SQL)
-     */
-    public function getSize() : int;
+    public function getAggregationRules(): array;
 
     /**
      * @return string
      */
-    public function getCollectionName() : string;
+    public function getGroupedByProperty(): string;
+
+    /**
+     * @return int Entity set size (== LIMIT in SQL)
+     */
+    public function getSize(): int;
+
+    /**
+     * @return string
+     */
+    public function getCollectionName(): string;
 }

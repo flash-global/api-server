@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Primitives\Collection;
+namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection;
 
 use ArrayObject;
 use ObjectivePHP\Primitives\AbstractPrimitive;

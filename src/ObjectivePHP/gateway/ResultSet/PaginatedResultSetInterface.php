@@ -1,6 +1,6 @@
 <?php
 
-    namespace ObjectivePHP\Gateway\ResultSet;
+    namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet;
 
 /**
      * Interface PaginatedResultSetInterface

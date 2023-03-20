@@ -1,6 +1,6 @@
 <?php
     
-    namespace ObjectivePHP\Message\Response;
+    namespace Fei\ApiServer\ObjectivePHP\Message\Response;
 
     use Psr\Http\Message\StreamInterface;
 

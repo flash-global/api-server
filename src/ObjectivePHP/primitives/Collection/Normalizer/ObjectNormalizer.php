@@ -1,5 +1,5 @@
 <?php
-    namespace ObjectivePHP\Primitives\Collection\Normalizer;
+    namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection\Normalizer;
 
     use ObjectivePHP\Primitives\Collection\Collection;
     use ObjectivePHP\Primitives\Exception;

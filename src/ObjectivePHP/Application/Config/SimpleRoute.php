@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Objective PHP project
  *
@@ -7,7 +8,7 @@
  * @license http://opensource.org/licenses/GPL-3.0 GNU GPL License 3.0
  */
 
-namespace ObjectivePHP\Application\Config;
+namespace Fei\ApiServer\ObjectivePHP\Application\Config;
 
 
 use ObjectivePHP\Config\SingleValueDirectiveGroup;
@@ -28,18 +29,16 @@ class SimpleRoute extends SingleValueDirectiveGroup
     public function __construct($route, $path, $action = null)
     {
 
-        if(!is_callable($path))
-        {
-            $path = function(RequestInterface $request = null, $params = []) use($path) {
+        if (!is_callable($path)) {
+            $path = function (RequestInterface $request = null, $params = []) use ($path) {
 
                 // no request is passed, so forge matching URL
-                if(is_null($request)) {
+                if (is_null($request)) {
                     return $path;
                 }
 
                 // else try to match Url
                 return $path == $request->getUri()->getPath();
-
             };
         }
 
@@ -71,5 +70,4 @@ class SimpleRoute extends SingleValueDirectiveGroup
     {
         $this->action = $action;
     }
-
 }

@@ -1,17 +1,17 @@
 <?php
 
-    namespace ObjectivePHP\Application\Action;
+namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
 
+/**
+ * Class RenderableActionInterface
+ *
+ * @package ObjectivePHP\Application\Action
+ */
+interface RenderableActionInterface
+{
     /**
-     * Class RenderableActionInterface
-     *
-     * @package ObjectivePHP\Application\Action
+     * @return string
      */
-    interface RenderableActionInterface
-    {
-        /**
-         * @return string
-         */
-        public function getViewTemplate();
-    }
+    public function getViewTemplate();
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\ServicesFactory\Exception;
+namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception;
 
 
 use Interop\Container\Exception\ContainerException;
@@ -16,6 +16,4 @@ class Exception extends \Exception implements ContainerException
 
     // run-time services related errors
     const FINAL_SERVICE_OVERRIDING_ATTEMPT = 0x21;
-
-
 }

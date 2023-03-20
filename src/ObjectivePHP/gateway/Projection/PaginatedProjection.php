@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\Gateway\Projection;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Projection;
 
 use ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
 
@@ -10,22 +10,22 @@ use ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
  */
 class PaginatedProjection extends Projection implements PaginatedProjectionInterface
 {
-    
+
     /**
      * @var int
      */
     protected $currentPage;
-    
+
     /**
      * @var int
      */
     protected $perPage;
-    
+
     /**
      * @var int
      */
     protected $total;
-    
+
     /**
      * @return int
      */
@@ -33,7 +33,7 @@ class PaginatedProjection extends Projection implements PaginatedProjectionInter
     {
         return $this->currentPage;
     }
-    
+
     /**
      * @param mixed $currentPage
      *
@@ -42,10 +42,10 @@ class PaginatedProjection extends Projection implements PaginatedProjectionInter
     public function setCurrentPage($currentPage)
     {
         $this->currentPage = $currentPage;
-        
+
         return $this;
     }
-    
+
     /**
      * @return mixed
      */
@@ -53,7 +53,7 @@ class PaginatedProjection extends Projection implements PaginatedProjectionInter
     {
         return $this->perPage;
     }
-    
+
     /**
      * @param mixed $perPage
      *
@@ -62,10 +62,10 @@ class PaginatedProjection extends Projection implements PaginatedProjectionInter
     public function setPerPage($perPage)
     {
         $this->perPage = $perPage;
-        
+
         return $this;
     }
-    
+
     /**
      * @return mixed
      */
@@ -73,7 +73,7 @@ class PaginatedProjection extends Projection implements PaginatedProjectionInter
     {
         return $this->total;
     }
-    
+
     /**
      * @param mixed $total
      *
@@ -82,7 +82,7 @@ class PaginatedProjection extends Projection implements PaginatedProjectionInter
     public function setTotal($total)
     {
         $this->total = $total;
-        
+
         return $this;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,7 +7,7 @@
  * Time: 14:17
  */
 
-namespace ObjectivePHP\Gateway;
+namespace Fei\ApiServer\ObjectivePHP\Gateway;
 
 use ObjectivePHP\Events\EventsHandlerAwareInterface;
 use ObjectivePHP\Events\EventsHandlerAwareTrait;

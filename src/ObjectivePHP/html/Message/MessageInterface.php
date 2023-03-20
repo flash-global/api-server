@@ -1,11 +1,11 @@
 <?php
 
-    namespace ObjectivePHP\Html\Message;
-    
-    
-    interface MessageInterface
-    {
-        public function __construct($message);
+namespace Fei\ApiServer\ObjectivePHP\Html\Message;
 
-        public function getType();
-    }
+
+interface MessageInterface
+{
+    public function __construct($message);
+
+    public function getType();
+}

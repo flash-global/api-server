@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -6,12 +7,12 @@
  * Time: 14:37
  */
 
-namespace ObjectivePHP\Gateway\Hydrator;
+namespace Fei\ApiServer\ObjectivePHP\Gateway\Hydrator;
 
 
 interface DenormalizedDataExtractorInterface
 {
     public function extractDenormalized($entity);
-    
+
     public function denormalizeData(array $data): array;
 }
