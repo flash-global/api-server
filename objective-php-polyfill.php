@@ -36,7 +36,7 @@ if (!interface_exists('ObjectivePHP\Application\ApplicationInterface')) {
     class_alias('Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface', 'ObjectivePHP\Application\ApplicationInterface');
 }
 
-if (!interface_exists('ObjectivePHP\Application\Workflow\Step')) {
+if (!class_exists('ObjectivePHP\Application\Workflow\Step')) {
     class_alias('Fei\ApiServer\ObjectivePHP\Application\Workflow\Step', 'ObjectivePHP\Application\Workflow\Step');
 }
 
@@ -88,7 +88,7 @@ if (!interface_exists('ObjectivePHP\Matcher\Matcher')) {
     class_alias('Fei\ApiServer\ObjectivePHP\Matcher\Matcher', 'ObjectivePHP\Matcher\Matcher');
 }
 
-if (!interface_exists('ObjectivePHP\Primitives\Collection\Collection')) {
+if (!class_exists('ObjectivePHP\Primitives\Collection\Collection')) {
     class_alias('Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection', 'ObjectivePHP\Primitives\Collection\Collection');
 }
 
