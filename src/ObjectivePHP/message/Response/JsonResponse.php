@@ -7,10 +7,10 @@ use Zend\Diactoros\Response;
 use Zend\Diactoros\Stream;
 
 /**
- * Class HttpResponse
+ * Class JsonResponse
  *
  * @package ObjectivePHP\Message\Response
  */
-class HttpResponse extends Response implements ResponseInterface
+class JsonResponse extends HttpResponse implements ResponseInterface
 {
 }

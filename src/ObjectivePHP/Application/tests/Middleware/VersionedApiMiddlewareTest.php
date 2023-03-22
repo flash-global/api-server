@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -18,7 +19,7 @@ use ObjectivePHP\PHPUnit\TestCase;
 
 class VersionnedApiMiddlewareTest extends TestCase
 {
-    
+
     public function testDefaultRouting()
     {
 
@@ -40,27 +41,26 @@ class VersionnedApiMiddlewareTest extends TestCase
         $version = $middleware->route();
 
         $this->assertEquals('2.0', $version);
-        
     }
-    
+
     public function testlistAvailableVersions()
     {
         $middleware = $this->getMockForAbstractClass(VersionedApiAction::class);
-        
+
         $firstMiddleware = $this->createMock(MiddlewareInterface::class);
         $secondMiddleware = $this->createMock(MiddlewareInterface::class);
-        
+
         $middleware->registerMiddleware('1.0', $firstMiddleware);
         $middleware->registerMiddleware('2.0', $secondMiddleware);
-        
+
         $this->assertEquals(['1.0', '2.0'], $middleware->listAvailableVersions());
     }
 
-    
+
     protected function getApplication($parameters = [])
     {
         $application = $this->createMock(ApplicationInterface::class);
-        
+
         $request = $this->createMock(HttpRequest::class);
         $request->method('getGet')->willReturn($parameters);
         $request->method('getPost')->willReturn([]);

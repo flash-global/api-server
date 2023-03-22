@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\ObjectivePHP\Events;
 
 use ObjectivePHP\Events\Callback\AbstractCallback;
@@ -22,8 +23,7 @@ class Events extends TestCase
 
         $eventsHandler = new EventsHandler();
 
-        $callback = function ()
-        {
+        $callback = function () {
         };
 
         $eventsHandler->bind('event.name', $callback);
@@ -82,15 +82,12 @@ class Events extends TestCase
             '*.name',
             '*.event.*'
         ], array_keys($listeners));
-
-
     }
 
     public function dataProviderForTestOtherBindingTests()
     {
 
-        $lambda = function ()
-        {
+        $lambda = function () {
             return 'ok';
         };
 
@@ -124,13 +121,11 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        foreach($eventsToBind as $eventToBind)
-        {
+        foreach ($eventsToBind as $eventToBind) {
             $eventsHandler->bind($eventToBind, $lambda);
         }
 
         $this->assertEquals($eventsBound, $eventsHandler->getListeners($eventFilter));
-
     }
 
     public function testBindingWithExactMatchHavePriorityOverWildcardsMatches()
@@ -142,13 +137,11 @@ class Events extends TestCase
 
         $this->assertEquals(['event.name', '*'], array_keys($eventsHandler->getListeners('event.name')));
         $this->assertEquals(['*', 'event.name'], array_keys($eventsHandler->getListeners('*')));
-
     }
 
     public function testBindingAnInvalidCallbackThrowsAnException()
     {
-        $this->expectsException(function ()
-        {
+        $this->expectsException(function () {
             $eventsHandler = new EventsHandler();
             $eventsHandler->bind('any.event', 'this is not a callable');
         }, Exception::class, 'must be a callable', Exception::EVENT_INVALID_CALLBACK);
@@ -170,15 +163,12 @@ class Events extends TestCase
     public function testBindingTwoCallbacksWithSameAliasThrowsAnException()
     {
         $eventsHandler = new EventsHandler();
-        $eventsHandler->bind('*', new AliasedCallback('alias', function ()
-        {
+        $eventsHandler->bind('*', new AliasedCallback('alias', function () {
         }));
 
         // this second call should fail
-        $this->expectsException(function () use ($eventsHandler)
-        {
-            $eventsHandler->bind('*', new AliasedCallback('alias', function ()
-            {
+        $this->expectsException(function () use ($eventsHandler) {
+            $eventsHandler->bind('*', new AliasedCallback('alias', function () {
             }));
         }, Exception::class, 'alias', Exception::EVENT_INVALID_CALLBACK);
     }
@@ -191,8 +181,7 @@ class Events extends TestCase
         $eventsHandler = new EventsHandler();
         $eventsHandler->setServicesFactory($servicesFactoryMock);
 
-        $callback = function (Event $event)
-        {
+        $callback = function (Event $event) {
             $event->getOrigin()->passedBy['a'] = __FUNCTION__;
             $event->getContext()['other'] = 'context value';
 
@@ -200,14 +189,14 @@ class Events extends TestCase
         };
 
         $eventsHandler->bind('event.name', $callback);
-        $eventsHandler->bind('some.event2', new class {
+        $eventsHandler->bind('some.event2', new class
+        {
             public function __invoke()
             {
                 // TODO: Implement __invoke() method.
             }
         });
-        $eventsHandler->bind('event.name', function (Event $event)
-        {
+        $eventsHandler->bind('event.name', function (Event $event) {
             $event->getOrigin()->passedBy['b'] = __FUNCTION__;
             $event->getOrigin()->context = $event->getContext();
 
@@ -228,15 +217,13 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('first.event', function ($event) use ($eventsHandler)
-        {
+        $eventsHandler->bind('first.event', function ($event) use ($eventsHandler) {
             $result = $eventsHandler->trigger('second.event')->getResults();
 
             return $result[0];
         });
 
-        $eventsHandler->bind('second.event', function (Event $event)
-        {
+        $eventsHandler->bind('second.event', function (Event $event) {
             return $event->getPrevious();
         });
         $results = $eventsHandler->trigger('first.event')->getResults();
@@ -247,15 +234,13 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('test.event', function (Event $event)
-        {
+        $eventsHandler->bind('test.event', function (Event $event) {
             $event->halt();
 
             return 'returned data';
         });
 
-        $eventsHandler->bind('test.event', function ($event)
-        {
+        $eventsHandler->bind('test.event', function ($event) {
             return 'never returned data';
         });
 
@@ -268,12 +253,10 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('event.name', function ()
-        {
+        $eventsHandler->bind('event.name', function () {
             return 'first bound callback';
         });
-        $eventsHandler->bind('event.name', $secondCallback = function ()
-        {
+        $eventsHandler->bind('event.name', $secondCallback = function () {
             return 'second bound callback';
         }, EventsHandler::BINDING_MODE_REPLACE);
 
@@ -287,12 +270,10 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('event.name', function ()
-        {
+        $eventsHandler->bind('event.name', function () {
             return 'first bound callback';
         });
-        $eventsHandler->bind('event.name', $secondCallback = function ()
-        {
+        $eventsHandler->bind('event.name', $secondCallback = function () {
             return 'second bound callback';
         }, EventsHandler::BINDING_MODE_FIRST);
 
@@ -302,37 +283,31 @@ class Events extends TestCase
         $this->assertEquals($secondCallback, $listeners['event.name'][0]);
 
         // prepend aliased callback
-        $thirdCallback = function ()
-        {
+        $thirdCallback = function () {
             return 'third bound callback';
         };
         $eventsHandler->bind('event.name', new AliasedCallback('callback.alias', $thirdCallback), EventsHandler::BINDING_MODE_FIRST);
         $listeners = $eventsHandler->getListeners('event.name');
         $this->assertCount(3, $listeners['event.name']);
         $this->assertEquals($thirdCallback, $listeners['event.name'][0]);
-
-
     }
 
     public function testEventHasExceptionsIfCallbackReturnsAnException()
     {
 
         $eventsHandler = new EventsHandler();
-        $eventsHandler->bind('event.name', function ()
-        {
+        $eventsHandler->bind('event.name', function () {
             return new Exception('something went wrong');
         });
         $event = $eventsHandler->trigger('event.name');
         $this->assertTrue($event->isFaulty());
-
     }
 
     public function testAnExceptionIsThrownIfCallbackGeneratorComponentDoesNotExist()
     {
         $eventsHandler = new EventsHandler();
 
-        $this->expectsException(function () use ($eventsHandler)
-        {
+        $this->expectsException(function () use ($eventsHandler) {
             $eventsHandler->bind('event.name', 'non.existing.callback.generator');
         }, Exception::class);
     }
@@ -342,8 +317,7 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('any.event', $lambda = function ()
-        {
+        $eventsHandler->bind('any.event', $lambda = function () {
             return 'should not be triggered';
         });
 
@@ -356,8 +330,7 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('any.event', $lambda = function ()
-        {
+        $eventsHandler->bind('any.event', $lambda = function () {
             return 'should not be triggered';
         });
 
@@ -371,8 +344,7 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('any.event', $lambda = function ()
-        {
+        $eventsHandler->bind('any.event', $lambda = function () {
             return 'should not be triggered';
         });
 
@@ -385,8 +357,7 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('any.*', $lambda = function ()
-        {
+        $eventsHandler->bind('any.*', $lambda = function () {
             return 'should not be triggered';
         });
 
@@ -398,8 +369,7 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('any.*', new AliasedCallback('listener.alias', $lambda = function ()
-        {
+        $eventsHandler->bind('any.*', new AliasedCallback('listener.alias', $lambda = function () {
             return 'should not be triggered';
         }));
 
@@ -418,17 +388,14 @@ class Events extends TestCase
         // any.* is matched by the unbind call, so it will be unbound
         // beware: any.event does not match the unbind() pattern, but
         // so does the bound callback
-        $eventsHandler->bind('any.*', $lambda = function ()
-        {
+        $eventsHandler->bind('any.*', $lambda = function () {
             return 'should not be triggered';
         });
 
-        $eventsHandler->bind('any.event', $lambda = new AliasedCallback('triggered.callback', function ()
-        {
+        $eventsHandler->bind('any.event', $lambda = new AliasedCallback('triggered.callback', function () {
             return 'should be triggered once';
         }));
-        $eventsHandler->bind('event.any', $lambda = function ()
-        {
+        $eventsHandler->bind('event.any', $lambda = function () {
             return 'should not be triggered';
         });
 
@@ -442,8 +409,7 @@ class Events extends TestCase
     {
         $eventsHandler = new EventsHandler();
 
-        $eventsHandler->bind('any.event', $lambda = new AliasedCallback('triggered.callback', function ()
-        {
+        $eventsHandler->bind('any.event', $lambda = new AliasedCallback('triggered.callback', function () {
             return 'should be triggered once';
         }));
 
@@ -464,12 +430,10 @@ class Events extends TestCase
 
         $this->assertTrue(Callback::$triggered);
 
-        $this->expectsException(function () use ($eventsHandler)
-        {
+        $this->expectsException(function () use ($eventsHandler) {
 
             $eventsHandler->bind('other.event', InvalidCallback::class);
             $eventsHandler->trigger('other.event');
-
         }, Exception::class, null, Exception::EVENT_INVALID_CALLBACK);
     }
 
@@ -480,8 +444,7 @@ class Events extends TestCase
         $callbacks[] = $this->getMockForAbstractClass(AbstractCallback::class);
         $callbacks[] = $this->getMockForAbstractClass(AbstractCallback::class);
 
-        foreach($callbacks as $callback)
-        {
+        foreach ($callbacks as $callback) {
             $callback->expects($this->once())->method('run')->with($event)->willReturnSelf();
         }
 
@@ -491,13 +454,11 @@ class Events extends TestCase
 
         $eventsHandler->bind('some.event', $aggregate);
 
-        $eventsHandler->bind('some.event', function ()
-        {
+        $eventsHandler->bind('some.event', function () {
         });
         $eventsHandler->trigger('some.event', null, [], $event);
 
         $this->assertEquals(['aggregate.0', 'aggregate.1', 0], $event->getResults()->keys()->toArray());
-
     }
 
     public function testServiceReferenceCanBeUsedAsCallback()
@@ -514,10 +475,7 @@ class Events extends TestCase
         $eventsHanlder->trigger('some.event');
 
         $this->assertEquals(1, Injector::$count);
-
     }
-
-
 }
 
 
@@ -544,5 +502,4 @@ class Callback
 
 class InvalidCallback
 {
-
 }

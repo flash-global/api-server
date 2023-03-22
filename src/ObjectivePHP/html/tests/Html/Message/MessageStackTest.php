@@ -33,5 +33,4 @@ class MessageStackTest extends TestCase
         $this->assertEquals(2, $stack->count('danger'));
         $this->assertEquals(1, $stack->count('info'));
     }
-
 }

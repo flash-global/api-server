@@ -28,11 +28,9 @@ class ClassServiceBuilderTest extends TestCase
 
         $this->assertFalse($builder->doesHandle($serviceDefinition));
 
-        $this->expectsException(function () use ($serviceDefinition, $builder)
-        {
+        $this->expectsException(function () use ($serviceDefinition, $builder) {
             $builder->build($serviceDefinition);
         }, Exception::class, null, Exception::INCOMPATIBLE_SERVICE_DEFINITION);
-
     }
 
     public function testSimpleServiceIsBuilt()
@@ -57,7 +55,6 @@ class ClassServiceBuilderTest extends TestCase
         $service = $builder->build($serviceDefinition, ['first' => 'OVERRIDDEN']);
         $this->assertInstanceOf(TestService::class, $service);
         $this->assertAttributeEquals(Collection::cast(['arg1' => 'OVERRIDDEN', 'arg2' => 'y']), 'args', $service);
-
     }
 
     public function testClassBuilderCallsSetters()
@@ -83,7 +80,6 @@ class ClassServiceBuilderTest extends TestCase
         // test by transitivity
         $this->assertEquals('optional dependency value', $service->getOptionalDependency());
         $this->assertSame($dependency, $service->getOtherOptionalDependency());
-
     }
 
     public function testSimpleReferenceSubstitution()
@@ -101,9 +97,8 @@ class ClassServiceBuilderTest extends TestCase
         $serviceDefinition->setParams(['dependency' => new ServiceReference('dependency.id')]);
 
         $builder->build($serviceDefinition);
-
     }
-    
+
     /**
      * This test is not quite unit, but helped a lot pinpointing a very
      * twisted issue with static service references
@@ -117,8 +112,8 @@ class ClassServiceBuilderTest extends TestCase
 
         $serviceDefinition = new ClassServiceSpecs('main.service', TestService::class);
         $serviceDefinition
-                ->setSetters(['setOptionalDependency' => [new ServiceReference('dependency.id')]])
-                ->setStatic(false);
+            ->setSetters(['setOptionalDependency' => [new ServiceReference('dependency.id')]])
+            ->setStatic(false);
 
         $servicesFactory = (new ServicesFactory())->registerService($serviceDefinition, $dependencyDefinition);
 
@@ -128,7 +123,6 @@ class ClassServiceBuilderTest extends TestCase
         $this->assertNotSame($firstInstance, $secondInstance);
 
         $this->assertNotSame($firstInstance->getOptionalDependency(), $secondInstance->getOptionalDependency());
-
     }
 
     public function testClassBuilderSanityChecks()
@@ -144,14 +138,14 @@ class ClassServiceBuilderTest extends TestCase
         // unknown class
         $serviceSpecs = new ClassServiceSpecs('id', 'nonExistentClass');
         $this->expectsException(
-            function() use ($builder, $serviceSpecs)
-            {
+            function () use ($builder, $serviceSpecs) {
                 $builder->build($serviceSpecs);
             },
-            Exception::class, 'unknown', Exception::INVALID_SERVICE_SPECS);
-
+            Exception::class,
+            'unknown',
+            Exception::INVALID_SERVICE_SPECS
+        );
     }
-
 }
 
 namespace Helpers;
@@ -210,10 +204,8 @@ class TestService
         $this->optionalDependency = $optionalDependency;
         return $this;
     }
-
 }
 
 class DependencyService
 {
-
 }

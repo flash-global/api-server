@@ -39,13 +39,10 @@ class AbstractServiceBuilderTest extends TestCase
     public function testAbstractServiceSpecsFactorySanityChecks()
     {
         // id is always mandatory, class is mandatory for ClassServiceSpecs only (the default one)
-        $rawSpecs = [
-        ];
-        $this->expectsException(function () use ($rawSpecs)
-        {
+        $rawSpecs = [];
+        $this->expectsException(function () use ($rawSpecs) {
             AbstractServiceSpecs::factory($rawSpecs);
         }, Exception::class, '\'id\'', Exception::INCOMPLETE_SERVICE_SPECS);
-
     }
 
     public function testClassServiceSpecsFactorySanityChecks()
@@ -54,8 +51,7 @@ class AbstractServiceBuilderTest extends TestCase
         $rawSpecs = [
             'id' => 'service.id'
         ];
-        $this->expectsException(function () use ($rawSpecs)
-        {
+        $this->expectsException(function () use ($rawSpecs) {
             ClassServiceSpecs::factory($rawSpecs);
         }, Exception::class, '\'class\'', Exception::INCOMPLETE_SERVICE_SPECS);
 
@@ -64,11 +60,9 @@ class AbstractServiceBuilderTest extends TestCase
             'id'    => 'service.id',
             'class' => ['I am not a string']
         ];
-        $this->expectsException(function () use ($rawSpecs)
-        {
+        $this->expectsException(function () use ($rawSpecs) {
             ClassServiceSpecs::factory($rawSpecs);
         }, Exception::class, '\'class\'', Exception::INVALID_SERVICE_SPECS);
-
     }
 
     public function testAnyServiceSpecsCanBeBuiltUsingFactory()
@@ -82,7 +76,6 @@ class AbstractServiceBuilderTest extends TestCase
         $service = AbstractServiceSpecs::factory($rawSpecs);
 
         $this->assertInstanceOf(PrefabServiceSpecs::class, $service);
-
     }
 
     public function testObjectServiceSpecsFactorySanityChecks()
@@ -92,13 +85,11 @@ class AbstractServiceBuilderTest extends TestCase
         $rawSpecs = [
             'id' => 'service.id'
         ];
-        $this->expectsException(function () use ($rawSpecs)
-        {
+        $this->expectsException(function () use ($rawSpecs) {
             PrefabServiceSpecs::factory($rawSpecs);
         }, Exception::class, '\'instance\'', Exception::INCOMPLETE_SERVICE_SPECS);
-
     }
-    
+
     public function testFactoryCanGuessTypeForDefaultSpecs()
     {
         // class
@@ -127,21 +118,17 @@ class AbstractServiceBuilderTest extends TestCase
             'instance' => new \stdClass()
         ];
 
-        $this->expectsException(function () use($rawSpecs)
-        {
+        $this->expectsException(function () use ($rawSpecs) {
             $serviceSpecs = AbstractServiceSpecs::factory($rawSpecs);
         }, Exception::class, '', Exception::AMBIGUOUS_SERVICE_SPECS);
 
         // incomplete
-        $rawSpecs = [
-        ];
+        $rawSpecs = [];
 
-        $this->expectsException(function () use($rawSpecs)
-        {
+        $this->expectsException(function () use ($rawSpecs) {
             $serviceSpecs = AbstractServiceSpecs::factory($rawSpecs);
         }, Exception::class, '', Exception::INCOMPLETE_SERVICE_SPECS);
     }
-
 }
 
 namespace Service;
@@ -150,6 +137,5 @@ class SomeService
 {
     public function setAnything($value)
     {
-
     }
 }

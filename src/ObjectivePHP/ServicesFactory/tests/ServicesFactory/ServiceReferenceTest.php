@@ -15,5 +15,4 @@ class ServiceReferenceTest extends TestCase
 
         $this->assertEquals('test.service.id', (string) $ref);
     }
-
 }

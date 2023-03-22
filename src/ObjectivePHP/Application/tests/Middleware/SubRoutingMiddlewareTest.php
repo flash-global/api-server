@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -37,7 +38,6 @@ class SubRoutingMiddlewareTest extends TestCase
         $this->assertSame($firstMiddleware, $result);
 
         $subRoutingMiddleware($app);
-
     }
 
     public function testSubRoutingExecutionFailsIfNoMatchingMiddlewareIsRegistered()
@@ -47,10 +47,8 @@ class SubRoutingMiddlewareTest extends TestCase
 
         $subRoutingMiddleware->expects($this->once())->method('route');
 
-        $this->expectsException(function() use($subRoutingMiddleware) {
+        $this->expectsException(function () use ($subRoutingMiddleware) {
             $subRoutingMiddleware($this->getMockForAbstractClass(ApplicationInterface::class));
         }, Exception::class);
-
     }
-    
 }

@@ -23,7 +23,6 @@ class EventTest extends TestCase
         // check event name is normalized
         $event->setName('EVENT.Name');
         $this->assertEquals('event.name', $event->getName());
-
     }
 
     public function testOriginAccessorAndMutator()
@@ -43,7 +42,6 @@ class EventTest extends TestCase
         $this->expectsException(function () use ($event) {
             $event->setOrigin('should not override $origin');
         }, Exception::class, null, Exception::EVENT_ORIGIN_IS_IMMUTABLE);
-
     }
 
     public function testContextAccessorAndMutator()
@@ -61,7 +59,6 @@ class EventTest extends TestCase
         $this->assertSame($event, $fluent);
 
         $this->assertEquals(new Collection(['a' => 'a', 'b' => 'b', 'c' => 'c']), $event->getContext());
-
     }
 
     public function testPreviousEventReferenceAccessorAndMutator()
@@ -74,7 +71,6 @@ class EventTest extends TestCase
 
         $this->assertInstanceOf(Event::class, $currentEvent->getPrevious());
         $this->assertEquals(Str::cast('previous.event'), $currentEvent->getPrevious()->getName());
-
     }
 
     public function testPropagationStatus()
@@ -107,20 +103,17 @@ class EventTest extends TestCase
         $this->expectsException(function () use ($event) {
 
             $event->setContext('wrong type - should be an array or an ArrayObject');
-
         }, Exception::class, null, Exception::EVENT_INVALID_CONTEXT);
 
         $this->expectsException(function () use ($event) {
 
             $event->setContext($this);
-
         }, Exception::class, null, Exception::EVENT_INVALID_CONTEXT);
 
         $this->expectsException(function () use ($event) {
             $newContext = new \stdClass;
             $newContext->property = 'wrong type - should be an array or an ArrayObject';
             $event->setContext($newContext);
-
         }, Exception::class, null, Exception::EVENT_INVALID_CONTEXT);
     }
 
@@ -140,7 +133,6 @@ class EventTest extends TestCase
         $event->setContext(['a' => 'value']);
         $event->getContext()['b'] = 'other value';
         $this->assertEquals(new Collection(['a' => 'value', 'b' => 'other value']), $event->getContext());
-
     }
 
     public function testEventIsFaultyWhenCallbacksReturnExceptions()

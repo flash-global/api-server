@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -24,18 +25,20 @@ class StepTest extends TestCase
 
         $step = new Step('test');
 
-        $step->plug($firstMiddleware = function() {})->as('first-middleware');
+        $step->plug($firstMiddleware = function () {
+        })->as('first-middleware');
 
         /** @var Hook $embeddedMiddleware */
         $embeddedMiddleware = $step->get('first-middleware');
         $this->assertAttributeSame($firstMiddleware, 'operation', $embeddedMiddleware->getMiddleware()->getInvokable());
 
-        $step->plug($secondMiddleware = function() {})->as('second-middleware');
-        $step->plug($defaultSecondMiddleware = function() {})->asDefault('second-middleware');
+        $step->plug($secondMiddleware = function () {
+        })->as('second-middleware');
+        $step->plug($defaultSecondMiddleware = function () {
+        })->asDefault('second-middleware');
 
         /** @var Hook $embeddedMiddleware */
         $embeddedMiddleware = $step->get('second-middleware');
         $this->assertAttributeSame($secondMiddleware, 'operation', $embeddedMiddleware->getMiddleware()->getInvokable());
-
     }
 }

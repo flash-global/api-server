@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gde
@@ -26,7 +27,6 @@ class SingleDirectiveTest extends TestCase
 
         $this->assertSame($directive, $config->get(SampleSingleDirective::class));
     }
-
 }
 
 class SampleSingleDirective extends SingleDirective
@@ -73,6 +73,4 @@ class SampleSingleDirective extends SingleDirective
     {
         $this->y = $y;
     }
-
-
 }

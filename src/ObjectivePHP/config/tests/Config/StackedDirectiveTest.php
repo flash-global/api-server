@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gde
@@ -27,7 +28,6 @@ class StackedDirectiveTest extends TestCase
 
         $this->assertSame($directive, $config->get(SampleStackedDirective::class)[0]);
     }
-
 }
 
 class SampleStackedDirective extends StackedDirective
@@ -74,6 +74,4 @@ class SampleStackedDirective extends StackedDirective
     {
         $this->y = $y;
     }
-
-
 }

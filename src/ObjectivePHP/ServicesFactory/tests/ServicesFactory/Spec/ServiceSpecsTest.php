@@ -24,14 +24,14 @@ class ServiceSpecsTest extends TestCase
         $this->assertAttributeEquals('service.test', 'id', $specs);
     }
 
-    
+
     public function testAutoAliasing()
     {
         $specs = new ClassServiceSpecs('service.test', 'stdClass');
         $this->assertEquals(['\stdClass'], $specs->getAliases());
         $this->assertEquals('\stdClass', $specs->getAutoAlias());
     }
-    
+
     public function testAliasesSetting()
     {
         $specs = new ClassServiceSpecs('service.test', 'stdClass');
@@ -53,5 +53,4 @@ class ServiceSpecsTest extends TestCase
 
         $this->assertInstanceOf(UndefinedServiceSpecs::class, $serviceSpec);
     }
-    
 }

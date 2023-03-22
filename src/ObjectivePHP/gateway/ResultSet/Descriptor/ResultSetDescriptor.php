@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 15/06/2017
- * Time: 11:19
- */
-
 namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\Descriptor;
 
 /**

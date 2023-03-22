@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception;
 
-
 use Interop\Container\Exception\ContainerException;
 
 class Exception extends \Exception implements ContainerException

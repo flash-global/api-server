@@ -15,5 +15,4 @@ class AbstractMessageTest extends TestCase
 
         $this->assertEquals('test', (string) $message);
     }
-
 }

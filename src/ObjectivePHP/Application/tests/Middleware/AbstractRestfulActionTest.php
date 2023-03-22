@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -30,16 +31,16 @@ class AbstractRestfulActionTest extends TestCase
         $this->assertEquals('get', $reference);
 
         $this->assertEquals([$restfulMiddleware, 'get'], $restfulMiddleware->getMiddleware($reference));
-
     }
 
 
     public function testJsonResponseIsAutomaticallyGeneratedFromMiddlewareReturn()
     {
         $restfulMiddleware = new GetOnlyRestMiddleware();
-        $this->assertEquals(json_encode(['data' => 'value']),
-            $restfulMiddleware($this->getApplication('get'))->getBody());
-
+        $this->assertEquals(
+            json_encode(['data' => 'value']),
+            $restfulMiddleware($this->getApplication('get'))->getBody()
+        );
     }
 
     public function testExecutionFailsIfMethodMatchingHttpVerbIsNotImplemented()
@@ -50,8 +51,7 @@ class AbstractRestfulActionTest extends TestCase
 
         $this->assertEquals('post', $reference);
 
-        $this->expectsException(function () use ($restfulMiddleware)
-        {
+        $this->expectsException(function () use ($restfulMiddleware) {
             $restfulMiddleware($this->getApplication('post'));
         }, Exception::class, 'post');
     }
@@ -77,7 +77,6 @@ class AbstractRestfulActionTest extends TestCase
 
         return $application;
     }
-
 }
 
 // HELPERS
@@ -87,5 +86,4 @@ class GetOnlyRestMiddleware extends RestfulAction
     {
         return ['data' => 'value'];
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Test\ObjectivePHP\Config;
 
 use ObjectivePHP\Config\ConfigReference;

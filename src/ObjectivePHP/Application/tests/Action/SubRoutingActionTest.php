@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: gauthier
@@ -32,6 +33,5 @@ class SubRoutingActionTest extends TestCase
         $subRoutingAction->expects($this->once())->method('getMiddleware')->with('test')->willReturn($middleware);
 
         $subRoutingAction->__invoke($application);
-
     }
 }

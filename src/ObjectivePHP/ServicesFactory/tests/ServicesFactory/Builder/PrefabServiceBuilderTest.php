@@ -29,11 +29,8 @@ class PrefabServiceBuilderTest extends TestCase
 
         $this->assertFalse($builder->doesHandle($serviceDefinition));
 
-        $this->expectsException(function () use ($serviceDefinition, $builder)
-        {
+        $this->expectsException(function () use ($serviceDefinition, $builder) {
             $builder->build($serviceDefinition);
         }, Exception::class, null, Exception::INCOMPATIBLE_SERVICE_DEFINITION);
-
     }
-
 }

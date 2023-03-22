@@ -1,6 +1,6 @@
 <?php
 
-namespace Fei\ApiServer\ObjectivePHP\PHPUnit;
+namespace ObjectivePHP\PHPUnit;
 
 class TestCase extends \PHPUnit_Framework_TestCase
 {
