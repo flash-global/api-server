@@ -1,27 +1,27 @@
 <?php
-    /**
-     * This file is part of the Objective PHP project
-     *
-     * More info about Objective PHP on www.objective-php.org
-     *
-     * @license http://opensource.org/licenses/GPL-3.0 GNU GPL License 3.0
-     */
-    
-    namespace Fei\ApiServer\ObjectivePHP\Config;
+
+/**
+ * This file is part of the Objective PHP project
+ *
+ * More info about Objective PHP on www.objective-php.org
+ *
+ * @license http://opensource.org/licenses/GPL-3.0 GNU GPL License 3.0
+ */
+
+namespace Fei\ApiServer\ObjectivePHP\Config;
+
+/**
+ * Interface DirectiveInterface
+ *
+ * @package ObjectivePHP\Config
+ */
+interface DirectiveInterface
+{
 
     /**
-     * Interface DirectiveInterface
+     * @param ConfigInterface $config
      *
-     * @package ObjectivePHP\Config
+     * @return DirectiveInterface
      */
-    interface DirectiveInterface
-    {
-
-        /**
-         * @param ConfigInterface $config
-         *
-         * @return DirectiveInterface
-         */
-        public function mergeInto(ConfigInterface $config) : DirectiveInterface;
-
-    }
+    public function mergeInto(ConfigInterface $config): DirectiveInterface;
+}

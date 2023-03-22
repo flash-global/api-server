@@ -2,7 +2,6 @@
 
     namespace Fei\ApiServer\ObjectivePHP\Application\Workflow;
     
-    
     use ObjectivePHP\Application\Exception;
     use ObjectivePHP\Application\Middleware\EmbeddedMiddleware;
     use ObjectivePHP\Application\Middleware\MiddlewareInterface;

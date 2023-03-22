@@ -1,31 +1,30 @@
 <?php
-    
-    namespace Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container;
 
-    use ObjectivePHP\Message\Request\RequestInterface;
+namespace Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container;
 
-    interface ParameterContainerInterface
-    {
+use ObjectivePHP\Message\Request\RequestInterface;
 
-        /**
-         * @param      $param
-         * @param null $default
-         * @param null $origin
-         *
-         * @return mixed
-         */
-        public function get($param, $default = null, $origin = null);
+interface ParameterContainerInterface
+{
 
-        /**
-         * @param RequestInterface $request
-         *
-         * @return mixed
-         */
-        public function setRequest(RequestInterface $request);
+    /**
+     * @param      $param
+     * @param null $default
+     * @param null $origin
+     *
+     * @return mixed
+     */
+    public function get($param, $default = null, $origin = null);
 
-        /**
-         * @return RequestInterface
-         */
-        public function getRequest();
+    /**
+     * @param RequestInterface $request
+     *
+     * @return mixed
+     */
+    public function setRequest(RequestInterface $request);
 
-    }
+    /**
+     * @return RequestInterface
+     */
+    public function getRequest();
+}

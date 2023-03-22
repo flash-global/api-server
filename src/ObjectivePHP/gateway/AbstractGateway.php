@@ -27,74 +27,82 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
     const FETCH_ENTITIES   = 1;
     const FETCH_PROJECTION = 2;
 
-    /** @var string */
+    /**
+     * @var
+     */
     const DEFAULT_ENTITY_CLASS = Entity::class;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $entityClass;
 
-    /** @var HydratorInterface */
+    /**
+     * @var HydratorInterface
+     */
     protected $hydrator;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $hydratorClass;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $defaultEntityCollection = EntityInterface::DEFAULT_ENTITY_COLLECTION;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $allowedMethods = self::ALL;
 
-    /** @var array */
-    protected $delegatePersisters = [];
+    /**
+     * @var array
+     */
+    protected $delegatePersisters = array();
 
-    /** @var EventsHandler */
+    /**
+     * @var EventsHandler
+     */
     protected $eventHandler;
 
-    /** @var array */
-    protected $options = [];
-
-    /** @var array */
-    protected $methodsMapping = [
+    /**
+     * @var array
+     */
+    protected $methodsMapping = array(
         'fetch'    => self::FETCH,
         'fetchOne' => self::FETCH_ONE,
         'fetchAll' => self::FETCH_ALL,
         'persist'  => self::PERSIST,
-        'create'  => self::CREATE,
         'update'   => self::UPDATE,
         'delete'   => self::DELETE,
         'purge'    => self::PURGE
-    ];
+    );
 
     /**
      * Get EntityClass
      *
-     * @return string
+     * @return mixed
      */
-    public function getEntityClass(): string
+    public function getEntityClass()
     {
         return $this->entityClass;
     }
 
     /**
-     * @param string $entityClass
+     * @param $entityClass
      *
      * @return $this
      */
-    public function setEntityClass(string $entityClass): self
+    public function setEntityClass($entityClass)
     {
         $this->entityClass = $entityClass;
 
         return $this;
     }
 
-    /**
-     * @param string $method
-     * @param mixed  ...$parameters
-     *
-     * @return bool
-     */
-    public function can(string $method, ...$parameters): bool
+    public function can($method, ...$parameters): bool
     {
         // if method does not exist, simply return false
         if (!method_exists($this, $method)) {
@@ -109,7 +117,7 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
 
         // finally, fallback to the default behaviour: is the method standard and reported as allowed, or does
         // the method exists (for non-standard methods only)
-        return isset($this->methodsMapping[$method]) ? ($this->methodsMapping[$method] & $this->allowedMethods) : method_exists(
+        return (isset($this->methodsMapping[$method])) ? ($this->methodsMapping[$method] & $this->allowedMethods) : method_exists(
             $this,
             $method
         );
@@ -128,7 +136,7 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
      *
      * @return $this
      */
-    public function setAllowedMethods(int $allowedMethods): self
+    public function setAllowedMethods(int $allowedMethods)
     {
         $this->allowedMethods = $allowedMethods;
 
@@ -136,9 +144,9 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getDefaultEntityClass(): string
+    public function getDefaultEntityClass()
     {
         return self::DEFAULT_ENTITY_CLASS;
     }
@@ -148,7 +156,7 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
      *
      * @return $this
      */
-    public function setDefaultEntityClass($defaultEntityClass): self
+    public function setDefaultEntityClass($defaultEntityClass)
     {
         $this->defaultEntityClass = $defaultEntityClass;
 
@@ -168,7 +176,7 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
      *
      * @return $this
      */
-    public function setHydratorClass(string $hydratorClass): self
+    public function setHydratorClass(string $hydratorClass)
     {
         $this->hydratorClass = $hydratorClass;
 
@@ -188,7 +196,7 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
      *
      * @return $this
      */
-    public function setMethodsMapping(array $methodsMapping): self
+    public function setMethodsMapping(array $methodsMapping)
     {
         $this->methodsMapping = $methodsMapping;
 
@@ -212,44 +220,21 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
      *
      * @return $this
      */
-    public function setDefaultEntityCollection(string $defaultEntityCollection): self
+    public function setDefaultEntityCollection(string $defaultEntityCollection)
     {
         $this->defaultEntityCollection = $defaultEntityCollection;
 
         return $this;
     }
 
-    /**
-     * @param $property
-     * @param $persister
-     */
     public function registerDelegatePersister($property, $persister)
     {
         $this->delegatePersisters[$property] = $persister;
     }
 
-    /**
-     * @return array
-     */
-    public function getDelegatePersisters(): array
+    public function getDelegatePersisters()
     {
         return $this->delegatePersisters;
-    }
-
-    /**
-     * @return array
-     */
-    public function getOptions(): array
-    {
-        return $this->options;
-    }
-
-    /**
-     * @param array $options
-     */
-    public function setOptions(array $options)
-    {
-        $this->options = $options;
     }
 
     /**
@@ -298,9 +283,9 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
      */
     public function getHydrator(): HydratorInterface
     {
-        if ($this->hydrator === null) {
+        if (is_null($this->hydrator)) {
             $entityClass = $this->entityClass ?? self::DEFAULT_ENTITY_CLASS;
-            if ($entityClass !== self::DEFAULT_ENTITY_CLASS) {
+            if ($entityClass != self::DEFAULT_ENTITY_CLASS) {
                 $className = $this->hydratorClass ?: ClassMethods::class;
             } else {
                 $className = ArraySerializable::class;
@@ -318,12 +303,7 @@ abstract class AbstractGateway implements GatewayInterface, EventsHandlerAwareIn
         return $this->hydrator;
     }
 
-    /**
-     * @param HydratorInterface $hydrator
-     *
-     * @return $this
-     */
-    public function setHydrator(HydratorInterface $hydrator): self
+    public function setHydrator(HydratorInterface $hydrator)
     {
         $this->hydrator = $hydrator;
 

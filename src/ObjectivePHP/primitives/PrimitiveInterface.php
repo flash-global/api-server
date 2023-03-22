@@ -1,48 +1,47 @@
 <?php
 
-    namespace Fei\ApiServer\ObjectivePHP\Primitives;
+namespace Fei\ApiServer\ObjectivePHP\Primitives;
+
+/**
+ * Temp implementation proposition
+ * JsonSerializable: each primitive must be serializable by json_encode()
+ *
+ * Class PrimitiveInterface
+ *
+ * @package Phocus\Primitives
+ */
+interface PrimitiveInterface extends \JsonSerializable
+{
+    /**
+     * Set the primitive object initial value
+     *
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setInternalValue($value);
 
     /**
-     * Temp implementation proposition
-     * JsonSerializable: each primitive must be serializable by json_encode()
+     * Return the primitive value in its native representation
      *
-     * Class PrimitiveInterface
-     *
-     * @package Phocus\Primitives
+     * @return mixed
      */
-    interface PrimitiveInterface extends \JsonSerializable
-    {
-        /**
-         * Set the primitive object initial value
-         *
-         * @param $value
-         *
-         * @return $this
-         */
-        public function setInternalValue($value);
-
-        /**
-         * Return the primitive value in its native representation
-         *
-         * @return mixed
-         */
-        public function getInternalValue();
+    public function getInternalValue();
 
 
-        /**
-         * Return a cloned primitive
-         *
-         * @return PrimitiveInterface
-         */
-        public function copy();
+    /**
+     * Return a cloned primitive
+     *
+     * @return PrimitiveInterface
+     */
+    public function copy();
 
-        /**
-         * Convert a value to Primitive
-         *
-         * @param $value
-         *
-         * @return static
-         */
-        static public function cast($value);
-
-    }
+    /**
+     * Convert a value to Primitive
+     *
+     * @param $value
+     *
+     * @return static
+     */
+    static public function cast($value);
+}

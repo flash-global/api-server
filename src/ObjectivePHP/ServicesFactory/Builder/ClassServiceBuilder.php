@@ -53,6 +53,7 @@ class ClassServiceBuilder extends AbstractServiceBuilder
         if ($setters = $serviceSpecs->getSetters()) {
             foreach ($setters as $setter => $setterParams) {
                 $instanceSetterParams = clone Collection::cast($setterParams);
+
                 $this->substituteReferences($instanceSetterParams);
 
                 $service->$setter(...$instanceSetterParams->values());

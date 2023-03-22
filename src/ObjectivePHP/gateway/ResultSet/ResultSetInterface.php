@@ -2,9 +2,9 @@
 
     namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet;
 
-use ObjectivePHP\Gateway\Entity\EntityInterface;
+    use ObjectivePHP\Gateway\Entity\EntityInterface;
 
-/**
+    /**
      * Interface ResultSetInterface
      *
      * @package ObjectivePHP\Gateway\Entity

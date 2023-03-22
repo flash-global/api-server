@@ -28,4 +28,5 @@ class ServiceReference
     {
         return (string) $this->id;
     }
+
 }

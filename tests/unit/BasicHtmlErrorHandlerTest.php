@@ -4,7 +4,7 @@ namespace Tests\ApiServer;
 
 use Codeception\Test\Unit;
 use Fei\ApiServer\BasicHtmlErrorHandler;
-use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use ObjectivePHP\Application\ApplicationInterface;
 
 /**
  * Class BasicHtmlErrorHandlerTest

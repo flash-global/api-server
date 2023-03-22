@@ -26,5 +26,5 @@ interface MessageInterface
      *
      * @return bool
      */
-    public function isError() : bool;
+    public function isError(): bool;
 }

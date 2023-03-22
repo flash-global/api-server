@@ -23,8 +23,7 @@ class AbstractInvokable implements InvokableInterface
     public function __invoke(...$args)
     {
 
-        if (!method_exists($this, 'run'))
-        {
+        if (!method_exists($this, 'run')) {
             throw new Exception(sprintf('Invokable class "%s" does not implement method "run()"', get_class($this)));
         }
 
@@ -34,7 +33,7 @@ class AbstractInvokable implements InvokableInterface
     /**
      * @return ApplicationInterface
      */
-    public function getApplication() : ApplicationInterface
+    public function getApplication(): ApplicationInterface
     {
         return $this->application;
     }
@@ -42,7 +41,7 @@ class AbstractInvokable implements InvokableInterface
     /**
      * @param ApplicationInterface $application
      */
-    public function setApplication(ApplicationInterface $application) : InvokableInterface
+    public function setApplication(ApplicationInterface $application): InvokableInterface
     {
         $this->application = $application;
 
@@ -54,21 +53,20 @@ class AbstractInvokable implements InvokableInterface
      *
      * @return ServicesFactory
      */
-    public function getServicesFactory() : ServicesFactory
+    public function getServicesFactory(): ServicesFactory
     {
         return $this->servicesFactory ?? $this->application->getServicesFactory();
     }
 
-    
-    
-    public function getDescription() : string
+
+
+    public function getDescription(): string
     {
         return 'Instance of Invokable class ' . get_class($this);
     }
 
     public function getCallable()
     {
-	return $this;
+        return $this;
     }
-
 }

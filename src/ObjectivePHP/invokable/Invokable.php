@@ -1,4 +1,5 @@
 <?php
+
 namespace Fei\ApiServer\ObjectivePHP\Invokable;
 
 use Interop\Container\ContainerInterface;
@@ -26,12 +27,12 @@ class Invokable extends AbstractInvokable
     protected $callable;
 
     protected $operation;
-    
+
     /**
      * @var ServicesFactory
      */
     protected $servicesFactory;
-    
+
     /**
      * Invokable constructor.
      * @param $operation
@@ -78,57 +79,43 @@ class Invokable extends AbstractInvokable
     public function getCallable()
     {
 
-        if(is_null($this->callable))
-        {
+        if (is_null($this->callable)) {
 
 
             $operation = $this->operation;
-            try
-            {
-                if(!is_callable($operation))
-                {
-                    if($operation instanceof ServiceReference)
-                    {
+            try {
+                if (!is_callable($operation)) {
+                    if ($operation instanceof ServiceReference) {
                         $serviceId = $operation->getId();
 
-                        if(is_null($this->getServicesFactory()))
-                        {
+                        if (is_null($this->getServicesFactory())) {
                             throw new Exception(sprintf('No ServicesFactory is available to build referenced service "%s"', $serviceId));
                         }
 
-                        if(!$this->getServicesFactory()->has($operation))
-                        {
+                        if (!$this->getServicesFactory()->has($operation)) {
                             throw new Exception(sprintf('Referenced service "%s" is not registered', $serviceId), Exception::REFERENCED_SERVICE_IS_NOT_REGISTERED);
                         }
 
-                        try
-                        {
+                        try {
                             $operation = $this->getServicesFactory()->get($operation);
-                        } catch(ServicesFactoryException $e)
-                        {
+                        } catch (ServicesFactoryException $e) {
                             throw new Exception(sprintf('An error occurred when building referenced service "%s"', $serviceId), Exception::REFERENCED_SERVICE_BUILD_ERROR, $e);
                         }
 
-                        if(!is_callable($operation))
-                        {
+                        if (!is_callable($operation)) {
                             throw new Exception(sprintf('Referenced service "%s" is not an instance of a callable class ("%s" should implement __invoke())', $serviceId, get_class($operation)), Exception::REFERENCED_SERVICE_IS_NOT_CALLABLE);
                         }
-                    } elseif(class_exists($operation))
-                    {
+                    } elseif (class_exists($operation)) {
                         $operation = new $operation;
 
-                        if(!is_callable($operation))
-                        {
+                        if (!is_callable($operation)) {
                             throw new Exception(sprintf('Class "%s" is not callable (it should implement __invoke())', get_class($operation)), Exception::CLASS_IS_NOT_INVOKABLE);
                         }
-                    } else
-                    {
+                    } else {
                         throw new Exception(sprintf('Class "%s" does not exist', $operation), Exception::CLASS_DOES_NO_EXIST);
                     }
                 }
-
-            } catch(Exception $e)
-            {
+            } catch (Exception $e) {
                 throw new Exception(sprintf('Cannot run operation: %s', $this->getDescription()), Exception::FAILED_RUNNING_OPERATION, $e);
             }
 
@@ -142,13 +129,12 @@ class Invokable extends AbstractInvokable
     /**
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
 
         $operation = $this->operation;
-        
-        switch(true)
-        {
+
+        switch (true) {
 
             case $operation instanceof ServiceReference:
                 $description = 'Referenced service "' . $operation->getId() . '"';
@@ -168,14 +154,10 @@ class Invokable extends AbstractInvokable
                 break;
 
             case is_callable($operation):
-                if(is_array($operation))
-                {
-                    if(is_object($operation[0]))
-                    {
+                if (is_array($operation)) {
+                    if (is_object($operation[0])) {
                         $description = 'Dynamic call to ' . get_class($operation[0]) . '::' . $operation[1] . '()';
-                    }
-                    else
-                    {
+                    } else {
                         $description = 'Static call to ' . get_class($operation[0]) . '::' . $operation[1] . '()';
                     }
                 } else $description = sprintf('Native callable');
@@ -188,12 +170,11 @@ class Invokable extends AbstractInvokable
 
         return $description;
     }
-    
+
     public function setServicesFactory(ContainerInterface $servicesFactory)
     {
         $this->servicesFactory = $servicesFactory;
-        
+
         return $this;
     }
-    
 }

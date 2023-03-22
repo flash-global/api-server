@@ -22,4 +22,6 @@ abstract class AjaxAction extends HttpAction
         $this->getApplication()->setParam('layout.name', false);
         return ($response instanceof JsonResponse) ? $response : new JsonResponse($response);
     }
+
+
 }

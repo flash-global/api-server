@@ -2,6 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Notification;
 
+use ObjectivePHP\Html\Message\MessageInterface;
 use ObjectivePHP\Matcher\Matcher;
 use ObjectivePHP\Primitives\Collection\Collection;
 
@@ -12,10 +13,10 @@ use ObjectivePHP\Primitives\Collection\Collection;
  */
 class Stack extends Collection implements MessageInterface
 {
-    
+
     /** @var Matcher $matcher */
     protected $matcher;
-    
+
     /**
      * Stack constructor.
      *
@@ -24,10 +25,10 @@ class Stack extends Collection implements MessageInterface
     public function __construct($messages = [])
     {
         parent::__construct($messages);
-        
+
         $this->restrictTo(MessageInterface::class);
     }
-    
+
     /**
      * Reduce the Stack with a filter.
      **
@@ -37,13 +38,13 @@ class Stack extends Collection implements MessageInterface
      * @return Stack
      * @throws \ObjectivePHP\Primitives\Exception
      */
-    public function for ($filter)
+    public function for($filter)
     {
         return (clone $this)->filter(function ($value, $key) use ($filter) {
             return $this->getMatcher()->match($filter, $key);
         });
     }
-    
+
     /**
      * @return Matcher
      */
@@ -52,10 +53,10 @@ class Stack extends Collection implements MessageInterface
         if (is_null($this->matcher)) {
             $this->matcher = new Matcher();
         }
-        
+
         return $this->matcher;
     }
-    
+
     /**
      * @param Matcher $matcher
      *
@@ -64,10 +65,10 @@ class Stack extends Collection implements MessageInterface
     public function setMatcher(Matcher $matcher)
     {
         $this->matcher = $matcher;
-        
+
         return $this;
     }
-    
+
     /**
      * Add a Message to the Stack.
      *
@@ -90,17 +91,17 @@ class Stack extends Collection implements MessageInterface
                 $this->set($key, $stack);
             }
         }
-        
+
         return $this;
     }
-    
+
     /**
      * @param string|null $filter
      *
      * @return int
      * @throws \ObjectivePHP\Primitives\Exception
      */
-    public function count($filter= null)
+    public function count($filter = null)
     {
         if (is_null($filter)) {
             $count = parent::count();
@@ -116,10 +117,10 @@ class Stack extends Collection implements MessageInterface
                 }
             );
         }
-        
+
         return $count;
     }
-    
+
     /**
      * @return bool
      */
@@ -127,7 +128,7 @@ class Stack extends Collection implements MessageInterface
     {
         return $this->hasError();
     }
-    
+
     /**
      * Does the stack contain error (at whatever recursion level)?
      *
@@ -141,8 +142,7 @@ class Stack extends Collection implements MessageInterface
                 return true;
             }
         }
-        
+
         return false;
     }
-    
 }

@@ -2,9 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory;
 
+use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use Interop\Container\ContainerInterface;
 use ObjectivePHP\Invokable\Invokable;
-use ObjectivePHP\Invokable\InvokableInterface;
 use ObjectivePHP\Matcher\Matcher;
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\Primitives\String\Str;
@@ -14,7 +15,10 @@ use ObjectivePHP\ServicesFactory\Builder\ServiceBuilderInterface;
 use ObjectivePHP\ServicesFactory\Exception\Exception;
 use ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException;
 use ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
+use ObjectivePHP\ServicesFactory\Specs\InjectionAnnotationProvider;
 use ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
+use phpDocumentor\Reflection\DocBlock;
+use phpDocumentor\Reflection\DocBlockFactory;
 
 class ServicesFactory implements ContainerInterface
 {
@@ -40,6 +44,16 @@ class ServicesFactory implements ContainerInterface
     protected $injectors;
 
     /**
+     * @var AnnotationReader
+     */
+    protected $annotationsReader;
+
+    /**
+     * @var array
+     */
+    protected $delegateContainers = [];
+
+    /**
      * ServicesFactory constructor.
      */
     public function __construct()
@@ -47,8 +61,12 @@ class ServicesFactory implements ContainerInterface
         // init collections
         $this->services  = (new Collection())->restrictTo(ServiceSpecsInterface::class);
         $this->builders  = (new Collection())->restrictTo(ServiceBuilderInterface::class);
-        $this->injectors = (new Collection())->restrictTo(InvokableInterface::class);
+        $this->injectors = new Collection();
         $this->instances = new Collection();
+
+        // register default annotation reader
+        AnnotationRegistry::registerFile(__DIR__ . '/Annotation/Inject.php');
+        $this->setAnnotationsReader(new AnnotationReader());
 
         // load default builders
         $this->builders->append(new ClassServiceBuilder(), new PrefabServiceBuilder());
@@ -71,7 +89,14 @@ class ServicesFactory implements ContainerInterface
         $serviceSpecs = $this->getServiceSpecs($service);
 
         if (is_null($serviceSpecs)) {
-            throw new ServiceNotFoundException(sprintf('Service reference "%s" matches no registered service in this factory', $service), ServiceNotFoundException::UNREGISTERED_SERVICE_REFERENCE);
+            foreach ($this->delegateContainers as $delegate) {
+                if ($instance = $delegate->get($service)) {
+                    $this->injectDependencies($instance);
+                    return $instance;
+                }
+            }
+
+            throw new ServiceNotFoundException(sprintf('Service reference "%s" matches no registered service in this factory or its delegate containers', $service), ServiceNotFoundException::UNREGISTERED_SERVICE_REFERENCE);
         }
 
         if (
@@ -133,9 +158,7 @@ class ServicesFactory implements ContainerInterface
             $matcher = new Matcher();
             foreach ($this->services as $id => $specs) {
                 if ($matcher->match($service, $id)) {
-
                     return (clone $specs)->setId($service);
-                    break;
                 }
                 $specs = null;
             }
@@ -193,7 +216,16 @@ class ServicesFactory implements ContainerInterface
     {
         $service = ($service instanceof ServiceReference) ? $service->getId() : $service;
 
-        return (bool) $this->getServiceSpecs($service);
+        $has = (bool) $this->getServiceSpecs($service);
+
+        if (!$has) {
+            foreach ($this->getDelegateContainers() as $container) {
+                $has = $container->has($service);
+                if ($has) break;
+            }
+        }
+
+        return $has;
     }
 
     /**
@@ -214,11 +246,6 @@ class ServicesFactory implements ContainerInterface
                 } catch (\Exception $e) {
                     throw new Exception(AbstractServiceSpecs::class . '::factory() was unable to build service specifications', Exception::INVALID_SERVICE_SPECS, $e);
                 }
-            }
-
-            if (!$serviceSpecs instanceof ServiceSpecsInterface) {
-                // the specs are still not valid
-                throw new Exception('Service specifications are not an instance of ' . ServiceSpecsInterface::class, Exception::INVALID_SERVICE_SPECS);
             }
 
             $serviceId = Str::cast($serviceSpecs->getId())->lower();
@@ -271,7 +298,31 @@ class ServicesFactory implements ContainerInterface
      */
     public function registerInjector($injector)
     {
-        $this->injectors[] = Invokable::cast($injector);
+
+        if (!is_callable($injector)) {
+            // turn injector to Invokable if it is not a native callable
+            $injector = Invokable::cast($injector);
+        }
+
+        $this->injectors[] = $injector;
+
+        return $this;
+    }
+
+    /**
+     * @return AnnotationReader
+     */
+    public function getAnnotationsReader()
+    {
+        return $this->annotationsReader;
+    }
+
+    /**
+     * @param AnnotationReader $annotationsReader
+     */
+    public function setAnnotationsReader(AnnotationReader $annotationsReader)
+    {
+        $this->annotationsReader = $annotationsReader;
 
         return $this;
     }
@@ -284,11 +335,81 @@ class ServicesFactory implements ContainerInterface
      */
     public function injectDependencies($instance, $serviceSpecs = null)
     {
-        // call injectors if any
-        $this->getInjectors()->each(function ($injector) use ($instance, $serviceSpecs) {
-            $injector($instance, $this, $serviceSpecs);
-        });
+        if (is_object($instance)) {
+            // call injectors if any
+            $this->getInjectors()->each(function ($injector) use ($instance, $serviceSpecs) {
+                $injector($instance, $this, $serviceSpecs);
+            });
+
+            if ($instance instanceof InjectionAnnotationProvider) {
+                // automated injections
+                $reflectedInstance = new \ReflectionObject($instance);
+                $reflectedProperties = $reflectedInstance->getProperties();
+
+                foreach ($reflectedProperties as $reflectedProperty) {
+                    $injection = $this->getAnnotationsReader()->getPropertyAnnotation($reflectedProperty, Annotation\Inject::class);
+                    if ($injection) {
+                        if ($injection->class || !$injection->service) {
+                            $className = $injection->getDependency();
+
+                            if (!$className) {
+                                // use phpdocumentor to get var type
+                                $docblock = DocBlockFactory::createInstance()->create($reflectedProperty);
+                                if ($docblock->hasTag('var')) {
+                                    $className = (string)$docblock->getTagsByName('var')[0]->getType()->getFqsen();
+                                } else {
+                                    throw new Exception('Undefined dependency. Use either dependency="<className>|<serviceName>" or "@var $property ClassName"', Exception::MISSING_DEPENDENCY_DEFINITION);
+                                }
+                            }
+
+                            $dependency = new $className;
+                            $this->injectDependencies($dependency);
+                        } else {
+                            $serviceName = $injection->getDependency();
+                            if (!$this->has($serviceName)) {
+                                throw new Exception(sprintf('Dependent service "%s" is not registered', $serviceName), Exception::DEPENDENCY_NOT_FOUND);
+                            }
+                            $dependency = $this->get($serviceName);
+                        }
+
+                        if ($injection->setter) {
+                            $setter = $injection->setter;
+                            $instance->$setter($dependency);
+                        } else {
+                            if (!$reflectedProperty->isPublic()) {
+                                $reflectedProperty->setAccessible(true);
+                            }
+
+                            $reflectedProperty->setValue($instance, $dependency);
+
+                            if (!$reflectedProperty->isPublic()) {
+                                $reflectedProperty->setAccessible(false);
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         return $this;
+    }
+
+    /**
+     * @param ContainerInterface $delegate
+     * @return $this
+     */
+    public function registerDelegateContainer(ContainerInterface $delegate)
+    {
+        $this->delegateContainers[] = $delegate;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDelegateContainers()
+    {
+        return $this->delegateContainers;
     }
 }

@@ -137,11 +137,6 @@ class SomeGateway extends AbstractGateway
         // TODO: Implement persist() method.
     }
 
-    public function create(EntityInterface $entity): bool
-    {
-        // TODO: Implement create() method.
-    }
-
     public function update(ResultSetDescriptorInterface $descriptor, $data)
     {
         // TODO: Implement update() method.
@@ -198,11 +193,6 @@ class OtherGateway extends AbstractGateway
     public function persist(EntityInterface ...$entities): bool
     {
         // TODO: Implement persist() method.
-    }
-
-    public function create(EntityInterface $entity): bool
-    {
-        // TODO: Implement create() method.
     }
 
     public function update(ResultSetDescriptorInterface $descriptor, $data)
@@ -278,11 +268,6 @@ class InvalidGateway extends AbstractGateway
     public function persist(EntityInterface ...$entities): bool
     {
         // TODO: Implement persist() method.
-    }
-
-    public function create(EntityInterface $entity): bool
-    {
-        // TODO: Implement create() method.
     }
 
     public function update(ResultSetDescriptorInterface $descriptor, $data)

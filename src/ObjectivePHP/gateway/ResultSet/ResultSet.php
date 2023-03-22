@@ -45,7 +45,7 @@ class ResultSet extends \ArrayObject implements ResultSetInterface
      * @param EntityInterface[] ...$entities
      * @return ResultSetInterface
      */
-    public function addEntities(EntityInterface ...$entities) : ResultSetInterface
+    public function addEntities(EntityInterface ...$entities): ResultSetInterface
     {
         /** @var EntityInterface $entity */
         foreach ($entities as $entity) {

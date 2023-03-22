@@ -1,48 +1,47 @@
 <?php
 
-    namespace Fei\ApiServer\ObjectivePHP\Invokable;
+namespace Fei\ApiServer\ObjectivePHP\Invokable;
 
-    use ObjectivePHP\Application\ApplicationInterface;
-    use ObjectivePHP\ServicesFactory\ServicesFactory;
+use ObjectivePHP\Application\ApplicationInterface;
+use ObjectivePHP\ServicesFactory\ServicesFactory;
 
+
+/**
+ * Interface InvokableInterface
+ *
+ * @package ObjectivePHP\Invokable
+ */
+interface InvokableInterface
+{
+    /**
+     * Run the operation
+     *
+     * @param mixed                ...$args
+     *
+     * @return mixed
+     */
+    public function __invoke(...$args);
 
     /**
-     * Interface InvokableInterface
+     * Return short description
      *
-     * @package ObjectivePHP\Invokable
+     * @return string
      */
-    interface InvokableInterface
-    {
-        /**
-         * Run the operation
-         *
-         * @param mixed                ...$args
-         *
-         * @return mixed
-         */
-        public function __invoke(...$args);
+    public function getDescription(): string;
 
-        /**
-         * Return short description
-         *
-         * @return string
-         */
-        public function getDescription() : string;
+    /**
+     * @param ApplicationInterface $app
+     * @return InvokableInterface
+     */
+    public function setApplication(ApplicationInterface $app): InvokableInterface;
 
-        /**
-         * @param ApplicationInterface $app
-         * @return InvokableInterface
-         */
-        public function setApplication(ApplicationInterface $app) : InvokableInterface;
+    /**
+     * @return ApplicationInterface
+     */
+    public function getApplication(): ApplicationInterface;
 
-        /**
-         * @return ApplicationInterface
-         */
-        public function getApplication() : ApplicationInterface;
-
-	/**
-	 * @return callable
-	 */
-	public function getCallable();
-
-    }
+    /**
+     * @return callable
+     */
+    public function getCallable();
+}

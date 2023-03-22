@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Objective PHP project
  *
@@ -23,5 +24,4 @@ use ObjectivePHP\Primitives\Exception;
  */
 class BreakException extends Exception
 {
-    
 }
