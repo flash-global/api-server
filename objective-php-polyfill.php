@@ -240,11 +240,6 @@ if (!class_exists('ObjectivePHP\Message\Request\Parameter\Container\AbstractCont
     echo 'AbstractContainer ' . $result . PHP_EOL;
 }
 
-if (!class_exists('ObjectivePHP\Message\Request\AbstractContainer')) {
-    $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\AbstractContainer', 'ObjectivePHP\Message\Request\AbstractContainer');
-    echo 'AbstractContainer ' . $result . PHP_EOL;
-}
-
 if (!interface_exists('ObjectivePHP\Message\Response\ResponseInterface')) {
     $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Response\ResponseInterface', 'ObjectivePHP\Message\Response\ResponseInterface');
     echo 'Message\Response\ResponseInterface ' . $result . PHP_EOL;
