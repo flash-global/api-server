@@ -2,12 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Config;
 
-
 use ObjectivePHP\Primitives\Merger\MergePolicy;
 
 abstract class AbstractDirective implements DirectiveInterface
 {
-
     /**
      * @var string Directive description
      */

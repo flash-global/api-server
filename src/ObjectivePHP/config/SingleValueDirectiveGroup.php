@@ -1,15 +1,6 @@
 <?php
 
-/**
- * This file is part of the Objective PHP project
- *
- * More info about Objective PHP on www.objective-php.org
- *
- * @license http://opensource.org/licenses/GPL-3.0 GNU GPL License 3.0
- */
-
 namespace Fei\ApiServer\ObjectivePHP\Config;
-
 
 use ObjectivePHP\Primitives\Merger\MergePolicy;
 
@@ -34,7 +25,7 @@ abstract class SingleValueDirectiveGroup extends AbstractDirective
     public function __construct($identifier, $value)
     {
         $this->identifier = $identifier;
-        $this->value      = $value;
+        $this->value = $value;
     }
 
     /**
@@ -64,7 +55,9 @@ abstract class SingleValueDirectiveGroup extends AbstractDirective
         if ($mergePolicy == MergePolicy::AUTO) {
             if (is_array($config->get($identifier))) {
                 $mergePolicy = MergePolicy::NATIVE;
-            } else $mergePolicy = MergePolicy::REPLACE;
+            } else {
+                $mergePolicy = MergePolicy::REPLACE;
+            }
         }
 
         // otherwise handle MergePolicy

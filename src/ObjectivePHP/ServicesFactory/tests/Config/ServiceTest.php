@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\ObjectivePHP\Package\Config;
 
 use ObjectivePHP\ServicesFactory\Config\Service;
@@ -52,5 +53,4 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertAttributeEquals(['params' => ['firstParam' => 'fake-params']], 'value', $service);
     }
-
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Fei\ApiServer\ObjectivePHP\Application\Session;
 
 use ObjectivePHP\Application\Exception;
@@ -12,7 +11,6 @@ use ObjectivePHP\Primitives\Collection\Collection;
  */
 class Session
 {
-
     const SESSION_MODE_NATIVE = 'native';
 
     const SESSION_MODE_MOCK = 'mock';
@@ -42,12 +40,13 @@ class Session
     public function __construct($namespace = null, $mode = null)
     {
 
-        if (is_null($mode)) $mode = self::$defaultMode;
+        if (is_null($mode)) {
+            $mode = self::$defaultMode;
+        }
 
         $this->setNamespace((string) $namespace);
 
         if ($mode == self::SESSION_MODE_NATIVE) {
-
             $status = session_status();
 
             if ($status == PHP_SESSION_DISABLED) {
@@ -138,7 +137,9 @@ class Session
             }
         });
 
-        if (!$matches->isEmpty()) return $matches;
+        if (!$matches->isEmpty()) {
+            return $matches;
+        }
 
         return  $default;
     }
@@ -166,8 +167,11 @@ class Session
      */
     public function clear()
     {
-        if (!$this->namespace) self::$data = [];
-        else $this->remove('*');
+        if (!$this->namespace) {
+            self::$data = [];
+        } else {
+            $this->remove('*');
+        }
 
         return $this;
     }

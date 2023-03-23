@@ -2,12 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Markdown;
 
-
-/**
- * Class Md
- *
- * @package ObjectivePHP\Html\Markdown
- */
 /**
  * Class Md
  *
@@ -27,7 +21,9 @@ class Md
      */
     public function __construct($markdown = null)
     {
-        if (!is_null($markdown)) $this->content = \Parsedown::instance()->text($markdown);
+        if (!is_null($markdown)) {
+            $this->content = \Parsedown::instance()->text($markdown);
+        }
     }
 
     /**

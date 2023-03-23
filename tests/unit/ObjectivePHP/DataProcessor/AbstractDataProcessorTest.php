@@ -1,13 +1,13 @@
 <?php
 
-namespace Test\ObjectivePHP\DataProcessor;
+namespace Tests\Fei\ApiServer\ObjectivePHP\DataProcessor;
 
 
 use ObjectivePHP\DataProcessor\AbstractDataProcessor;
-use ObjectivePHP\PHPUnit\TestCase;
+use Codeception\Test\Unit;
 use ObjectivePHP\Primitives\String\Str;
 
-class AbstractDataProcessorTest extends TestCase
+class AbstractDataProcessorTest extends Unit
 {
     public function testMessagesHandling()
     {

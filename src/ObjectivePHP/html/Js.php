@@ -1,22 +1,12 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 13/11/2015
- * Time: 10:55
- */
-
 namespace Fei\ApiServer\ObjectivePHP\Html;
-
 
 use ObjectivePHP\Html\Tag\Tag;
 
 class Js
 {
-
     static protected $files = [];
-
 
     public static function embed($src, $attributes = [])
     {
@@ -39,7 +29,7 @@ class Js
         echo '<!-- End of embedded JavaScript files -->' . PHP_EOL;
     }
 
-    static public function get()
+    public static function get()
     {
         return self::$files;
     }

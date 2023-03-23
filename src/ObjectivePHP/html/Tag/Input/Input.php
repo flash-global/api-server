@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Input;
 
-
 use ObjectivePHP\Html\Message\MessageStack;
 use ObjectivePHP\Html\Tag\Tag;
 use ObjectivePHP\Primitives\Collection\Collection;
@@ -10,8 +9,6 @@ use ObjectivePHP\Primitives\Merger\MergePolicy;
 
 class Input extends Tag
 {
-
-
     /**
      * Data for default values
      *
@@ -160,14 +157,15 @@ class Input extends Tag
         $input = Select::factory('select', null, ...$classes);
         $input->alwaysClose();
         $input->addAttributes(['id' => $id]);
-        if ($options) $input->addOptions($options);
+        if ($options) {
+            $input->addOptions($options);
+        }
 
         return self::decorate($input);
     }
 
     public static function option($value, $label = null)
     {
-
         if (is_null($label)) {
             $label = $value;
             $value = null;
@@ -287,21 +285,21 @@ class Input extends Tag
         $name = $this->getAttribute('name');
 
         // filter array notation
-        if (substr($name, -2) == '[]') $name = substr($name, 0, -2);
+        if (substr($name, -2) == '[]') {
+            $name = substr($name, 0, -2);
+        }
 
         $injectedValues = $this->getData();
         $value = $injectedValues ? $injectedValues->get($name) : null;
         $value =  $value ?: $this->defaultValue();
 
-        if (!$value) return;
+        if (!$value) {
+            return;
+        }
 
         switch ($this->getTag()) {
-
-
             case 'input':
-
                 switch ($this->getAttribute('type')) {
-
                     case 'password':
                         // do not restore password value
                         break;

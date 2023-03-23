@@ -6,10 +6,8 @@ use ObjectivePHP\Matcher\Exception;
 use ObjectivePHP\Matcher\Matcher;
 use ObjectivePHP\PHPUnit\TestCase;
 
-
 class MatcherTest extends TestCase
 {
-
     /**
      * @dataProvider dataProviderForTestInvalidMatch
      */

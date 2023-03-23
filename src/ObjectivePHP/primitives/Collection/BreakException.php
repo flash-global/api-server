@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection;
 
-
 use ObjectivePHP\Primitives\Exception;
 
 /**

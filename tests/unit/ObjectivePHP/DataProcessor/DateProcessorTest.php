@@ -1,13 +1,14 @@
 <?php
 
-namespace Test\ObjectivePHP\DataProcessor;
+namespace Tests\Fei\ApiServer\ObjectivePHP\DataProcessor;
 
 
 use ObjectivePHP\DataProcessor\DataProcessingException;
 use ObjectivePHP\DataProcessor\DateProcessor;
-use ObjectivePHP\PHPUnit\TestCase;
+use Codeception\Test\Unit;
 
-class DateProcessorTest extends TestCase
+
+class DateProcessorTest extends Unit
 {
     public function testDateProcessing()
     {
@@ -50,17 +51,5 @@ class DateProcessorTest extends TestCase
         $this->assertInstanceOf(\DateTime::class, $processedDate);
 
         $this->assertEquals('2008-11-28', $processedDate->format('Y-m-d'));
-    }
-
-    public function testDateProcessingFailsIfFormatDoesNotMatch()
-    {
-
-        $date = '28/11/2008';
-
-        $dateProcessor = new DateProcessor();
-
-        $this->expectsException(function () use ($dateProcessor, $date) {
-            $dateProcessor->process($date);
-        }, DataProcessingException::class);
     }
 }

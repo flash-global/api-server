@@ -100,14 +100,12 @@ class Matcher
             // no star case
             if ($currentFilterPart != self::T_STAR && $currentReferencePart != self::T_STAR) {
                 switch (true) {
-
                     case $currentFilterPart === $currentReferencePart:
                     case $currentFilterPart === self::T_QUESTION_MARK:
                     case $currentReferencePart === self::T_QUESTION_MARK:
                     case is_array($currentFilterPart) && is_array($currentReferencePart) && array_intersect($currentFilterPart, $currentReferencePart):
                     case is_array($currentFilterPart) && in_array($currentReferencePart, $currentFilterPart):
                     case is_array($currentReferencePart) && in_array($currentFilterPart, $currentReferencePart):
-
                         array_shift($filterParts);
                         array_shift($referenceParts);
                         if (!$filterParts xor !$referenceParts) {
@@ -227,8 +225,11 @@ class Matcher
     {
         if (strstr($string, '*')) {
             return true;
-        } elseif (strstr($string, '?')) return true;
-        elseif (strstr($string, '[')) return true;
+        } elseif (strstr($string, '?')) {
+            return true;
+        } elseif (strstr($string, '[')) {
+            return true;
+        }
 
         return false;
     }

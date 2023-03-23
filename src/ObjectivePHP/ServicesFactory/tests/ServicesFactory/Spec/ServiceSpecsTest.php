@@ -8,15 +8,12 @@ use ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
 use ObjectivePHP\ServicesFactory\Specs\ClassServiceSpecs;
 use ObjectivePHP\ServicesFactory\Specs\UndefinedServiceSpecs;
 
-
 class ServiceSpecsTest extends TestCase
 {
-
     /**
      * @var ClassServiceSpecs
      */
     protected $instance;
-
 
     public function testConstructor()
     {

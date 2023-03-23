@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Merger;
 
-
 abstract class AbstractMerger implements MergerInterface
 {
     /**

@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\Config\SimpleRoute;
 use ObjectivePHP\Application\Config\UrlAlias;
@@ -24,7 +23,6 @@ class SimpleRouter extends AbstractMiddleware
      */
     public function run(ApplicationInterface $app)
     {
-
         $path = rtrim($app->getRequest()->getUri()->getPath(), '/');
 
         // default to home

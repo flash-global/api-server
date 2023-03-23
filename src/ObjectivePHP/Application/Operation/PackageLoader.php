@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 
 class PackageLoader

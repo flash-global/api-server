@@ -230,19 +230,34 @@ if (!interface_exists('ObjectivePHP\ServicesFactory\Specs\InjectionAnnotationPro
     echo 'InjectionAnnotationProvider ' . $result . PHP_EOL;
 }
 
-if (!interface_exists('ObjectivePHP\Message\Request\RequestInterface')) {
-    $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\RequestInterface', 'ObjectivePHP\Message\Request\RequestInterface');
-    echo 'Message\Request\RequestInterface ' . $result . PHP_EOL;
-}
-
 if (!interface_exists('ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface')) {
     $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface', 'ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface');
     echo 'ParameterContainerInterface ' . $result . PHP_EOL;
 }
 
+if (!class_exists('ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer')) {
+    $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer', 'ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer');
+    echo 'AbstractContainer ' . $result . PHP_EOL;
+}
+
+if (!class_exists('ObjectivePHP\Message\Request\AbstractContainer')) {
+    $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\AbstractContainer', 'ObjectivePHP\Message\Request\AbstractContainer');
+    echo 'AbstractContainer ' . $result . PHP_EOL;
+}
+
 if (!interface_exists('ObjectivePHP\Message\Response\ResponseInterface')) {
     $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Response\ResponseInterface', 'ObjectivePHP\Message\Response\ResponseInterface');
     echo 'Message\Response\ResponseInterface ' . $result . PHP_EOL;
+}
+
+if (!interface_exists('ObjectivePHP\Message\Request\RequestInterface')) {
+    $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\RequestInterface', 'ObjectivePHP\Message\Request\RequestInterface');
+    echo 'Message\Request\RequestInterface ' . $result . PHP_EOL;
+}
+
+if (!class_exists('ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer')) {
+    $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer', 'ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer');
+    echo 'HttpParameterContainer ' . $result . PHP_EOL;
 }
 
 if (!class_exists('ObjectivePHP\Events\EventsHandler')) {
@@ -850,19 +865,9 @@ if (!class_exists('ObjectivePHP\Html\Js')) {
     echo 'Html\Js ' . $result . PHP_EOL;
 }
 
-if (!class_exists('ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer')) {
-    $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer', 'ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer');
-    echo 'AbstractContainer ' . $result . PHP_EOL;
-}
-
 if (!class_exists('ObjectivePHP\Message\Request\Parameter\Container\CliParameterContainer')) {
     $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\CliParameterContainer', 'ObjectivePHP\Message\Request\Parameter\Container\CliParameterContainer');
     echo 'CliParameterContainer ' . $result . PHP_EOL;
-}
-
-if (!class_exists('ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer')) {
-    $result = class_alias('Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer', 'ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer');
-    echo 'HttpParameterContainer ' . $result . PHP_EOL;
 }
 
 if (!class_exists('ObjectivePHP\Message\Request\AbstractRequest')) {

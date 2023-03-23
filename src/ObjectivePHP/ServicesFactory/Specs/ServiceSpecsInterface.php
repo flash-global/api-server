@@ -2,10 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
-
 interface ServiceSpecsInterface
 {
-
     /**
      * @return string Service identifier - must be unique
      */

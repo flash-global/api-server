@@ -1,19 +1,9 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gde
- * Date: 05/09/2017
- * Time: 16:13
- */
-
 namespace Fei\ApiServer\ObjectivePHP\Config;
-
 
 class StackedDirective extends AbstractDirective
 {
-
-
     protected $identifier;
 
     protected $aliases = [];

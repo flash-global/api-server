@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Input;
 
-
 class Option extends Input
 {
     public function isSelected()

@@ -1,21 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gde
- * Date: 04/09/2017
- * Time: 12:49
- */
 
 namespace Tests\ObjectivePHP\Html;
-
 
 use ObjectivePHP\Html\Js;
 
 class JsTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
     protected function setUp()
     {
         Js::clear();
@@ -36,7 +26,5 @@ class JsTest extends \PHPUnit_Framework_TestCase
 
         Js::prepend('/js/prioritary.js', ['attr' => 'value']);
         $this->assertEquals(['/js/prioritary.js' => ['attr' => 'value'], '/js/other.js' => ['attr' => 'value'], '/js/functions.js' => []], Js::get());
-
     }
-
 }

@@ -2,10 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Merger;
 
-
 interface MergerInterface
 {
-
     /**
      * @param $policy   mixed
      * @param $keys     mixed

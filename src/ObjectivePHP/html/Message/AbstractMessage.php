@@ -2,12 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Message;
 
-
 use ObjectivePHP\Primitives\String\Str;
 
 class AbstractMessage implements MessageInterface
 {
-
     protected $type;
 
     /**

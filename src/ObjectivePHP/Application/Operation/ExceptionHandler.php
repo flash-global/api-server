@@ -2,16 +2,11 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-
-use ObjectivePHP\Application\{
-    ApplicationInterface,
-    Exception
-};
-use Zend\Diactoros\{
-    Response,
-    Response\HtmlResponse,
-    Response\SapiEmitter
-};
+use ObjectivePHP\Application\ApplicationInterface;
+use ObjectivePHP\Application\Exception;
+use Zend\Diactoros\Response;
+use Zend\Diactoros\Response\HtmlResponse;
+use Zend\Diactoros\Response\SapiEmitter;
 
 /**
  * Class ExceptionHandler
@@ -45,8 +40,7 @@ class ExceptionHandler
         $this->app = $app;
         $exception = $this->app->getException();
 
-        if (
-            $exception instanceof Exception
+        if ($exception instanceof Exception
             && preg_match('/^Failed running hook "(.*)" of type:/', $exception->getMessage(), $m)
             && $exception->getPrevious()
         ) {

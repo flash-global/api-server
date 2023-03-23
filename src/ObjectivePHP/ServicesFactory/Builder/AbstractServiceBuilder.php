@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
-
 use ObjectivePHP\Config\ConfigReference;
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\ServicesFactory\ServicesFactory;
@@ -18,7 +17,6 @@ use ObjectivePHP\ServicesFactory\ServicesFactoryAwareTrait;
  */
 abstract class AbstractServiceBuilder implements ServiceBuilderInterface, ServicesFactoryAwareInterface
 {
-
     use ServicesFactoryAwareTrait;
 
     /**

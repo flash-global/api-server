@@ -30,7 +30,6 @@ class RouteFilter extends AbstractFilter
     {
         // check route filter
         if ($this->getFilter() != '*') {
-
             $request = $app->getRequest();
 
             if (!$request) {

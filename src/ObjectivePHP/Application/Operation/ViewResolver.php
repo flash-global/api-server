@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-
 use ObjectivePHP\Application\Action\RenderableActionInterface;
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\Middleware\AbstractMiddleware;

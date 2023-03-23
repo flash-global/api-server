@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives;
 
-
 /**
  * Class AbstractPrimitive
  * @package ObjectivePHP\Primitives
@@ -107,7 +106,7 @@ abstract class AbstractPrimitive implements PrimitiveInterface
      * @param $class
      * @return bool
      */
-    static public function isPrimitive($class)
+    public static function isPrimitive($class)
     {
         // check that $primitive actually is a Primitive class name
         $reflectionClass = new \ReflectionClass($class);

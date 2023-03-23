@@ -1,119 +1,118 @@
 <?php
-    
-    namespace Fei\ApiServer\ObjectivePHP\Application;
 
-    use ObjectivePHP\Application\Workflow\Step;
-    use ObjectivePHP\Application\Workflow\WorkflowInterface;
-    use ObjectivePHP\Config\Config;
-    use ObjectivePHP\Events\EventsHandler;
-    use ObjectivePHP\Invokable\InvokableInterface;
-    use ObjectivePHP\Message\Request\RequestInterface;
-    use ObjectivePHP\Message\Response\ResponseInterface;
-    use ObjectivePHP\Primitives\Collection\Collection;
-    use ObjectivePHP\ServicesFactory\ServicesFactory;
-    use Zend\Diactoros\Response;
+namespace Fei\ApiServer\ObjectivePHP\Application;
+
+use ObjectivePHP\Application\Workflow\Step;
+use ObjectivePHP\Application\Workflow\WorkflowInterface;
+use ObjectivePHP\Config\Config;
+use ObjectivePHP\Events\EventsHandler;
+use ObjectivePHP\Invokable\InvokableInterface;
+use ObjectivePHP\Message\Request\RequestInterface;
+use ObjectivePHP\Message\Response\ResponseInterface;
+use ObjectivePHP\Primitives\Collection\Collection;
+use ObjectivePHP\ServicesFactory\ServicesFactory;
+use Zend\Diactoros\Response;
+
+/**
+ * Interface ApplicationInterface
+ *
+ * @package ObjectivePHP\Application
+ */
+interface ApplicationInterface
+{
+    /**
+     * @return mixed
+     */
+    public function init();
 
     /**
-     * Interface ApplicationInterface
-     *
-     * @package ObjectivePHP\Application
+     * @return mixed
      */
-    interface ApplicationInterface
-    {
+    public function run();
 
-        /**
-         * @return mixed
-         */
-        public function init();
+    /**
+     * @return EventsHandler
+     */
+    public function getEventsHandler() : EventsHandler;
 
-        /**
-         * @return mixed
-         */
-        public function run();
+    /**
+     * @return ServicesFactory
+     */
+    public function getServicesFactory() : ServicesFactory;
 
-        /**
-         * @return EventsHandler
-         */
-        public function getEventsHandler() : EventsHandler;
+    /**
+     * @return Config
+     */
+    public function getConfig() : Config;
 
-        /**
-         * @return ServicesFactory
-         */
-        public function getServicesFactory() : ServicesFactory;
+    /**
+     * @param RequestInterface $request
+     *
+     * @return ApplicationInterface
+     */
+    public function setRequest(RequestInterface $request) : ApplicationInterface;
 
-        /**
-         * @return Config
-         */
-        public function getConfig() : Config;
+    /**
+     * @return RequestInterface
+     */
+    public function getRequest() : RequestInterface;
 
-        /**
-         * @param RequestInterface $request
-         *
-         * @return ApplicationInterface
-         */
-        public function setRequest(RequestInterface $request) : ApplicationInterface;
+    /**
+     * @param Response $request
+     *
+     * @return ApplicationInterface
+     */
+    public function setResponse(Response $request) : ApplicationInterface;
 
-        /**
-         * @return RequestInterface
-         */
-        public function getRequest() : RequestInterface;
+    /**
+     * @return ResponseInterface
+     */
+    public function getResponse() : Response;
 
-        /**
-         * @param Response $request
-         *
-         * @return ApplicationInterface
-         */
-        public function setResponse(Response $request) : ApplicationInterface;
+    /**
+     * @param $step
+     *
+     * @return Step
+     */
+    public function getStep($step) : Step;
 
-        /**
-         * @return ResponseInterface
-         */
-        public function getResponse() : Response;
+    /**
+     * @return Collection
+     */
+    public function getSteps() : Collection;
 
-        /**
-         * @param $step
-         *
-         * @return Step
-         */
-        public function getStep($step) : Step;
+    /**
+     * @param \Throwable $exception
+     *
+     * @return ApplicationInterface
+     */
+    public function setException(\Throwable $exception) : ApplicationInterface;
 
-        /**
-         * @return Collection
-         */
-        public function getSteps() : Collection;
+    /**
+     * @return \Throwable
+     */
+    public function getException() : \Throwable;
 
-        /**
-         * @param \Throwable $exception
-         *
-         * @return ApplicationInterface
-         */
-        public function setException(\Throwable $exception) : ApplicationInterface;
+    /**
+     * @param mixed $invokable
+     *
+     * @return ApplicationInterface
+     */
+    public function setExceptionHandler($invokable) : ApplicationInterface;
 
-        /**
-         * @return \Throwable
-         */
-        public function getException() : \Throwable;
+    /**
+     * @return InvokableInterface
+     */
+    public function getExceptionHandler() : InvokableInterface;
 
-        /**
-         * @param mixed $invokable
-         *
-         * @return ApplicationInterface
-         */
-        public function setExceptionHandler($invokable) : ApplicationInterface;
-
-        /**
-         * @return InvokableInterface
-         */
-        public function getExceptionHandler() : InvokableInterface;
-
-        /**
-         * @return array
-         */
-        public function getExecutionTrace() : array;
+    /**
+     * @return array
+     */
+    public function getExecutionTrace() : array;
 
 
-        /**
-         * @return string
-         */
-        public function getEnv() : string;
-    }
+    /**
+     * @return string
+     */
+    public function getEnv() : string;
+}

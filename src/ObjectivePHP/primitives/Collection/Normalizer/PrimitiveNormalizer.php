@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection\Normalizer;
 
-
 use ObjectivePHP\Primitives\AbstractPrimitive;
 use ObjectivePHP\Primitives\Exception;
 use ObjectivePHP\Primitives\PrimitiveInterface;

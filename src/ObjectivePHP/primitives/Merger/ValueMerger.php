@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Merger;
 
-
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\Primitives\Exception;
 
@@ -24,13 +23,14 @@ class ValueMerger extends AbstractMerger
      */
     public function merge($first, $second)
     {
-
         $policy = $this->policy;
 
         if ($policy == MergePolicy::AUTO) {
             if (is_array($first) || $first instanceof \ArrayObject) {
                 $policy = MergePolicy::NATIVE;
-            } else $policy = MergePolicy::REPLACE;
+            } else {
+                $policy = MergePolicy::REPLACE;
+            }
         }
 
         switch ($policy) {

@@ -2,8 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\DataProcessor;
 
-
-
 class DateProcessor extends AbstractDataProcessor
 {
 
@@ -20,7 +18,7 @@ class DateProcessor extends AbstractDataProcessor
         $this->setMessage(self::INVALID_FORMAT, 'The parameter value does not match expected date format (":format")');
     }
 
-    public function process($value, $format =  null): \DateTime
+    public function process($value, $format = null): \DateTime
     {
 
         $date = \DateTime::createFromFormat($format ?: $this->getFormat(), $value);

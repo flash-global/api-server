@@ -9,7 +9,6 @@ use ObjectivePHP\ServicesFactory\Specs\UndefinedServiceSpecs;
 
 abstract class AbstractServiceSpecs implements ServiceSpecsInterface
 {
-
     /**
      * @var string
      */
@@ -39,7 +38,6 @@ abstract class AbstractServiceSpecs implements ServiceSpecsInterface
      * @var bool
      */
     protected $autoAliasing = true;
-
 
     public function __construct($serviceId, $params = [])
     {
@@ -144,7 +142,7 @@ abstract class AbstractServiceSpecs implements ServiceSpecsInterface
         return $this;
     }
 
-    static function factory($rawDefinition)
+    public static function factory($rawDefinition)
     {
 
         $rawDefinition = Collection::cast($rawDefinition);
@@ -159,7 +157,9 @@ abstract class AbstractServiceSpecs implements ServiceSpecsInterface
             $matchingTypes = [];
 
             foreach (['instance' => PrefabServiceSpecs::class, 'class' => ClassServiceSpecs::class] as $key => $type) {
-                if ($rawDefinition->has($key)) $matchingTypes[] = $type;
+                if ($rawDefinition->has($key)) {
+                    $matchingTypes[] = $type;
+                }
             }
 
             if (!$matchingTypes) {
@@ -186,8 +186,13 @@ abstract class AbstractServiceSpecs implements ServiceSpecsInterface
         // aliases
         if ($rawDefinition->has('alias') || $rawDefinition->has('aliases')) {
             $aliases = new Collection();
-            if ($rawDefinition->has('alias')) $aliases[] = $rawDefinition['alias'];
-            if ($rawDefinition->has('aliases')) $aliases->merge($rawDefinition['aliases']);
+            if ($rawDefinition->has('alias')) {
+                $aliases[] = $rawDefinition['alias'];
+            }
+
+            if ($rawDefinition->has('aliases')) {
+                $aliases->merge($rawDefinition['aliases']);
+            }
 
             $serviceDefinition->setAliases($aliases);
         }

@@ -22,7 +22,6 @@ use phpDocumentor\Reflection\DocBlockFactory;
 
 class ServicesFactory implements ContainerInterface
 {
-
     /**
      * @var Collection
      */
@@ -99,8 +98,7 @@ class ServicesFactory implements ContainerInterface
             throw new ServiceNotFoundException(sprintf('Service reference "%s" matches no registered service in this factory or its delegate containers', $service), ServiceNotFoundException::UNREGISTERED_SERVICE_REFERENCE);
         }
 
-        if (
-            !$serviceSpecs->isStatic()
+        if (!$serviceSpecs->isStatic()
             || $this->getInstances()->lacks($service)
             || $params
         ) {
@@ -110,10 +108,9 @@ class ServicesFactory implements ContainerInterface
                 $builder->setServicesFactory($this);
             }
 
-            $instance = $builder->build($serviceSpecs, $params);;
+            $instance = $builder->build($serviceSpecs, $params);
 
             $this->injectDependencies($instance, $serviceSpecs);
-
 
             if (!$serviceSpecs->isStatic() || $params) {
                 // if params are passed, we don't store the instance for
@@ -185,7 +182,9 @@ class ServicesFactory implements ContainerInterface
 
         /** @var ServiceBuilderInterface $builder */
         foreach ($this->getBuilders() as $builder) {
-            if ($builder->doesHandle($serviceSpecs)) return $builder;
+            if ($builder->doesHandle($serviceSpecs)) {
+                return $builder;
+            }
         }
 
         return null;
@@ -221,7 +220,9 @@ class ServicesFactory implements ContainerInterface
         if (!$has) {
             foreach ($this->getDelegateContainers() as $container) {
                 $has = $container->has($service);
-                if ($has) break;
+                if ($has) {
+                    break;
+                }
             }
         }
 

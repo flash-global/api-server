@@ -2,19 +2,16 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
-
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\Primitives\String\Str;
 use ObjectivePHP\ServicesFactory\Exception\Exception;
 
 class ClassServiceSpecs extends AbstractServiceSpecs
 {
-
     /**
      * @var Str
      */
     protected $class;
-
 
     /**
      * @var Collection $setters
@@ -46,9 +43,8 @@ class ClassServiceSpecs extends AbstractServiceSpecs
      * @param array|Collection $rawDefinition
      * @throws Exception
      */
-    static public function factory($rawDefinition)
+    public static function factory($rawDefinition)
     {
-
         $rawDefinition = Collection::cast($rawDefinition);
 
         // then check check a class has been provided
@@ -121,6 +117,8 @@ class ClassServiceSpecs extends AbstractServiceSpecs
     {
         if ($this->isAutoAliasingEnabled()) {
             return '\\' . ltrim($this->class, '\\');
-        } else return null;
+        } else {
+            return null;
+        }
     }
 }

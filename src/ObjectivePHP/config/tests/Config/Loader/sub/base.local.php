@@ -1,4 +1,5 @@
 <?php
+
 use Test\ObjectivePHP\Config\Loader\TestSingleValueDirectiveGroup;
 
 return [

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tests\ObjectivePHP\Application\Action;
-
 
 use ObjectivePHP\Application\Action\RenderableAction;
 use ObjectivePHP\PHPUnit\TestCase;

@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Events\Callback;
 
-
 use ObjectivePHP\Events\EventInterface;
 use ObjectivePHP\Primitives\Collection\Collection;
 
@@ -27,7 +26,6 @@ class CallbacksAggregate extends AliasedCallback
      */
     public function __construct($alias, ...$callbacks)
     {
-
         // check if callbacks have been passed as an array
         if (is_array($callbacks[0]) && !is_callable($callbacks[0])) {
             $callbacks = $callbacks[0];

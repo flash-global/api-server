@@ -2,10 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\DataProcessor;
 
-
 class NumericProcessor extends AbstractDataProcessor
 {
-
     const NOT_A_NUMBER = 'NaN';
 
     /**

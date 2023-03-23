@@ -23,17 +23,17 @@ class EventsHandler implements EventsHandlerInterface
     /**
      * @var array
      */
-    protected $listeners          = [];
+    protected $listeners = [];
 
     /**
      * @var array
      */
-    protected $unboundListeners   = [];
+    protected $unboundListeners = [];
 
     /**
      * @var array
      */
-    protected $aliases            = [];
+    protected $aliases = [];
 
     /**
      * @var Matcher
@@ -94,7 +94,6 @@ class EventsHandler implements EventsHandlerInterface
         // TODO sort listeners according to their priority or other mechanism
         $i = 0;
         foreach ($listeners as $listenersGroup) {
-
             $callbacks = [];
 
             // handle callbacks aggregate
@@ -122,7 +121,7 @@ class EventsHandler implements EventsHandlerInterface
                 // if listener is a class name, instantiate it
                 if (!is_callable($callback) && class_exists($callback)) {
                     $className = $callback;
-                    $callback  = new $className;
+                    $callback = new $className;
 
                     if (!is_callable($callback)) {
                         throw new Exception(sprintf('Class "%s" does not implement __invoke(), thus cannot be used as a callback', $className), Exception::EVENT_INVALID_CALLBACK);
@@ -151,7 +150,9 @@ class EventsHandler implements EventsHandlerInterface
                     // @gdelamarre
                     goto shunt;
                 }
-                if (!is_string($alias)) $i++;
+                if (!is_string($alias)) {
+                    $i++;
+                }
             }
         }
 
@@ -193,7 +194,7 @@ class EventsHandler implements EventsHandlerInterface
             // check if listener is an alias of a previous listener
             if (is_string($callback) && !is_callable($callback)) {
                 if (isset($this->aliases[$callback])) {
-                    $alias    = $callback;
+                    $alias = $callback;
                     $callback = $this->aliases[$callback];
                 }
             } else {
@@ -222,7 +223,7 @@ class EventsHandler implements EventsHandlerInterface
                 break;
 
             case self::BINDING_MODE_REPLACE:
-                // same case because if mode == replace, listeners[eventName] has been emptied
+            // same case because if mode == replace, listeners[eventName] has been emptied
             case self::BINDING_MODE_LAST:
                 if ($alias) {
                     $this->listeners[$eventName][$alias] = $callback;
@@ -245,16 +246,15 @@ class EventsHandler implements EventsHandlerInterface
             return $this->listeners;
         }
 
-        $listeners        = array_keys($this->listeners);
-        $matcher          = $this->getMatcher();
+        $listeners = array_keys($this->listeners);
+        $matcher = $this->getMatcher();
         $matchedListeners = array_flip(array_filter($listeners, function ($listener) use ($eventFilter, $matcher) {
             return $matcher->match($eventFilter, $listener);
         }));
 
         $matchedListeners = array_intersect_key($this->listeners, $matchedListeners);
 
-        if (
-            $this->getMatcher()->containsWildcard($eventFilter)
+        if ($this->getMatcher()->containsWildcard($eventFilter)
             || empty($matchedListeners[$eventFilter])
         ) {
             // do not change priorities if the filter contains wildcard

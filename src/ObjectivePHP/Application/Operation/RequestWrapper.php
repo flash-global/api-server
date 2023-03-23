@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\Middleware\AbstractMiddleware;
 use ObjectivePHP\Message\Request\HttpRequest;

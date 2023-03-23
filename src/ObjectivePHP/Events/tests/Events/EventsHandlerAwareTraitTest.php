@@ -51,7 +51,8 @@ class EventsHandlerAwareTraitTest extends TestCase
         };
 
         $eventName = 'event.test';
-        $callback = function () {};
+        $callback = function () {
+        };
 
         $eventsHandler = $this->getMockBuilder(EventsHandler::class)->getMock();
         $eventsHandler->expects($this->once())->method('bind')->with($eventName, $callback);
@@ -82,6 +83,7 @@ class EventsHandlerAwareTraitTest extends TestCase
         $eventsHandler = $this->getMockBuilder(EventsHandler::class)->getMock();
         $eventsHandler->expects($this->never())->method('bind');
 
-        $instance->bind('test', function () {});
+        $instance->bind('test', function () {
+        });
     }
 }

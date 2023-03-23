@@ -2,12 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Message;
 
-
 use ObjectivePHP\Primitives\Collection\Collection;
 
 class MessageStack extends Collection
 {
-
     public function __construct($messages = [])
     {
         parent::__construct($messages);
@@ -28,7 +26,9 @@ class MessageStack extends Collection
             $count = 0;
             $this->each(
                 function (MessageInterface $message) use (&$count, $type) {
-                    if ($type == $message->getType()) $count++;
+                    if ($type == $message->getType()) {
+                        $count++;
+                    }
                 }
             );
         }

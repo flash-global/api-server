@@ -16,7 +16,6 @@ use ObjectivePHP\Application\View\Helper\Vars;
  */
 class ViewRenderer extends AbstractMiddleware
 {
-
     /**
      * @var ApplicationInterface
      */
@@ -29,7 +28,6 @@ class ViewRenderer extends AbstractMiddleware
      */
     public function run(ApplicationInterface $app)
     {
-
         $this->setApplication($app);
 
         $viewName = $this->getViewName($app);
@@ -104,7 +102,9 @@ class ViewRenderer extends AbstractMiddleware
 
         $viewPath = $viewName . '.phtml';
 
-        if (!is_file($viewPath)) throw new Exception(sprintf('View script "%s" does not exist', $viewPath));
+        if (!is_file($viewPath)) {
+            throw new Exception(sprintf('View script "%s" does not exist', $viewPath));
+        }
 
         return $viewPath;
     }

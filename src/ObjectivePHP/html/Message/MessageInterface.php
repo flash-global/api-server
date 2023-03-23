@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Message;
 
-
 interface MessageInterface
 {
     public function __construct($message);

@@ -1,6 +1,7 @@
 <?php
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Annotation;
+
 use ObjectivePHP\ServicesFactory\ServiceReference;
 
 /**
@@ -9,7 +10,6 @@ use ObjectivePHP\ServicesFactory\ServiceReference;
  */
 class Inject
 {
-
     /**
      * @var string
      */
@@ -38,18 +38,12 @@ class Inject
 
         $type = ($this->class || !$this->service) ? 'instance' : 'service';
 
-        switch($type)
-        {
+        switch ($type) {
             case 'instance':
                 return $this->class;
 
             case 'service':
                 return new ServiceReference($this->service);
-
         }
-
     }
-
-
-
 }

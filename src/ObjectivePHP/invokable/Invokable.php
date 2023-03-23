@@ -78,10 +78,7 @@ class Invokable extends AbstractInvokable
      */
     public function getCallable()
     {
-
         if (is_null($this->callable)) {
-
-
             $operation = $this->operation;
             try {
                 if (!is_callable($operation)) {
@@ -135,7 +132,6 @@ class Invokable extends AbstractInvokable
         $operation = $this->operation;
 
         switch (true) {
-
             case $operation instanceof ServiceReference:
                 $description = 'Referenced service "' . $operation->getId() . '"';
                 break;
@@ -160,7 +156,10 @@ class Invokable extends AbstractInvokable
                     } else {
                         $description = 'Static call to ' . get_class($operation[0]) . '::' . $operation[1] . '()';
                     }
-                } else $description = sprintf('Native callable');
+                } else {
+                    $description = sprintf('Native callable');
+                }
+
                 break;
 
             default:

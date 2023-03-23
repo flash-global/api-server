@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Config;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Matcher\Matcher;
 use ObjectivePHP\Primitives\Collection\Collection;

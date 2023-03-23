@@ -27,7 +27,6 @@ class UrlFilter extends AbstractFilter
 
         // check route filter
         if ($this->getFilter() != '*') {
-
             $request = $this->getApplication()->getRequest();
 
             if (!$request) {

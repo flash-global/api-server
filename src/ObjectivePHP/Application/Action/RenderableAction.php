@@ -12,7 +12,6 @@ use ObjectivePHP\Application\Middleware\MiddlewareInterface;
  */
 abstract class RenderableAction extends HttpAction implements RenderableActionInterface
 {
-
     /**
      * @var string
      */
@@ -29,7 +28,6 @@ abstract class RenderableAction extends HttpAction implements RenderableActionIn
     {
         // set default view name
         if (is_null($this->viewTemplate)) {
-
             $reflected = new \ReflectionObject($this);
 
             $viewTemplate = substr($reflected->getFileName(), 0, -4);
@@ -74,7 +72,7 @@ abstract class RenderableAction extends HttpAction implements RenderableActionIn
     /**
      * @param $extension
      */
-    static public function registerTemplateExtension($extension)
+    public static function registerTemplateExtension($extension)
     {
         self::$viewExtensions[] = $extension;
         self::$viewExtensions   = array_unique(self::$viewExtensions);

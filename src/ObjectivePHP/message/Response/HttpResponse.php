@@ -2,9 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Response;
 
-
+use ObjectivePHP\Message\Response\ResponseInterface;
 use Zend\Diactoros\Response;
-use Zend\Diactoros\Stream;
 
 /**
  * Class HttpResponse
@@ -76,8 +75,7 @@ class HttpResponse extends Response implements ResponseInterface
 
     // [Client Error 4xx]
 
-
-    const errorCodesBeginAt = 400;
+    const ERROR_CODES_BEGIN_AT = 400;
 
 
     const HTTP_BAD_REQUEST = 400;

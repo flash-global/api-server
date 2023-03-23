@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
-
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\ServicesFactory\Exception\Exception;
 
@@ -25,7 +24,7 @@ class PrefabServiceSpecs extends AbstractServiceSpecs
         $this->setInstance($instance);
     }
 
-    static public function factory($rawDefinition)
+    public static function factory($rawDefinition)
     {
         $rawDefinition = Collection::cast($rawDefinition);
 
@@ -61,6 +60,8 @@ class PrefabServiceSpecs extends AbstractServiceSpecs
     {
         if ($this->isAutoAliasingEnabled() && is_object($this->instance)) {
             return '\\' . ltrim(get_class($this->instance), '\\');
-        } else return null;
+        } else {
+            return null;
+        }
     }
 }

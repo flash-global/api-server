@@ -3,6 +3,7 @@
 namespace Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container;
 
 use ObjectivePHP\Message\Request\HttpRequest;
+use ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer;
 use ObjectivePHP\Message\Request\RequestInterface;
 use ObjectivePHP\Primitives\Collection\Collection;
 
@@ -13,7 +14,6 @@ use ObjectivePHP\Primitives\Collection\Collection;
  */
 class HttpParameterContainer extends AbstractContainer
 {
-
     /**
      * @var RequestInterface
      */

@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
-
 /**
  * Class RenderableActionInterface
  *

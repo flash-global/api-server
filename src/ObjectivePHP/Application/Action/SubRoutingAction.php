@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 23/04/2016
- * Time: 09:17
- */
-
 namespace Fei\ApiServer\ObjectivePHP\Application\Action;
-
 
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\Middleware\AbstractMiddleware;
@@ -24,7 +16,6 @@ use ObjectivePHP\Primitives\Collection\Collection;
  */
 abstract class SubRoutingAction extends HttpAction
 {
-
     /**
      * @var
      */
@@ -46,7 +37,6 @@ abstract class SubRoutingAction extends HttpAction
         if ($servicesFactory) {
             $normalizedMiddleware = null;
             switch (true) {
-
                     // middlewares can be an array containing [$object, 'method']
                 case is_array($middleware) && !empty($middleware[0]) && is_object($middleware[0]):
                     $normalizedMiddleware = $middleware[0];
@@ -66,7 +56,7 @@ abstract class SubRoutingAction extends HttpAction
             }
         }
 
-        // TODO fix http return code (probably 405) 
+        // TODO fix http return code (probably 405)
         if (!is_callable($middleware)) {
             throw new Exception(sprintf(
                 'No middleware matching routed reference "%s" has been registered',

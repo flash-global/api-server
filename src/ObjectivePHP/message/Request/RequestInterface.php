@@ -2,8 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Request;
 
-
-
 use ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface;
 use ObjectivePHP\Router\MatchedRoute;
 

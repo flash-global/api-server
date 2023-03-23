@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action\Parameter;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\DataProcessor\DataProcessorInterface;
 use ObjectivePHP\Primitives\Collection\Collection;
@@ -13,7 +12,6 @@ use ObjectivePHP\Primitives\Collection\Collection;
  */
 interface ParameterProcessorInterface extends DataProcessorInterface
 {
-
     /**
      * Define parameter name and map it to query parameters if needed
      *

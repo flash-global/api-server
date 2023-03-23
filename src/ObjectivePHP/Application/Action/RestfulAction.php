@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
-
 use ObjectivePHP\Application\Action\HttpAction;
 use ObjectivePHP\Application\Action\SubRoutingAction;
 use Zend\Diactoros\Response\JsonResponse;

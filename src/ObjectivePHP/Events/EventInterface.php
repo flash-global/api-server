@@ -1,20 +1,11 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 14/08/15
- * Time: 18:40
- */
-
 namespace Fei\ApiServer\ObjectivePHP\Events;
-
 
 use ObjectivePHP\Primitives\Collection\Collection;
 
 interface EventInterface
 {
-
     public function setName($name);
 
     public function getName();

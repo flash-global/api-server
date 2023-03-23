@@ -2,12 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
-
 use ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
 
 interface ServiceBuilderInterface
 {
-
     /**
      * Tells whether the builder can or not build a service according to a given service definition
      *

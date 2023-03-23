@@ -2,7 +2,6 @@
 
 namespace Test\ObjectivePHP\Config\Loader;
 
-
 use ObjectivePHP\Config\Exception;
 use ObjectivePHP\Config\Loader\DirectoryLoader;
 use ObjectivePHP\PHPUnit\TestCase;
@@ -13,8 +12,6 @@ use Tests\Helper\TestDirectives\TestSingleValueDirectiveGroup;
 
 class DirectoryLoaderTest extends TestCase
 {
-
-
     public function testLoadingConfigFromNonExistingLocationFailsWithAnException()
     {
         $this->expectsException(function () use (&$location) {

@@ -2,13 +2,11 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Invokable;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\ServicesFactory\ServicesFactory;
 
 class AbstractInvokable implements InvokableInterface
 {
-
     /**
      * @var string
      */

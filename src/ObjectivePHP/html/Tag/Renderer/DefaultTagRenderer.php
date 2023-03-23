@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Renderer;
 
-
 use ObjectivePHP\Html\Tag\Tag;
 use ObjectivePHP\Primitives\Collection\Collection;
 
@@ -23,7 +22,9 @@ class DefaultTagRenderer implements TagRendererInterface
                 $chunks = new Collection();
                 $tag->getContent()->each(function ($chunk) use (&$chunks) {
                     $content = (string) $chunk;
-                    if ($content) $chunks[] = $content;
+                    if ($content) {
+                        $chunks[] = $content;
+                    }
                 });
 
                 $html .= $chunks->join($tag->getSeparator())->trim();

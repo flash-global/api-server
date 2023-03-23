@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\ObjectivePHP\DataProcessor;
+namespace Tests\Fei\ApiServer\ObjectivePHP\DataProcessor;
 
 
 use ObjectivePHP\DataProcessor\DataProcessingException;
@@ -8,8 +8,9 @@ use ObjectivePHP\DataProcessor\DateProcessor;
 use ObjectivePHP\DataProcessor\StringProcessor;
 use ObjectivePHP\PHPUnit\TestCase;
 use ObjectivePHP\Primitives\String\Str;
+use Codeception\Test\Unit;
 
-class StringProcessorTest extends TestCase
+class StringProcessorTest extends Unit
 {
     public function testStringProcessing()
     {

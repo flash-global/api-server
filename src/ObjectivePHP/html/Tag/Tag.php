@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag;
 
-
 use ObjectivePHP\Html\Attributes\Attributes;
 use ObjectivePHP\Html\Exception;
 use ObjectivePHP\Html\Tag\Renderer\DefaultTagRenderer;
@@ -18,7 +17,6 @@ use ObjectivePHP\Primitives\String\Str;
  */
 class Tag implements TagInterface
 {
-
     /**
      * @var Collection
      */
@@ -78,7 +76,9 @@ class Tag implements TagInterface
         $this->content    = new Collection;
         $this->renderer   = new DefaultTagRenderer();
 
-        if (!is_null($content)) $this->append($content);
+        if (!is_null($content)) {
+            $this->append($content);
+        }
     }
 
     /**
@@ -113,7 +113,9 @@ class Tag implements TagInterface
     {
 
         // skip empty contents tag
-        if ($content instanceof Str && !(string) $content) return null;
+        if ($content instanceof Str && !(string) $content) {
+            return null;
+        }
 
         /**
          * @var $tag Tag
@@ -139,7 +141,9 @@ class Tag implements TagInterface
     {
 
         // shunt void tags
-        if (!$tag) return null;
+        if (!$tag) {
+            return null;
+        }
 
         if ($decorators = self::$decorators) {
             $decorators->each(function ($decorator) use ($tag) {
@@ -686,7 +690,6 @@ class Tag implements TagInterface
 
             case MergePolicy::NATIVE:
             case MergePolicy::COMBINE:
-
                 $previousValue = $this->attributes->get($attribute);
                 if ($previousValue) {
                     $combinedValue = Collection::cast($previousValue)->merge(Collection::cast($value));
@@ -796,7 +799,9 @@ class Tag implements TagInterface
         switch ($offset) {
             case 'class':
                 $this->attributes['class']->clear();
-                if (!is_array($value)) $value = [$value];
+                if (!is_array($value)) {
+                    $value = [$value];
+                }
                 $this->addClass(...$value);
                 break;
 

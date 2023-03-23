@@ -185,13 +185,11 @@ class CustomPaginatorAdapter implements PaginatorInterface
     {
         $proto = 'http://';
 
-        if (
-            isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
             || isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'https'
         ) {
             $proto = 'https://';
-        } elseif (
-            !empty($_SERVER['HTTP_X_FORWARDED_PROTO'])
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO'])
             && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
             || !empty($_SERVER['HTTP_X_FORWARDED_SSL'])
             && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on'

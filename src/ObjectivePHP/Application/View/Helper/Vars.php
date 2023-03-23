@@ -2,14 +2,12 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\View\Helper;
 
-
 use ObjectivePHP\Config\ConfigInterface;
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\Primitives\String\Str;
 
 class Vars
 {
-
     protected static $capturing = false;
 
     protected static $variables;
@@ -44,7 +42,7 @@ class Vars
     /**
      * @param $reference
      */
-    static function unset($reference)
+    public static function unset($reference)
     {
         unset(self::$variables[$reference]);
     }

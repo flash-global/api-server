@@ -80,7 +80,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
      *
      * @return static
      */
-    static public function cast($collection)
+    public static function cast($collection)
     {
         if ($collection instanceof Collection) {
             return $collection;
@@ -126,16 +126,14 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         
         // set new type
         if ($this->getValidators() || $this->getNormalizers()) {
-            throw new Exception('Class restriction can not be set if there is already Normalizer and/or Validator attached to the collection',
-                Exception::COLLECTION_INVALID_TYPE);
+            throw new Exception('Class restriction can not be set if there is already Normalizer and/or Validator attached to the collection', Exception::COLLECTION_INVALID_TYPE);
         }
         
         // add normalizer (if type is a class - interfaces cannot be normalized
         if ($normalize && !interface_exists($type)) {
             switch (true) {
                 case (!class_exists($type)):
-                    throw new Exception(sprintf('Class "%s" does not exist', $type),
-                        Exception::COLLECTION_INVALID_TYPE);
+                    throw new Exception(sprintf('Class "%s" does not exist', $type), Exception::COLLECTION_INVALID_TYPE);
                 
                 case (AbstractPrimitive::isPrimitive($type)):
                     $normalizer = new PrimitiveNormalizer($type);
@@ -251,9 +249,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function each($callable)
     {
         if (!is_callable($callable)) {
-            throw new Exception(sprintf('Parameter of type  %s is not callable', gettype($callable)),
-                Exception::INVALID_CALLBACK
-            );
+            throw new Exception(sprintf('Parameter of type  %s is not callable', gettype($callable)), Exception::INVALID_CALLBACK);
         }
         
         foreach ($this->value as $key => &$val) {
@@ -280,9 +276,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function filter($callable = null)
     {
         if (null !== $callable && !is_callable($callable)) {
-            throw new Exception(sprintf('Parameter of type  %s is not callable', gettype($callable)),
-                Exception::INVALID_CALLBACK
-            );
+            throw new Exception(sprintf('Parameter of type  %s is not callable', gettype($callable)), Exception::INVALID_CALLBACK);
         }
         
         $array = is_callable($callable)
@@ -499,7 +493,6 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         
         // match validator against currently stored entries
         foreach ($this as $key => $value) {
-            
             if (!$validator($value)) {
                 // define value type
                 switch (true) {
@@ -522,10 +515,9 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                     default:
                         $type = 'unknown';
                         break;
-                    
                 }
-                throw new Exception(sprintf('Value #%s (%s) did not pass validation', $key, $type),
-                    Exception::COLLECTION_FORBIDDEN_VALUE);
+
+                throw new Exception(sprintf('Value #%s (%s) did not pass validation', $key, $type), Exception::COLLECTION_FORBIDDEN_VALUE);
             }
         }
         
@@ -648,8 +640,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         if ($this->lacks($key)) {
             if (!$this->isKeyAllowed($key)) {
-                throw new Exception(sprintf('Cannot read forbidden key: "%s"', $key),
-                    Exception::COLLECTION_FORBIDDEN_KEY);
+                throw new Exception(sprintf('Cannot read forbidden key: "%s"', $key), Exception::COLLECTION_FORBIDDEN_KEY);
             }
         }
         
@@ -713,15 +704,13 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
             default:
                 $type = 'unknown';
                 break;
-            
         }
         
         if ($validators = $this->getValidators()) {
             /* @var $validator callable */
             foreach ($validators as $validator) {
                 if (!$validator($value)) {
-                    throw new Exception(sprintf('New value #%s (%s)  did not pass validation', $key, $type),
-                        Exception::COLLECTION_FORBIDDEN_VALUE);
+                    throw new Exception(sprintf('New value #%s (%s)  did not pass validation', $key, $type), Exception::COLLECTION_FORBIDDEN_VALUE);
                 }
             }
         }
@@ -985,9 +974,8 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         $this->fromArray(array_combine($keys, $arrayCopy));
         
         return $this;
-        
     }
-    
+
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Whether a offset exists
@@ -1106,4 +1094,3 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         return $this;
     }
 }
-

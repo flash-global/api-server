@@ -2,12 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\DataProcessor;
 
-
 use ObjectivePHP\Primitives\String\Str;
 
 class StringProcessor extends AbstractDataProcessor
 {
-
     /**
      * @param $value
      *

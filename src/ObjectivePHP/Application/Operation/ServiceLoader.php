@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Invokable\AbstractInvokable;
 use ObjectivePHP\ServicesFactory\Config\Service;
@@ -42,7 +41,6 @@ class ServiceLoader extends AbstractInvokable
     {
         $app->getServicesFactory()->registerService(
             ['id' => 'application', 'instance' => $app],
-
             // all those are here for convenience only since 'application' gives access to all of them
             ['id' => 'config', 'instance' => $app->getConfig()],
             ['id' => 'events-handler', 'instance' => $app->getEventsHandler()]

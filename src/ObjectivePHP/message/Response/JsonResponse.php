@@ -2,9 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Response;
 
-
-use Zend\Diactoros\Response;
-use Zend\Diactoros\Stream;
+use ObjectivePHP\Message\Response\HttpResponse;
+use ObjectivePHP\Message\Response\ResponseInterface;
 
 /**
  * Class JsonResponse

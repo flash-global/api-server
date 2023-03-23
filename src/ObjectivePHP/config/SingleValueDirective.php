@@ -7,16 +7,13 @@
  *
  * @license http://opensource.org/licenses/GPL-3.0 GNU GPL License 3.0
  */
-
 namespace Fei\ApiServer\ObjectivePHP\Config;
-
 
 use ObjectivePHP\Primitives\Merger\MergePolicy;
 use ObjectivePHP\Primitives\Merger\ValueMerger;
 
 abstract class SingleValueDirective extends AbstractDirective
 {
-
     protected $mergePolicy = MergePolicy::REPLACE;
 
     /**

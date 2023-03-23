@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html;
 
-
 use ObjectivePHP\Html\Tag\Tag;
 
 class Css
@@ -32,7 +31,7 @@ class Css
         echo '<!-- End of embedded CSS files -->' . PHP_EOL;
     }
 
-    static public function get()
+    public static function get()
     {
         return self::$files;
     }

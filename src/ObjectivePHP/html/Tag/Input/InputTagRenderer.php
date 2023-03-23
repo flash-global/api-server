@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Input;
 
-
 use ObjectivePHP\Html\Exception;
 use ObjectivePHP\Html\Tag\Renderer\DefaultTagRenderer;
 use ObjectivePHP\Html\Tag\Renderer\TagRendererInterface;

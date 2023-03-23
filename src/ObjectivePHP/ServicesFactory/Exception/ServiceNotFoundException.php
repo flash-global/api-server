@@ -1,9 +1,6 @@
 <?php
 
-
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception;
-
-
 
 class ServiceNotFoundException extends Exception
 {

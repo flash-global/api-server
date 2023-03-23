@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Request;
 
-
 use ObjectivePHP\Parameter\Container\ParameterContainerInterface;
 
 abstract class AbstractRequest implements RequestInterface

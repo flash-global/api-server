@@ -9,7 +9,6 @@ use ObjectivePHP\Primitives\Number\Number;
 
 class Str extends AbstractPrimitive
 {
-
     const TYPE = 'string';
 
     const LEFT  = 1;
@@ -54,7 +53,7 @@ class Str extends AbstractPrimitive
      *
      * @return Str
      */
-    static public function cast($string)
+    public static function cast($string)
     {
         if ($string instanceof Str) {
             return $string;

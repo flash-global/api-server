@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Merger;
 
-
 class MergePolicy
 {
     /**

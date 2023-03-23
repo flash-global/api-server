@@ -5,7 +5,6 @@ namespace Fei\ApiServer\ObjectivePHP\Invokable;
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\ServicesFactory\ServicesFactory;
 
-
 /**
  * Interface InvokableInterface
  *

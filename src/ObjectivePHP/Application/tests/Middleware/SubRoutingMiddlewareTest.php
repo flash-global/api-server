@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 23/04/2016
- * Time: 09:18
- */
-
 namespace Test\ObjectivePHP\Application\Middleware;
-
 
 use ObjectivePHP\Application\Action\SubRoutingAction;
 use ObjectivePHP\Application\ApplicationInterface;
@@ -18,7 +10,6 @@ use ObjectivePHP\PHPUnit\TestCase;
 
 class SubRoutingMiddlewareTest extends TestCase
 {
-
     public function testMiddlewareStack()
     {
 

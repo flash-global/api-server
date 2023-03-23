@@ -18,7 +18,7 @@ use ObjectivePHP\ServicesFactory\Specs\InjectionAnnotationProvider;
  *
  * @package ObjectivePHP\Application\Action
  */
-abstract class  HttpAction implements InvokableInterface, InjectionAnnotationProvider
+abstract class HttpAction implements InvokableInterface, InjectionAnnotationProvider
 {
 
     /**
@@ -231,6 +231,5 @@ abstract class  HttpAction implements InvokableInterface, InjectionAnnotationPro
         return 'Http action class';
     }
 
-
-    abstract function run(ApplicationInterface $app);
+    abstract public function run(ApplicationInterface $app);
 }

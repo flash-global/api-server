@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 13/12/2015
- * Time: 10:21
- */
-
 namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
-
 
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\Exception;

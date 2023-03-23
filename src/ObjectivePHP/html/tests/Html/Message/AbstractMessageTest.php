@@ -2,7 +2,6 @@
 
 namespace Tests\ObjectivePHP\Html\Message;
 
-
 use ObjectivePHP\Html\Message\Alert;
 use ObjectivePHP\PHPUnit\TestCase;
 

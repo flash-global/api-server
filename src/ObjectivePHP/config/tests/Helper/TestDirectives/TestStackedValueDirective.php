@@ -7,4 +7,3 @@ use ObjectivePHP\Config\StackedValuesDirective;
 class TestStackedValueDirective extends StackedValuesDirective
 {
 }
-

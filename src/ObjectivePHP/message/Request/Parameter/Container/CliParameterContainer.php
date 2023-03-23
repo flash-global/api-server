@@ -2,6 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container;
 
+use ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer;
 use ObjectivePHP\Message\Request\RequestInterface;
 use ObjectivePHP\Primitives\Collection\Collection;
 

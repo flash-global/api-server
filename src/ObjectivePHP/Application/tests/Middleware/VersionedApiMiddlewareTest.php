@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 23/04/2016
- * Time: 10:17
- */
-
 namespace Test\ObjectivePHP\Application\Middleware;
-
 
 use ObjectivePHP\Application\Action\VersionedApiAction;
 use ObjectivePHP\Application\ApplicationInterface;

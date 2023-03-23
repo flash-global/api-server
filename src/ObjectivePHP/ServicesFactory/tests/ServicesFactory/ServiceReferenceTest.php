@@ -2,7 +2,6 @@
 
 namespace Tests\ObjectivePHP\ServicesFactory;
 
-
 use ObjectivePHP\PHPUnit\TestCase;
 use ObjectivePHP\ServicesFactory\ServiceReference;
 

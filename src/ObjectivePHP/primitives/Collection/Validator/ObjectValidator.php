@@ -2,10 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection\Validator;
 
-
 class ObjectValidator
 {
-
     protected $class;
 
     public function __construct($class = null)

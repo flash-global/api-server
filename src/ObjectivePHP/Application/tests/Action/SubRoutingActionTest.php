@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 02/05/2016
- * Time: 13:56
- */
-
 namespace Tests\ObjectivePHP\Application\Action;
-
 
 use ObjectivePHP\Application\Action\SubRoutingAction;
 use ObjectivePHP\Application\ApplicationInterface;

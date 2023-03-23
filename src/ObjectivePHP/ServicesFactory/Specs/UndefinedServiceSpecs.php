@@ -2,13 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
-
 use ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
 
 class UndefinedServiceSpecs extends AbstractServiceSpecs
 {
-
-
     /**
      * @param       $id
      * @param array $params
@@ -21,7 +18,7 @@ class UndefinedServiceSpecs extends AbstractServiceSpecs
         $this->setParams($params);
     }
 
-    static function factory($rawDefinition)
+    public static function factory($rawDefinition)
     {
         $id = $rawDefinition['id'];
         unset($rawDefinition['id']);

@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Config;
 
-
 use ObjectivePHP\Config\SingleValueDirectiveGroup;
 use ObjectivePHP\Message\Request\RequestInterface;
 

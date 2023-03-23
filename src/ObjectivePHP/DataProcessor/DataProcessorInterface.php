@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\DataProcessor;
 
-
 use ObjectivePHP\Primitives\Collection\Collection;
 
 interface DataProcessorInterface

@@ -104,7 +104,10 @@ abstract class AbstractApplication implements ApplicationInterface
      */
     public function __construct(ClassLoader $autoloader = null)
     {
-        if ($autoloader) $this->setAutoloader($autoloader);
+        if ($autoloader) {
+            $this->setAutoloader($autoloader);
+        }
+        
         $this->steps        = (new Collection())->restrictTo(Step::class);
         $this->params       = new Collection();
         $this->routeMatcher = (new Matcher())->setSeparator('/');

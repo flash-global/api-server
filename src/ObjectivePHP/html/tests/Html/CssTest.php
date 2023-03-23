@@ -1,26 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gde
- * Date: 04/09/2017
- * Time: 12:49
- */
 
 namespace Tests\ObjectivePHP\Html;
-
 
 use ObjectivePHP\Html\Css;
 
 class CssTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
     protected function setUp()
     {
         Css::clear();
     }
-
 
     public function testEmbeddingFile()
     {
@@ -37,7 +26,5 @@ class CssTest extends \PHPUnit_Framework_TestCase
 
         Css::prepend('/css/prioritary.css', ['attr' => 'value']);
         $this->assertEquals(['/css/prioritary.css' => ['attr' => 'value'], '/css/other.css' => ['attr' => 'value'], '/css/styles.css' => []], Css::get());
-
     }
-
 }

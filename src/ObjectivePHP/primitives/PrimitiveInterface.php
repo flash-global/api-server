@@ -43,5 +43,5 @@ interface PrimitiveInterface extends \JsonSerializable
      *
      * @return static
      */
-    static public function cast($value);
+    public static function cast($value);
 }

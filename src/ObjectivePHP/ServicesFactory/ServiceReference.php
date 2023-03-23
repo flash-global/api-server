@@ -2,10 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory;
 
-
 class ServiceReference
 {
-
     /**
      * @var string Referenced service id (or alias)
      */
@@ -28,5 +26,4 @@ class ServiceReference
     {
         return (string) $this->id;
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\View\Helper;
 
-
 class Date
 {
     /**

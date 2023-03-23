@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 18/04/2016
- * Time: 23:10
- */
-
 namespace Test\ObjectivePHP\Application\Workflow;
-
 
 use ObjectivePHP\Application\Workflow\Hook;
 use ObjectivePHP\Application\Workflow\Step;

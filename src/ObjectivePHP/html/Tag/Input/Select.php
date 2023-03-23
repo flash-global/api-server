@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Input;
 
-
 use ObjectivePHP\Primitives\Collection\Collection;
 
 class Select extends Input
@@ -52,7 +51,9 @@ class Select extends Input
 
         if ($value instanceof Option) {
             $this->getContent()->append($value);
-        } else $this->getContent()->append(Option::option($value, $label));
+        } else {
+            $this->getContent()->append(Option::option($value, $label));
+        }
 
         return $this;
     }

@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gauthier
- * Date: 04/07/2017
- * Time: 11:46
- */
 
 namespace Tests\Primitives\String;
-
 
 use ObjectivePHP\Primitives\String\Camel;
 use ObjectivePHP\Primitives\String\Snake;
@@ -25,7 +18,8 @@ class SnakeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($snake, Snake::case($camel, $glue));
     }
     
-    public function getDataForTestSnakization(){
+    public function getDataForTestSnakization()
+    {
         return [
             ['TestString', 'test_string'],
             ['testString', 'test_string'],

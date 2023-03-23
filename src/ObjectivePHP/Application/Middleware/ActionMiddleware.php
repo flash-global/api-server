@@ -2,7 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
-
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\View\Helper\Vars;
 use ObjectivePHP\Message\Response\HttpResponse;
