@@ -2,15 +2,15 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Invokable\AbstractInvokable;
-use ObjectivePHP\Notification\Stack;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Invokable\AbstractInvokable;
+use Fei\ApiServer\ObjectivePHP\Notification\Stack;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
 
 /**
  * Class AbstractMiddleware
  *
- * @package ObjectivePHP\Application\Hook
+ * @package Fei\ApiServer\ObjectivePHP\Application\Hook
  */
 abstract class AbstractMiddleware extends AbstractInvokable implements MiddlewareInterface
 {

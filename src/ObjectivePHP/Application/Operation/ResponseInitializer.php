@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Message\Response\HttpResponse;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Message\Response\HttpResponse;
 
 /**
  * Class ResponseInitializer
  *
- * @package ObjectivePHP\Application\Task\Common
+ * @package Fei\ApiServer\ObjectivePHP\Application\Task\Common
  */
 class ResponseInitializer
 {

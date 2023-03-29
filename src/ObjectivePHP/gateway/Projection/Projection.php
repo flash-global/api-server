@@ -4,7 +4,7 @@ namespace Fei\ApiServer\ObjectivePHP\Gateway\Projection;
 
 /**
  * Class Projection
- * @package ObjectivePHP\Gateway\Projection
+ * @package Fei\ApiServer\ObjectivePHP\Gateway\Projection
  */
 class Projection extends \ArrayObject implements ProjectionInterface
 {

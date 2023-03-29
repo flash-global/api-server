@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Message;
 
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 
 class AbstractMessage implements MessageInterface
 {

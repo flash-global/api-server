@@ -3,9 +3,9 @@
 namespace Tests\Fei\ApiServer\ObjectivePHP\DataProcessor;
 
 
-use ObjectivePHP\DataProcessor\AbstractDataProcessor;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\AbstractDataProcessor;
 use Codeception\Test\Unit;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 
 class AbstractDataProcessorTest extends Unit
 {

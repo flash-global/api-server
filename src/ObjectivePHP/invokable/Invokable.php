@@ -3,9 +3,9 @@
 namespace Fei\ApiServer\ObjectivePHP\Invokable;
 
 use Interop\Container\ContainerInterface;
-use ObjectivePHP\ServicesFactory\Exception\Exception as ServicesFactoryException;
-use ObjectivePHP\ServicesFactory\ServiceReference;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception as ServicesFactoryException;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServiceReference;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
 
 /**
  * Class Invokable
@@ -19,7 +19,7 @@ use ObjectivePHP\ServicesFactory\ServicesFactory;
  * called, and to allow referenced callables to be declared afterwards.
  *
  *
- * @package ObjectivePHP\Invokable
+ * @package Fei\ApiServer\ObjectivePHP\Invokable
  */
 class Invokable extends AbstractInvokable
 {
@@ -74,7 +74,7 @@ class Invokable extends AbstractInvokable
      * @return callable
      *
      * @throws Exception
-     * @throws \ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException
+     * @throws \Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException
      */
     public function getCallable()
     {

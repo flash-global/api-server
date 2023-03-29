@@ -2,14 +2,14 @@
 
 namespace Fei\ApiServer\ObjectivePHP\DataProcessor;
 
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
-use ObjectivePHP\Notification;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Notification;
 
 /**
  * Class AbstractDataProcessor
  *
- * @package ObjectivePHP\DataProcessor
+ * @package Fei\ApiServer\ObjectivePHP\DataProcessor
  */
 abstract class AbstractDataProcessor implements DataProcessorInterface
 {
@@ -26,7 +26,7 @@ abstract class AbstractDataProcessor implements DataProcessorInterface
      */
     public function __construct()
     {
-        $this->messages      = new Collection;
+        $this->messages = new Collection;
     }
 
     /**

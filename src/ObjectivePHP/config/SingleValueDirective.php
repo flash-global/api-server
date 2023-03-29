@@ -9,8 +9,8 @@
  */
 namespace Fei\ApiServer\ObjectivePHP\Config;
 
-use ObjectivePHP\Primitives\Merger\MergePolicy;
-use ObjectivePHP\Primitives\Merger\ValueMerger;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergePolicy;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\ValueMerger;
 
 abstract class SingleValueDirective extends AbstractDirective
 {

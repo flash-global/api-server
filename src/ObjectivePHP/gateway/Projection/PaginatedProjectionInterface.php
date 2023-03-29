@@ -2,12 +2,12 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Gateway\Projection;
 
-use ObjectivePHP\Gateway\Projection\ProjectionInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\Projection\ProjectionInterface;
 
 /**
  * Interface PaginatedResultSetInterface
  *
- * @package ObjectivePHP\Gateway\Entity
+ * @package Fei\ApiServer\ObjectivePHP\Gateway\Entity
  */
 interface PaginatedProjectionInterface extends ProjectionInterface
 {

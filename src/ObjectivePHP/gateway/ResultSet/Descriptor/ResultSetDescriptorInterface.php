@@ -16,18 +16,18 @@ namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\Descriptor;
  */
 interface ResultSetDescriptorInterface
 {
-    const OP_EQUALS     = '=';
+    const OP_EQUALS = '=';
     const OP_NOT_EQUALS = '!=';
-    const OP_CONTAINS   = 'contains';
-    const OP_GT         = '>';
-    const OP_GTOE       = '<';
-    const OP_LT         = '<';
-    const OP_LTOE       = '<=';
+    const OP_CONTAINS = 'contains';
+    const OP_GT = '>';
+    const OP_GTOE = '<';
+    const OP_LT = '<';
+    const OP_LTOE = '<=';
     const OP_BINARY_AND = '&';
-    const OP_BINARY_OR  = '|';
-    const OP_IN         = 'in';
+    const OP_BINARY_OR = '|';
+    const OP_IN = 'in';
 
-    const SORT_ASC  = 'asc';
+    const SORT_ASC = 'asc';
     const SORT_DESC = 'desc';
 
     const DEFAULT_PAGE_SIZE = 20;

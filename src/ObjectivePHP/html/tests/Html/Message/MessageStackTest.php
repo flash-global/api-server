@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\ObjectivePHP\Html\Message;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Html\Message;
 
-use ObjectivePHP\Html\Message\Alert;
-use ObjectivePHP\Html\Message\Info;
-use ObjectivePHP\Html\Message\MessageInterface;
-use ObjectivePHP\Html\Message\MessageStack;
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Collection\Validator\ObjectValidator;
+use Fei\ApiServer\ObjectivePHP\Html\Message\Alert;
+use Fei\ApiServer\ObjectivePHP\Html\Message\Info;
+use Fei\ApiServer\ObjectivePHP\Html\Message\MessageInterface;
+use Fei\ApiServer\ObjectivePHP\Html\Message\MessageStack;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Validator\ObjectValidator;
 
 class MessageStackTest extends TestCase
 {

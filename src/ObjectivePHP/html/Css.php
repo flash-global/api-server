@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html;
 
-use ObjectivePHP\Html\Tag\Tag;
+use Fei\ApiServer\ObjectivePHP\Html\Tag\Tag;
 
 class Css
 {

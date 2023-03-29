@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\ObjectivePHP\Application\Action;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Application\Action;
 
-use ObjectivePHP\Application\Action\RenderableAction;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Application\Action\RenderableAction;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class RenderableActionTest extends TestCase
 {

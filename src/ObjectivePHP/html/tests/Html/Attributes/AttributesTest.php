@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\ObjectivePHP\HtmlAttributes;
+namespace Tests\Fei\ApiServer\ObjectivePHP\HtmlAttributes;
 
-use ObjectivePHP\Html\Attributes\Attributes;
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Html\Attributes\Attributes;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 class AttributesTest extends TestCase
 {

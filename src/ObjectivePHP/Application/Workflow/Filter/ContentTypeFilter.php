@@ -2,9 +2,9 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Exception;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 class ContentTypeFilter extends AbstractFilter
 {

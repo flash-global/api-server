@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\ObjectivePHP\Events;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Events;
 
-use ObjectivePHP\Events\Event;
-use ObjectivePHP\Events\Exception;
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Events\Event;
+use Fei\ApiServer\ObjectivePHP\Events\Exception;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 
 class EventTest extends TestCase
 {

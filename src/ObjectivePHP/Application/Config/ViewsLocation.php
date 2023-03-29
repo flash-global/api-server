@@ -2,8 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Config;
 
-use ObjectivePHP\Config\StackDirective;
-use ObjectivePHP\Config\StackedValuesDirective;
+use Fei\ApiServer\ObjectivePHP\Config\StackDirective;
+use Fei\ApiServer\ObjectivePHP\Config\StackedValuesDirective;
 
 class ViewsLocation extends StackedValuesDirective
 {

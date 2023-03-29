@@ -2,18 +2,18 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag;
 
-use ObjectivePHP\Html\Attributes\Attributes;
-use ObjectivePHP\Html\Exception;
-use ObjectivePHP\Html\Tag\Renderer\DefaultTagRenderer;
-use ObjectivePHP\Html\Tag\Renderer\TagRendererInterface;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\Merger\MergePolicy;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Html\Attributes\Attributes;
+use Fei\ApiServer\ObjectivePHP\Html\Exception;
+use Fei\ApiServer\ObjectivePHP\Html\Tag\Renderer\DefaultTagRenderer;
+use Fei\ApiServer\ObjectivePHP\Html\Tag\Renderer\TagRendererInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergePolicy;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 
 /**
  * Class Tag
  *
- * @package ObjectivePHP\Html\Tag
+ * @package Fei\ApiServer\ObjectivePHP\Html\Tag
  */
 class Tag implements TagInterface
 {
@@ -73,8 +73,8 @@ class Tag implements TagInterface
     public function __construct($content = null)
     {
         $this->attributes = new Attributes;
-        $this->content    = new Collection;
-        $this->renderer   = new DefaultTagRenderer();
+        $this->content = new Collection;
+        $this->renderer = new DefaultTagRenderer();
 
         if (!is_null($content)) {
             $this->append($content);
@@ -89,7 +89,7 @@ class Tag implements TagInterface
      */
     public static function __callStatic($method, $parameters)
     {
-        $tag     = $method;
+        $tag = $method;
         $content = $classes = null;
         if ($parameters) {
             $content = array_shift($parameters);
@@ -135,7 +135,7 @@ class Tag implements TagInterface
     /**
      * @param $tag
      *
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     protected static function decorate($tag)
     {
@@ -645,7 +645,7 @@ class Tag implements TagInterface
     {
 
         if (!is_null($content)) {
-            $previous      = $this->content;
+            $previous = $this->content;
             $this->content = $content;
         }
 
@@ -660,7 +660,7 @@ class Tag implements TagInterface
 
     /**
      * @return string
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function __toString()
     {
@@ -783,7 +783,7 @@ class Tag implements TagInterface
      * @param mixed $offset
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function offsetGet($offset)
     {
@@ -877,7 +877,7 @@ class Tag implements TagInterface
      * @param $attribute
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function getAttribute($attribute)
     {
@@ -947,7 +947,7 @@ class Tag implements TagInterface
      * @param       $attributes
      * @param array $mergePolicies
      *
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function addAttributes($attributes, $mergePolicies = [])
     {

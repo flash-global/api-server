@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\ObjectivePHP\Package\Config;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Package\Config;
 
-use ObjectivePHP\ServicesFactory\Config\Service;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Config\Service;
 
 class ServiceTest extends \PHPUnit_Framework_TestCase
 {

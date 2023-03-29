@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
-use ObjectivePHP\Application\Action\HttpAction;
-use ObjectivePHP\Application\Action\SubRoutingAction;
+use Fei\ApiServer\ObjectivePHP\Application\Action\HttpAction;
+use Fei\ApiServer\ObjectivePHP\Application\Action\SubRoutingAction;
 use Zend\Diactoros\Response\JsonResponse;
 
 /**
  * Class AbstractRestfulAction
- * @package ObjectivePHP\Application\Middleware
+ * @package Fei\ApiServer\ObjectivePHP\Application\Middleware
  */
 abstract class RestfulAction extends SubRoutingAction
 {

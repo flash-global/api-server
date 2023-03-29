@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
 
-use ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
 
 class EnvFilter extends AbstractFilter
 {

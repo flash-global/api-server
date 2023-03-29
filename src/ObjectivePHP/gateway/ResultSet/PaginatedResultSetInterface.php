@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet;
 /**
  * Interface PaginatedResultSetInterface
  *
- * @package ObjectivePHP\Gateway\Entity
+ * @package Fei\ApiServer\ObjectivePHP\Gateway\Entity
  */
 interface PaginatedResultSetInterface extends ResultSetInterface
 {

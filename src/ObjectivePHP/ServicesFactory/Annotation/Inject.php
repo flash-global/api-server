@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Annotation;
 
-use ObjectivePHP\ServicesFactory\ServiceReference;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServiceReference;
 
 /**
  * @Annotation

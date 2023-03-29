@@ -2,17 +2,17 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Config\SimpleRoute;
-use ObjectivePHP\Application\Config\UrlAlias;
-use ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Config\SimpleRoute;
+use Fei\ApiServer\ObjectivePHP\Application\Config\UrlAlias;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\AbstractMiddleware;
 
 /**
  * Class SimpleRouter
  *
  * This very basic router just maps the current URL to the route
  *
- * @package ObjectivePHP\Application\Operation\Common
+ * @package Fei\ApiServer\ObjectivePHP\Application\Operation\Common
  */
 class SimpleRouter extends AbstractMiddleware
 {

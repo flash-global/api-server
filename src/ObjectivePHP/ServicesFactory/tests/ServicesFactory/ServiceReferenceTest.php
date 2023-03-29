@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\ObjectivePHP\ServicesFactory;
+namespace Tests\Fei\ApiServer\ObjectivePHP\ServicesFactory;
 
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\ServicesFactory\ServiceReference;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServiceReference;
 
 class ServiceReferenceTest extends TestCase
 {

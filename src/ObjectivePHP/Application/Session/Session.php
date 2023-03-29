@@ -2,9 +2,9 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Session;
 
-use ObjectivePHP\Application\Exception;
-use ObjectivePHP\Matcher\Matcher;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Application\Exception;
+use Fei\ApiServer\ObjectivePHP\Matcher\Matcher;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 /**
  * Class Session
@@ -100,7 +100,7 @@ class Session
      * @param $value
      *
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function set($reference, $value)
     {
@@ -115,7 +115,7 @@ class Session
      * @param null $default
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function get($reference, $default = null)
     {
@@ -141,7 +141,7 @@ class Session
             return $matches;
         }
 
-        return  $default;
+        return $default;
     }
 
     /**

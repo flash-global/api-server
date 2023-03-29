@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Invokable;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
 
 /**
  * Interface InvokableInterface
  *
- * @package ObjectivePHP\Invokable
+ * @package Fei\ApiServer\ObjectivePHP\Invokable
  */
 interface InvokableInterface
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Test\ObjectivePHP\Application\Workflow;
+namespace Test\Fei\ApiServer\ObjectivePHP\Application\Workflow;
 
-use ObjectivePHP\Application\Workflow\Hook;
-use ObjectivePHP\Application\Workflow\Step;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Application\Workflow\Hook;
+use Fei\ApiServer\ObjectivePHP\Application\Workflow\Step;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class StepTest extends TestCase
 {
     /**
-     * @throws \ObjectivePHP\Application\Exception
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Application\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function testAliasing()
     {

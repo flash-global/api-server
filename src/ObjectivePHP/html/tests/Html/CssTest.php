@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\ObjectivePHP\Html;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Html;
 
-use ObjectivePHP\Html\Css;
+use Fei\ApiServer\ObjectivePHP\Html\Css;
 
 class CssTest extends \PHPUnit_Framework_TestCase
 {

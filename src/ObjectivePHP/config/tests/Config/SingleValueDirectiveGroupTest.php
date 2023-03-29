@@ -1,10 +1,10 @@
 <?php
 
-namespace Test\ObjectivePHP\Config;
+namespace Test\Fei\ApiServer\ObjectivePHP\Config;
 
-use ObjectivePHP\Config\Config;
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Merger\MergePolicy;
+use Fei\ApiServer\ObjectivePHP\Config\Config;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergePolicy;
 use Tests\Helper\TestDirectives\TestSingleValueDirectiveGroup;
 
 class SingleValueDirectiveGroupTest extends TestCase

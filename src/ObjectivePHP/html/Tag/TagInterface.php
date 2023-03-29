@@ -2,12 +2,12 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag;
 
-use ObjectivePHP\Primitives\Merger\MergePolicy;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergePolicy;
 
 /**
  * Interface TagInterface
  *
- * @package ObjectivePHP\Html\Tag
+ * @package Fei\ApiServer\ObjectivePHP\Html\Tag
  */
 interface TagInterface extends \ArrayAccess
 {

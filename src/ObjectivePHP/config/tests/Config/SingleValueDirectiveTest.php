@@ -1,11 +1,11 @@
 <?php
 
-namespace Test\ObjectivePHP\Config;
+namespace Test\Fei\ApiServer\ObjectivePHP\Config;
 
-use ObjectivePHP\Config\Config;
-use ObjectivePHP\Config\SingleValueDirective;
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Merger\MergePolicy;
+use Fei\ApiServer\ObjectivePHP\Config\Config;
+use Fei\ApiServer\ObjectivePHP\Config\SingleValueDirective;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergePolicy;
 use Tests\Helper\TestDirectives\TestOtherSingleValueDirective;
 use Tests\Helper\TestDirectives\SampleSingleValueDirective;
 

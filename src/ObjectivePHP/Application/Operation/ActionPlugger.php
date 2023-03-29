@@ -2,19 +2,19 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Config\ActionNamespace;
-use ObjectivePHP\Application\Exception;
-use ObjectivePHP\Application\Middleware\AbstractMiddleware;
-use ObjectivePHP\Application\Middleware\ActionMiddleware;
-use ObjectivePHP\Invokable\Invokable;
-use ObjectivePHP\Primitives\String\Str;
-use ObjectivePHP\ServicesFactory\ServiceReference;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Config\ActionNamespace;
+use Fei\ApiServer\ObjectivePHP\Application\Exception;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\ActionMiddleware;
+use Fei\ApiServer\ObjectivePHP\Invokable\Invokable;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServiceReference;
 
 /**
  * Class ActionRunner
  *
- * @package ObjectivePHP\Application\Task\Rta
+ * @package Fei\ApiServer\ObjectivePHP\Application\Task\Rta
  */
 class ActionPlugger extends AbstractMiddleware
 {
@@ -128,6 +128,6 @@ class ActionPlugger extends AbstractMiddleware
      */
     protected function computeServiceName($path)
     {
-        return (string)Str::cast($path)->trim('/')->replace('/', '.')->prepend('action.');
+        return (string) Str::cast($path)->trim('/')->replace('/', '.')->prepend('action.');
     }
 }

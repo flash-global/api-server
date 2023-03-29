@@ -2,8 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\ServicesFactory\Exception\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception;
 
 class PrefabServiceSpecs extends AbstractServiceSpecs
 {

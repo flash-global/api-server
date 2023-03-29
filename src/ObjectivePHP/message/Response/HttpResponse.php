@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Response;
 
-use ObjectivePHP\Message\Response\ResponseInterface;
+use Fei\ApiServer\ObjectivePHP\Message\Response\ResponseInterface;
 use Zend\Diactoros\Response;
 
 /**
  * Class HttpResponse
  *
- * @package ObjectivePHP\Message\Response
+ * @package Fei\ApiServer\ObjectivePHP\Message\Response
  */
 class HttpResponse extends Response implements ResponseInterface
 {

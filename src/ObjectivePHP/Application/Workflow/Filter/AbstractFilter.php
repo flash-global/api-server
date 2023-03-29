@@ -2,12 +2,12 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
 
-use ObjectivePHP\Invokable\AbstractInvokable;
+use Fei\ApiServer\ObjectivePHP\Invokable\AbstractInvokable;
 
 /**
  * Class AbstractFilter
  *
- * @package ObjectivePHP\Application\Workflow
+ * @package Fei\ApiServer\ObjectivePHP\Application\Workflow
  */
 abstract class AbstractFilter extends AbstractInvokable
 {

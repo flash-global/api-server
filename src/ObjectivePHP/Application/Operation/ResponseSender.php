@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-use ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
 use Zend\Diactoros\Response\SapiEmitter;
 
 /**
  * Class ResponseSender
  *
- * @package ObjectivePHP\Application\Task\Common
+ * @package Fei\ApiServer\ObjectivePHP\Application\Task\Common
  */
 class ResponseSender
 {

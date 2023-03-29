@@ -2,8 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Renderer;
 
-use ObjectivePHP\Html\Tag\Tag;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Html\Tag\Tag;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 class DefaultTagRenderer implements TagRendererInterface
 {

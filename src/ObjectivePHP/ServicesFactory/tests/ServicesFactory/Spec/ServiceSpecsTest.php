@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\ObjectivePHP\ServicesFactory\Specs;
+namespace Tests\Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
-use ObjectivePHP\ServicesFactory\Specs\ClassServiceSpecs;
-use ObjectivePHP\ServicesFactory\Specs\UndefinedServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\ClassServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\UndefinedServiceSpecs;
 
 class ServiceSpecsTest extends TestCase
 {

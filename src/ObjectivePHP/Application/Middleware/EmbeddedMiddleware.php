@@ -2,14 +2,14 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Invokable\Invokable;
-use ObjectivePHP\Invokable\InvokableInterface;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Invokable\Invokable;
+use Fei\ApiServer\ObjectivePHP\Invokable\InvokableInterface;
 
 /**
  * Class EmbeddedMiddleware
  *
- * @package ObjectivePHP\Application\Hook
+ * @package Fei\ApiServer\ObjectivePHP\Application\Hook
  */
 class EmbeddedMiddleware extends AbstractMiddleware
 {
@@ -51,7 +51,7 @@ class EmbeddedMiddleware extends AbstractMiddleware
     /**
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return 'Middleware embedding ' . $this->getInvokable()->getDescription();
     }

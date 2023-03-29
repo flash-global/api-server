@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\Events;
 /**
  * Interface EventsHandlerInterface
  *
- * @package ObjectivePHP\Events
+ * @package Fei\ApiServer\ObjectivePHP\Events
  */
 interface EventsHandlerInterface
 {

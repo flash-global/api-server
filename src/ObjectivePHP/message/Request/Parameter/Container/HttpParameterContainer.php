@@ -2,15 +2,15 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container;
 
-use ObjectivePHP\Message\Request\HttpRequest;
-use ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer;
-use ObjectivePHP\Message\Request\RequestInterface;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Message\Request\HttpRequest;
+use Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\AbstractContainer;
+use Fei\ApiServer\ObjectivePHP\Message\Request\RequestInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 /**
  * Class HttpParameterContainer
  *
- * @package ObjectivePHP\Message\Request\Parameter\Container
+ * @package Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container
  */
 class HttpParameterContainer extends AbstractContainer
 {
@@ -45,14 +45,14 @@ class HttpParameterContainer extends AbstractContainer
      * @param $getParams
      *
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function setGet($getParams)
     {
         $params = Collection::cast($getParams);
 
         // make params with no values available as anonymous params
-        $namedParams   = $params->copy()->filter();
+        $namedParams = $params->copy()->filter();
         $unnamedParams = $params->copy()->filter(function ($value) {
             return !$value;
         })->flip();
@@ -69,7 +69,7 @@ class HttpParameterContainer extends AbstractContainer
      * @param null $default
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function fromGet($param = null, $default = null)
     {
@@ -87,7 +87,7 @@ class HttpParameterContainer extends AbstractContainer
      * @param string $origin
      *
      * @return mixed
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function get($param, $default = null, $origin = 'get')
     {
@@ -108,7 +108,7 @@ class HttpParameterContainer extends AbstractContainer
      * @param null $default
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function fromPost($param = null, $default = null)
     {
@@ -124,7 +124,7 @@ class HttpParameterContainer extends AbstractContainer
      * @param null $default
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function fromEnv($var = null, $default = null)
     {
@@ -140,7 +140,7 @@ class HttpParameterContainer extends AbstractContainer
      * @param null $default
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function fromFiles($file = null, $default = null)
     {
@@ -157,7 +157,7 @@ class HttpParameterContainer extends AbstractContainer
      * @param null $default
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function fromRoute($route = null, $default = null)
     {

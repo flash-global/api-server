@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\ObjectivePHP\Html\Message;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Html\Message;
 
-use ObjectivePHP\Html\Message\Alert;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Html\Message\Alert;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class AbstractMessageTest extends TestCase
 {

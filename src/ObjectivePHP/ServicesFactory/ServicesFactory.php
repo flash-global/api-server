@@ -5,18 +5,18 @@ namespace Fei\ApiServer\ObjectivePHP\ServicesFactory;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Interop\Container\ContainerInterface;
-use ObjectivePHP\Invokable\Invokable;
-use ObjectivePHP\Matcher\Matcher;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
-use ObjectivePHP\ServicesFactory\Builder\ClassServiceBuilder;
-use ObjectivePHP\ServicesFactory\Builder\PrefabServiceBuilder;
-use ObjectivePHP\ServicesFactory\Builder\ServiceBuilderInterface;
-use ObjectivePHP\ServicesFactory\Exception\Exception;
-use ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException;
-use ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
-use ObjectivePHP\ServicesFactory\Specs\InjectionAnnotationProvider;
-use ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
+use Fei\ApiServer\ObjectivePHP\Invokable\Invokable;
+use Fei\ApiServer\ObjectivePHP\Matcher\Matcher;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder\ClassServiceBuilder;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder\PrefabServiceBuilder;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder\ServiceBuilderInterface;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\InjectionAnnotationProvider;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
 use phpDocumentor\Reflection\DocBlock;
 use phpDocumentor\Reflection\DocBlockFactory;
 
@@ -58,8 +58,8 @@ class ServicesFactory implements ContainerInterface
     public function __construct()
     {
         // init collections
-        $this->services  = (new Collection())->restrictTo(ServiceSpecsInterface::class);
-        $this->builders  = (new Collection())->restrictTo(ServiceBuilderInterface::class);
+        $this->services = (new Collection())->restrictTo(ServiceSpecsInterface::class);
+        $this->builders = (new Collection())->restrictTo(ServiceBuilderInterface::class);
         $this->injectors = new Collection();
         $this->instances = new Collection();
 
@@ -98,7 +98,8 @@ class ServicesFactory implements ContainerInterface
             throw new ServiceNotFoundException(sprintf('Service reference "%s" matches no registered service in this factory or its delegate containers', $service), ServiceNotFoundException::UNREGISTERED_SERVICE_REFERENCE);
         }
 
-        if (!$serviceSpecs->isStatic()
+        if (
+            !$serviceSpecs->isStatic()
             || $this->getInstances()->lacks($service)
             || $params
         ) {
@@ -332,7 +333,7 @@ class ServicesFactory implements ContainerInterface
      * @param $instance
      * @param $serviceSpecs
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function injectDependencies($instance, $serviceSpecs = null)
     {
@@ -357,7 +358,7 @@ class ServicesFactory implements ContainerInterface
                                 // use phpdocumentor to get var type
                                 $docblock = DocBlockFactory::createInstance()->create($reflectedProperty);
                                 if ($docblock->hasTag('var')) {
-                                    $className = (string)$docblock->getTagsByName('var')[0]->getType()->getFqsen();
+                                    $className = (string) $docblock->getTagsByName('var')[0]->getType()->getFqsen();
                                 } else {
                                     throw new Exception('Undefined dependency. Use either dependency="<className>|<serviceName>" or "@var $property ClassName"', Exception::MISSING_DEPENDENCY_DEFINITION);
                                 }

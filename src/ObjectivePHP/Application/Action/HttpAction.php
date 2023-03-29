@@ -2,21 +2,21 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Exception;
-use ObjectivePHP\DataProcessor\DataProcessorInterface;
-use ObjectivePHP\Events\EventsHandler;
-use ObjectivePHP\Invokable\InvokableInterface;
-use ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
-use ObjectivePHP\ServicesFactory\Specs\InjectionAnnotationProvider;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Exception;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\DataProcessorInterface;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandler;
+use Fei\ApiServer\ObjectivePHP\Invokable\InvokableInterface;
+use Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\InjectionAnnotationProvider;
 
 /**
  * Class AbstractAction
  *
- * @package ObjectivePHP\Application\Action
+ * @package Fei\ApiServer\ObjectivePHP\Application\Action
  */
 abstract class HttpAction implements InvokableInterface, InjectionAnnotationProvider
 {
@@ -110,7 +110,7 @@ abstract class HttpAction implements InvokableInterface, InjectionAnnotationProv
      * @param null $default
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function getParam($param, $default = null)
     {
@@ -146,7 +146,7 @@ abstract class HttpAction implements InvokableInterface, InjectionAnnotationProv
      * @param $serviceId
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\ServicesFactory\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception
      */
     public function getService($serviceId)
     {

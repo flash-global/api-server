@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Config;
 
-use ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
 
 interface ConfigInterface
 {

@@ -2,7 +2,7 @@
 
 namespace Tests\Helper\TestDirectives;
 
-use ObjectivePHP\Config\SingleValueDirective;
+use Fei\ApiServer\ObjectivePHP\Config\SingleValueDirective;
 
 class TestOtherSingleValueDirective extends SingleValueDirective
 {

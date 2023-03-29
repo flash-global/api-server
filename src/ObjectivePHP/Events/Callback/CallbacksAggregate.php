@@ -2,8 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Events\Callback;
 
-use ObjectivePHP\Events\EventInterface;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Events\EventInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 /**
  * Class CallbacksAggregate
@@ -11,7 +11,7 @@ use ObjectivePHP\Primitives\Collection\Collection;
  * Binding several callbacks using a callback aggregate ensures
  * that callbacks will be executed in a raw
  *
- * @package ObjectivePHP\Events\Callback
+ * @package Fei\ApiServer\ObjectivePHP\Events\Callback
  */
 class CallbacksAggregate extends AliasedCallback
 {

@@ -2,7 +2,7 @@
 
 namespace Tests\Helper\TestDirectives;
 
-use ObjectivePHP\Config\StackedValuesDirective;
+use Fei\ApiServer\ObjectivePHP\Config\StackedValuesDirective;
 
 class TestStackedValueDirective extends StackedValuesDirective
 {

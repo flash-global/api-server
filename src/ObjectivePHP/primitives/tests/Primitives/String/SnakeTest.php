@@ -2,8 +2,8 @@
 
 namespace Tests\Primitives\String;
 
-use ObjectivePHP\Primitives\String\Camel;
-use ObjectivePHP\Primitives\String\Snake;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Camel;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Snake;
 
 class SnakeTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,9 +15,9 @@ class SnakeTest extends \PHPUnit_Framework_TestCase
      */
     public function testSnakization($camel, $snake, $glue = '_')
     {
-        $this->assertEquals($snake, Snake::case($camel, $glue));
+        $this->assertEquals($snake, Snake::case ($camel, $glue));
     }
-    
+
     public function getDataForTestSnakization()
     {
         return [

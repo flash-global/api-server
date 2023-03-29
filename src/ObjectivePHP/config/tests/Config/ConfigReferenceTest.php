@@ -1,9 +1,9 @@
 <?php
 
-namespace Test\ObjectivePHP\Config;
+namespace Test\Fei\ApiServer\ObjectivePHP\Config;
 
-use ObjectivePHP\Config\ConfigReference;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Config\ConfigReference;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class ConfigReferenceTest extends TestCase
 {
@@ -11,7 +11,7 @@ class ConfigReferenceTest extends TestCase
     {
         $configRef = new ConfigReference('config-name');
 
-        $this->assertEquals('config-name', (string)$configRef);
+        $this->assertEquals('config-name', (string) $configRef);
     }
 
     public function testgetId()

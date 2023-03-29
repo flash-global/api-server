@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\ObjectivePHP\Html\Tag;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Html\Tag;
 
-use ObjectivePHP\Html\Tag\Tag;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\Merger\MergePolicy;
+use Fei\ApiServer\ObjectivePHP\Html\Tag\Tag;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergePolicy;
 
 class TagTest extends \PHPUnit_Framework_TestCase
 {

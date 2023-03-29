@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Events\Callback;
 
-use ObjectivePHP\Events\EventInterface;
+use Fei\ApiServer\ObjectivePHP\Events\EventInterface;
 
 abstract class AbstractCallback implements CallbackInterface
 {

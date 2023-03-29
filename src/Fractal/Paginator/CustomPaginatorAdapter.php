@@ -4,7 +4,7 @@ namespace Fei\ApiServer\Fractal\Paginator;
 
 use Fei\Entity\PaginatedEntitySet;
 use League\Fractal\Pagination\PaginatorInterface;
-use ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface;
 
 /**
  * Class CustomPaginatorAdapter

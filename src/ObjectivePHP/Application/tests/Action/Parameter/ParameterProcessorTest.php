@@ -1,11 +1,11 @@
 <?php
 
-namespace Test\ObjectivePHP\Application\Action\Param;
+namespace Test\Fei\ApiServer\ObjectivePHP\Application\Action\Param;
 
-use ObjectivePHP\Application\Action\Parameter\ParameterProcessor;
-use ObjectivePHP\Application\Action\Parameter\ActionParameter;
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\DataProcessor\StringProcessor;
+use Fei\ApiServer\ObjectivePHP\Application\Action\Parameter\ParameterProcessor;
+use Fei\ApiServer\ObjectivePHP\Application\Action\Parameter\ActionParameter;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\StringProcessor;
 
 class ParameterProcessorTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,7 +15,7 @@ class ParameterProcessorTest extends \PHPUnit_Framework_TestCase
 
         // with string
         $processor = $this->getMockForAbstractClass(ParameterProcessor::class, [new StringProcessor(), 'reference', 'mapping']);
-        
+
         $this->assertEquals('reference', $processor->getReference());
         $this->assertEquals('mapping', $processor->getQueryParameterMapping());
 

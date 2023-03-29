@@ -1,11 +1,11 @@
 <?php
 
-namespace Test\ObjectivePHP\Config\Loader;
+namespace Test\Fei\ApiServer\ObjectivePHP\Config\Loader;
 
-use ObjectivePHP\Config\Exception;
-use ObjectivePHP\Config\Loader\DirectoryLoader;
-use ObjectivePHP\PHPUnit\TestCase;
-use Test\ObjectivePHP\Config\TestStackedValuesDirective;
+use Fei\ApiServer\ObjectivePHP\Config\Exception;
+use Fei\ApiServer\ObjectivePHP\Config\Loader\DirectoryLoader;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Test\Fei\ApiServer\ObjectivePHP\Config\TestStackedValuesDirective;
 use TestDirectives\TestDirective;
 use Tests\Helper\TestDirectives\SampleSingleValueDirective;
 use Tests\Helper\TestDirectives\TestSingleValueDirectiveGroup;
@@ -41,7 +41,7 @@ class DirectoryLoaderTest extends TestCase
 
         return [
             TestSingleValueDirectiveGroup::class . '.version' => '1.0',
-            TestSingleValueDirectiveGroup::class . '.env'     => 'local',
+            TestSingleValueDirectiveGroup::class . '.env' => 'local',
             TestStackedValuesDirective::class => ['packageX', 'packageY'],
             SampleSingleValueDirective::class => 'local value'
         ];

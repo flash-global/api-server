@@ -8,7 +8,7 @@ namespace Fei\ApiServer\ObjectivePHP\Events\Callback;
  * Binding an aliased callback will make EventsHandler use the callback
  * alias to identify the return of this callback
  *
- * @package ObjectivePHP\Events\Callback
+ * @package Fei\ApiServer\ObjectivePHP\Events\Callback
  */
 class AliasedCallback
 {

@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Config;
 
-use ObjectivePHP\Config\SingleValueDirective;
+use Fei\ApiServer\ObjectivePHP\Config\SingleValueDirective;
 
 class ApplicationName extends SingleValueDirective
 {

@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Events;
 
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 interface EventInterface
 {

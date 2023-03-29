@@ -2,14 +2,14 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-use ObjectivePHP\Application\Action\RenderableActionInterface;
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use Fei\ApiServer\ObjectivePHP\Application\Action\RenderableActionInterface;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\AbstractMiddleware;
 
 /**
  * Class ViewResolver
  *
- * @package ObjectivePHP\Application\Task\Rta
+ * @package Fei\ApiServer\ObjectivePHP\Application\Task\Rta
  */
 class ViewResolver extends AbstractMiddleware
 {

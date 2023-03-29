@@ -2,17 +2,17 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\View\Helper\Vars;
-use ObjectivePHP\Message\Response\HttpResponse;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Message\Response\ResponseInterface;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\View\Helper\Vars;
+use Fei\ApiServer\ObjectivePHP\Message\Response\HttpResponse;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Message\Response\ResponseInterface;
 use Zend\Diactoros\Response;
 
 /**
  * Class ActionMiddleware
  *
- * @package ObjectivePHP\Application\Middleware
+ * @package Fei\ApiServer\ObjectivePHP\Application\Middleware
  */
 class ActionMiddleware extends EmbeddedMiddleware
 {
@@ -20,7 +20,7 @@ class ActionMiddleware extends EmbeddedMiddleware
     /**
      * @param ApplicationInterface $app
      * @return mixed
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      * @internal param ApplicationInterface $application
      *
      */

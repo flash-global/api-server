@@ -2,16 +2,16 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Events;
 
-use ObjectivePHP\Events\Callback\AliasedCallback;
-use ObjectivePHP\Events\Callback\CallbacksAggregate;
-use ObjectivePHP\Matcher\Matcher;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
-use ObjectivePHP\ServicesFactory\ServiceReference;
+use Fei\ApiServer\ObjectivePHP\Events\Callback\AliasedCallback;
+use Fei\ApiServer\ObjectivePHP\Events\Callback\CallbacksAggregate;
+use Fei\ApiServer\ObjectivePHP\Matcher\Matcher;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServiceReference;
 
 /**
  * Class EventsHandler
- * @package ObjectivePHP\Events
+ * @package Fei\ApiServer\ObjectivePHP\Events
  */
 class EventsHandler implements EventsHandlerInterface
 {
@@ -58,8 +58,8 @@ class EventsHandler implements EventsHandlerInterface
      * @param EventInterface $event
      * @return EventInterface
      * @throws Exception
-     * @throws \ObjectivePHP\Primitives\Exception
-     * @throws \ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\ServiceNotFoundException
      */
     public function trigger($eventName, $origin = null, $context = [], EventInterface $event = null)
     {
@@ -254,7 +254,8 @@ class EventsHandler implements EventsHandlerInterface
 
         $matchedListeners = array_intersect_key($this->listeners, $matchedListeners);
 
-        if ($this->getMatcher()->containsWildcard($eventFilter)
+        if (
+            $this->getMatcher()->containsWildcard($eventFilter)
             || empty($matchedListeners[$eventFilter])
         ) {
             // do not change priorities if the filter contains wildcard

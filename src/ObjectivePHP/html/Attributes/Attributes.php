@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Attributes;
 
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 class Attributes extends Collection
 {
@@ -24,7 +24,7 @@ class Attributes extends Collection
      * @param $value
      *
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function set($attribute, $value)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ObjectivePHP\PHPUnit;
+namespace Fei\ApiServer\ObjectivePHP\PHPUnit;
 
 class TestCase extends \PHPUnit_Framework_TestCase
 {
@@ -12,7 +12,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
             $this->fail('Failed asserting that ' . sprintf(
                 'exception of type "%s" is thrown',
                 $exceptionName
-            ));
+            )
+            );
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             // propagate Exception emitted from $this->fail()
             // without considering it as user exception in
@@ -25,7 +26,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
                         "exception message '%s' contains '%s'",
                         $e->getMessage(),
                         $exceptionMessage
-                    ));
+                    )
+                    );
                 }
 
                 if ($exceptionCode && $e->getCode() != $exceptionCode) {
@@ -33,7 +35,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
                         '%s is equal to expected exception code %s',
                         $e->getCode(),
                         $exceptionCode
-                    ));
+                    )
+                    );
                 }
 
                 $this->addToAssertionCount(1);
@@ -42,7 +45,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
                     'exception of type "%s" matches expected exception "%s"',
                     get_class($e),
                     $exceptionName
-                ));
+                )
+                );
             }
         }
     }
@@ -61,7 +65,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     public function setObjectAttribute($instance, $property, $value)
     {
         $reflection = new \ReflectionObject($instance);
-        $property   = $reflection->getProperty($property);
+        $property = $reflection->getProperty($property);
         $property->setAccessible(true);
         $property->setValue($instance, $value);
 

@@ -2,18 +2,18 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
-use ObjectivePHP\Config\ConfigReference;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
-use ObjectivePHP\ServicesFactory\ServiceReference;
-use ObjectivePHP\ServicesFactory\ServicesFactoryAwareInterface;
-use ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
-use ObjectivePHP\ServicesFactory\ServicesFactoryAwareTrait;
+use Fei\ApiServer\ObjectivePHP\Config\ConfigReference;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServiceReference;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactoryAwareInterface;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactoryAwareTrait;
 
 /**
  * Class AbstractServiceBuilder
  *
- * @package ObjectivePHP\ServicesFactory\Builder
+ * @package Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder
  */
 abstract class AbstractServiceBuilder implements ServiceBuilderInterface, ServicesFactoryAwareInterface
 {

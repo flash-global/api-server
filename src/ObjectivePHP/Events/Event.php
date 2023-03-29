@@ -2,16 +2,16 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Events;
 
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 
 class Event implements EventInterface
 {
 
-    const WAITING   = 'waiting';
+    const WAITING = 'waiting';
     const TRIGGERED = 'triggered';
-    const FINISHED  = 'finished';
-    const HALTED    = 'halted';
+    const FINISHED = 'finished';
+    const HALTED = 'halted';
 
     protected $name;
 
@@ -34,7 +34,7 @@ class Event implements EventInterface
      */
     protected $exceptions;
 
-    protected $status     = self::WAITING;
+    protected $status = self::WAITING;
 
 
     public function __construct()

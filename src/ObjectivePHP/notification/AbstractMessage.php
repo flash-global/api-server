@@ -2,12 +2,12 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Notification;
 
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 
 /**
  * Class AbstractMessage
- * @package ObjectivePHP\Notification
+ * @package Fei\ApiServer\ObjectivePHP\Notification
  */
 class AbstractMessage implements MessageInterface
 {

@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer;
 
-use ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Diactoros\Response\SapiEmitter;
 use Zend\Diactoros\Stream;

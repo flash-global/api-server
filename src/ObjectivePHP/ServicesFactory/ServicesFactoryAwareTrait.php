@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\ServicesFactory;
 /**
  * Class ServicesFactoryAwareTrait
  *
- * @package ObjectivePHP\ServicesFactory
+ * @package Fei\ApiServer\ObjectivePHP\ServicesFactory
  */
 trait ServicesFactoryAwareTrait
 {

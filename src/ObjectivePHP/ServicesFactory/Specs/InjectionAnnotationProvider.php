@@ -4,7 +4,7 @@ namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
 /**
  * Interface InjectionAnnotationProvider
- * @package ObjectivePHP\ServicesFactory\Specs
+ * @package Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs
  */
 interface InjectionAnnotationProvider
 {

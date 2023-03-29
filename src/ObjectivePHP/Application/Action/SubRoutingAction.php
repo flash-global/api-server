@@ -2,17 +2,17 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Middleware\AbstractMiddleware;
-use ObjectivePHP\Application\Middleware\EmbeddedMiddleware;
-use ObjectivePHP\Application\Middleware\Exception;
-use ObjectivePHP\Application\Middleware\MiddlewareInterface;
-use ObjectivePHP\Invokable\Invokable;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\EmbeddedMiddleware;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\Exception;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\MiddlewareInterface;
+use Fei\ApiServer\ObjectivePHP\Invokable\Invokable;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 /**
  * Class SubRoutingAction
- * @package ObjectivePHP\Application\Action
+ * @package Fei\ApiServer\ObjectivePHP\Application\Action
  */
 abstract class SubRoutingAction extends HttpAction
 {
@@ -37,7 +37,7 @@ abstract class SubRoutingAction extends HttpAction
         if ($servicesFactory) {
             $normalizedMiddleware = null;
             switch (true) {
-                    // middlewares can be an array containing [$object, 'method']
+                // middlewares can be an array containing [$object, 'method']
                 case is_array($middleware) && !empty($middleware[0]) && is_object($middleware[0]):
                     $normalizedMiddleware = $middleware[0];
                     break;
@@ -58,10 +58,12 @@ abstract class SubRoutingAction extends HttpAction
 
         // TODO fix http return code (probably 405)
         if (!is_callable($middleware)) {
-            throw new Exception(sprintf(
-                'No middleware matching routed reference "%s" has been registered',
-                $middlewareReference
-            ));
+            throw new Exception(
+                sprintf(
+                    'No middleware matching routed reference "%s" has been registered',
+                    $middlewareReference
+                )
+            );
         }
 
         return $middleware($app);

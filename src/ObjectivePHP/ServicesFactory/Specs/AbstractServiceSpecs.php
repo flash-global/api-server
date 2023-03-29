@@ -2,10 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
-use ObjectivePHP\ServicesFactory\Exception\Exception;
-use ObjectivePHP\ServicesFactory\Specs\UndefinedServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\UndefinedServiceSpecs;
 
 abstract class AbstractServiceSpecs implements ServiceSpecsInterface
 {

@@ -2,7 +2,7 @@
 
 namespace Tests\Primitives\String;
 
-use ObjectivePHP\Primitives\String\Camel;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Camel;
 
 class CamelTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,9 +14,9 @@ class CamelTest extends \PHPUnit_Framework_TestCase
      */
     public function testCamelization($snake, $camel, $flag, $delimiter = '_')
     {
-        $this->assertEquals($camel, Camel::case($snake, $flag, $delimiter));
+        $this->assertEquals($camel, Camel::case ($snake, $flag, $delimiter));
     }
-    
+
     public function getDataForTestCamelization()
     {
         return [

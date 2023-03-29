@@ -2,28 +2,28 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\String;
 
-use ObjectivePHP\Primitives\AbstractPrimitive;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\Exception;
-use ObjectivePHP\Primitives\Number\Number;
+use Fei\ApiServer\ObjectivePHP\Primitives\AbstractPrimitive;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Number\Number;
 
 class Str extends AbstractPrimitive
 {
     const TYPE = 'string';
 
-    const LEFT  = 1;
+    const LEFT = 1;
     const RIGHT = 2;
-    const BOTH  = 4;
+    const BOTH = 4;
 
     const FROM_END = 8;
 
     const CASE_SENSITIVE = 16;
-    const STRICT         = 32;
+    const STRICT = 32;
 
     const REGEXP = 64;
-    const LIMIT  = 128;
+    const LIMIT = 128;
 
-    const UPPER_ALL   = 'all';
+    const UPPER_ALL = 'all';
     const UPPER_FIRST = 'first';
     const UPPER_WORDS = 'words';
 
@@ -84,11 +84,13 @@ class Str extends AbstractPrimitive
 
         switch ($mode) {
             case self::UPPER_FIRST:
-                $upperValue = mb_strtoupper(mb_substr(
-                    $this->getInternalValue(),
-                    0,
-                    1
-                )) . mb_substr($this->getInternalValue(), 1);
+                $upperValue = mb_strtoupper(
+                    mb_substr(
+                        $this->getInternalValue(),
+                        0,
+                        1
+                    )
+                ) . mb_substr($this->getInternalValue(), 1);
                 break;
 
             case self::UPPER_WORDS:
@@ -145,7 +147,7 @@ class Str extends AbstractPrimitive
                 throw new Exception($message, Exception::INVALID_REGEXP);
             }
         } else {
-            $limit  = $limit ?: PHP_INT_MAX;
+            $limit = $limit ?: PHP_INT_MAX;
             $result = explode($separator, $this->getInternalValue(), $limit);
         }
 
@@ -200,11 +202,13 @@ class Str extends AbstractPrimitive
         }
 
 
-        $this->setInternalValue(substr(
-            $this->getInternalValue(),
-            0,
-            $position
-        ) . (string)$string . substr($this->getInternalValue(), $position));
+        $this->setInternalValue(
+            substr(
+                $this->getInternalValue(),
+                0,
+                $position
+            ) . (string) $string . substr($this->getInternalValue(), $position)
+        );
 
         return $this;
     }
@@ -228,7 +232,7 @@ class Str extends AbstractPrimitive
     }
 
     /**
-     * @param string|\ObjectivePHP\Primitives\String $string Needle
+     * @param string|\Fei\ApiServer\ObjectivePHP\Primitives\String $string Needle
      * @param int                                    $offset Offset to start search
      * @param null                                   $flags
      *
@@ -243,7 +247,7 @@ class Str extends AbstractPrimitive
             throw new Exception('Invalid needle type', Exception::INVALID_PARAMETER);
         }
 
-        $string = (string)$string;
+        $string = (string) $string;
 
         if ($flags & self::FROM_END) {
             $output = ($flags & self::CASE_SENSITIVE)
@@ -271,7 +275,7 @@ class Str extends AbstractPrimitive
      */
     public function matches($pattern)
     {
-        return (bool)preg_match($pattern, $this->getInternalValue());
+        return (bool) preg_match($pattern, $this->getInternalValue());
     }
 
     /**
@@ -328,7 +332,7 @@ class Str extends AbstractPrimitive
             return $this->regexplace($pattern, $replacement);
         } else {
             $function = ($flags & self::CASE_SENSITIVE) ? 'str_replace' : 'str_ireplace';
-            $result   = $function($pattern, $replacement, $this->getInternalValue());
+            $result = $function($pattern, $replacement, $this->getInternalValue());
         }
         $this->setInternalValue($result);
 
@@ -387,10 +391,11 @@ class Str extends AbstractPrimitive
      */
     public function contains($needle, $flags = 0)
     {
-        return ($flags & self::CASE_SENSITIVE) ? (strpos(
-            $this->getInternalValue(),
-            $needle
-        ) !== false) : (stripos($this->getInternalValue(), $needle) !== false);
+        return ($flags & self::CASE_SENSITIVE) ? (
+            strpos(
+                $this->getInternalValue(),
+                $needle
+            ) !== false) : (stripos($this->getInternalValue(), $needle) !== false);
     }
 
     /**
@@ -437,7 +442,7 @@ class Str extends AbstractPrimitive
 
         if ($this->variables) {
             // first separate named and anonymous contents
-            $named     = [];
+            $named = [];
             $anonymous = [];
 
             foreach ($this->variables as $key => $value) {
@@ -450,7 +455,7 @@ class Str extends AbstractPrimitive
 
             // handle named placeholders
             foreach ($named as $placeholder => $value) {
-                $builtString = str_replace(':' . $placeholder, (string)$value, $builtString);
+                $builtString = str_replace(':' . $placeholder, (string) $value, $builtString);
             }
 
             // then anonymous ones, if any value provided

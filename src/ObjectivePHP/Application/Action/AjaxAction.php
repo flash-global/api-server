@@ -6,7 +6,7 @@ use Zend\Diactoros\Response\JsonResponse;
 
 /**
  * Class AbstractRestfulAction
- * @package ObjectivePHP\Application\Middleware
+ * @package Fei\ApiServer\ObjectivePHP\Application\Middleware
  */
 abstract class AjaxAction extends HttpAction
 {

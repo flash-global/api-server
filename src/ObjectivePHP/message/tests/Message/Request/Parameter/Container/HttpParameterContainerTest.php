@@ -1,10 +1,10 @@
 <?php
 
-namespace Test\ObjectivePHP\Message\Request\Parameter\Container;
+namespace Test\Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container;
 
-use ObjectivePHP\Message\Request\HttpRequest;
-use ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Message\Request\HttpRequest;
+use Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class HttpParameterContainerTest extends TestCase
 {

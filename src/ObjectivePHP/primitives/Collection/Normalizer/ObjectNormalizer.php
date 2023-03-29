@@ -2,12 +2,12 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection\Normalizer;
 
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Exception;
 
 /**
  * Class ObjectNormalizer
- * @package ObjectivePHP\Primitives\Collection\Normalizer
+ * @package Fei\ApiServer\ObjectivePHP\Primitives\Collection\Normalizer
  */
 class ObjectNormalizer
 {

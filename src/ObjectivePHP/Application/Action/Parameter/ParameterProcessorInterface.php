@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action\Parameter;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\DataProcessor\DataProcessorInterface;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\DataProcessorInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 /**
  * Interface ParameterProcessorInterface
- * @package ObjectivePHP\Application\Action\Parameter
+ * @package Fei\ApiServer\ObjectivePHP\Application\Action\Parameter
  */
 interface ParameterProcessorInterface extends DataProcessorInterface
 {

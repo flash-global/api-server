@@ -2,14 +2,14 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Config;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Matcher\Matcher;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Matcher\Matcher;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 /**
  * Class Config
  *
- * @package ObjectivePHP\Config
+ * @package Fei\ApiServer\ObjectivePHP\Config
  */
 class Config extends Collection implements ConfigInterface
 {

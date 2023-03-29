@@ -2,8 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Config;
 
-use ObjectivePHP\Config\SingleValueDirectiveGroup;
-use ObjectivePHP\Message\Request\RequestInterface;
+use Fei\ApiServer\ObjectivePHP\Config\SingleValueDirectiveGroup;
+use Fei\ApiServer\ObjectivePHP\Message\Request\RequestInterface;
 
 class SimpleRoute extends SingleValueDirectiveGroup
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Test\ObjectivePHP\Application\Middleware;
+namespace Test\Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
-use ObjectivePHP\Application\Action\VersionedApiAction;
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Middleware\MiddlewareInterface;
-use ObjectivePHP\Message\Request\HttpRequest;
-use ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Application\Action\VersionedApiAction;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\MiddlewareInterface;
+use Fei\ApiServer\ObjectivePHP\Message\Request\HttpRequest;
+use Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class VersionnedApiMiddlewareTest extends TestCase
 {

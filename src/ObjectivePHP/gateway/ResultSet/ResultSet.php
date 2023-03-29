@@ -2,8 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet;
 
-use ObjectivePHP\Gateway\Entity\EntityInterface;
-use ObjectivePHP\Gateway\Exception\ResultSetException;
+use Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\Exception\ResultSetException;
 
 /**
  * Class EntitySet

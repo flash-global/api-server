@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Config;
 
-use ObjectivePHP\Config\SingleValueDirectiveGroup;
+use Fei\ApiServer\ObjectivePHP\Config\SingleValueDirectiveGroup;
 
 class UrlAlias extends SingleValueDirectiveGroup
 {

@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Input;
 
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 class Select extends Input
 {
@@ -27,7 +27,7 @@ class Select extends Input
      * @param $options
      *
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function addOptions($options)
     {

@@ -4,7 +4,7 @@ namespace Fei\ApiServer\ObjectivePHP\Notification;
 
 /**
  * Class Warning
- * @package ObjectivePHP\Notification
+ * @package Fei\ApiServer\ObjectivePHP\Notification
  */
 class Warning extends AbstractMessage
 {

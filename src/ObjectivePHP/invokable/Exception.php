@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\Invokable;
 /**
  * Class Exception
  *
- * @package ObjectivePHP\Invokable
+ * @package Fei\ApiServer\ObjectivePHP\Invokable
  */
 class Exception extends \Exception
 {

@@ -3,67 +3,67 @@
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection;
 
 use ArrayObject;
-use ObjectivePHP\Primitives\AbstractPrimitive;
-use ObjectivePHP\Primitives\Collection\Normalizer\ObjectNormalizer;
-use ObjectivePHP\Primitives\Collection\Normalizer\PrimitiveNormalizer;
-use ObjectivePHP\Primitives\Collection\Validator\ObjectValidator;
-use ObjectivePHP\Primitives\Exception;
-use ObjectivePHP\Primitives\Merger\MergerInterface;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Primitives\AbstractPrimitive;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Normalizer\ObjectNormalizer;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Normalizer\PrimitiveNormalizer;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Validator\ObjectValidator;
+use Fei\ApiServer\ObjectivePHP\Primitives\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergerInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 use Traversable;
 
 /**
  * Class Collection
  *
- * @package ObjectivePHP\Primitives
+ * @package Fei\ApiServer\ObjectivePHP\Primitives
  */
 class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \Countable
 {
-    
+
     /**
      * Primitive type
      */
     const TYPE = 'collection';
-    
+
     /**
      * Special value to release restriction
      */
     const MIXED = 'mixed';
-    
+
     /**
      * Collections content type
      *
      * @var string $type
      */
     protected $type;
-    
+
     /**
      * Allowed keys
      *
      * @var $allowedKeys Collection An empty array means all keys are allowed
      */
     protected $allowedKeys = [];
-    
+
     /**
      * @var array
      */
     protected $normalizers = [];
-    
+
     /**
      * @var Collection
      */
     protected $keyNormalizers = [];
-    
+
     /**
      * @var Collection
      */
     protected $validators = [];
-    
+
     /**
      * @var array
      */
     protected $mergers = [];
-    
+
     /**
      * @param array $input
      *
@@ -72,7 +72,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         $this->setInternalValue($input);
     }
-    
+
     /**
      * Convert a value to a Collection instance
      *
@@ -85,10 +85,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         if ($collection instanceof Collection) {
             return $collection;
         }
-        
+
         return new static($collection);
     }
-    
+
     /**
      * Alias of self::getInternalValue()
      *
@@ -97,16 +97,16 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function toArray()
     {
         $array = $this->getInternalValue();
-        
+
         foreach ($array as &$value) {
             if ($value instanceof Collection) {
                 $value = $value->toArray();
             }
         }
-        
+
         return $array;
     }
-    
+
     /**
      * Set or retrieve collection type
      *
@@ -123,48 +123,48 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         if (!$type || $type == self::MIXED) {
             return $this->clearRestrictions();
         }
-        
+
         // set new type
         if ($this->getValidators() || $this->getNormalizers()) {
             throw new Exception('Class restriction can not be set if there is already Normalizer and/or Validator attached to the collection', Exception::COLLECTION_INVALID_TYPE);
         }
-        
+
         // add normalizer (if type is a class - interfaces cannot be normalized
         if ($normalize && !interface_exists($type)) {
             switch (true) {
                 case (!class_exists($type)):
                     throw new Exception(sprintf('Class "%s" does not exist', $type), Exception::COLLECTION_INVALID_TYPE);
-                
+
                 case (AbstractPrimitive::isPrimitive($type)):
                     $normalizer = new PrimitiveNormalizer($type);
                     break;
-                
+
                 default:
                     $normalizer = new ObjectNormalizer($type);
                     break;
             }
-            
+
             $this->addNormalizer($normalizer);
         }
-        
+
         $this->addValidator(new ObjectValidator($type));
-        
-        $this->type = (string)$type;
-        
+
+        $this->type = (string) $type;
+
         return $this;
     }
-    
+
     /**
      * @return $this
      */
     public function clearRestrictions()
     {
-        $this->validators  = [];
+        $this->validators = [];
         $this->normalizers = [];
-        
+
         return $this;
     }
-    
+
     /**
      * Returns collection type
      *
@@ -176,7 +176,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return $this->type;
     }
-    
+
     /**
      * ArrayAccess implementation
      *
@@ -189,7 +189,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         $this->set($index, $value);
     }
-    
+
     /**
      * ArrayAccess implementation
      *
@@ -202,7 +202,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return $this->get($index);
     }
-    
+
     /**
      * @return Collection
      */
@@ -210,7 +210,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return $this->allowedKeys;
     }
-    
+
     /**
      * Set or retrieve allowed keys
      *
@@ -222,12 +222,12 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function setAllowedKeys($keys)
     {
         $keys = Collection::cast($keys);
-        
+
         $this->allowedKeys = $keys;
-        
+
         return $this;
     }
-    
+
     /**
      * @param $key
      *
@@ -237,7 +237,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return (empty($this->allowedKeys) ? true : $this->getAllowedKeys()->contains($key));
     }
-    
+
     /**
      * Iterates collection. Value is passed by reference in the callback.
      *
@@ -251,7 +251,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         if (!is_callable($callable)) {
             throw new Exception(sprintf('Parameter of type  %s is not callable', gettype($callable)), Exception::INVALID_CALLBACK);
         }
-        
+
         foreach ($this->value as $key => &$val) {
             try {
                 $callable($val, $key);
@@ -261,10 +261,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                 break;
             }
         }
-        
+
         return $this;
     }
-    
+
     /**
      * Returns a new filtered collection
      *
@@ -278,17 +278,17 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         if (null !== $callable && !is_callable($callable)) {
             throw new Exception(sprintf('Parameter of type  %s is not callable', gettype($callable)), Exception::INVALID_CALLBACK);
         }
-        
+
         $array = is_callable($callable)
             ? array_filter($this->toArray(), $callable, ARRAY_FILTER_USE_BOTH)
             : array_filter($this->toArray());
-        
-        
+
+
         $this->fromArray($array);
-        
+
         return $this;
     }
-    
+
     /**
      * FLip the collection (invert keys and values)
      *
@@ -296,20 +296,20 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
      */
     public function flip()
     {
-        
+
         // get null valued data
         $unvaluedEntries = $this->copy()->filter(function ($value) {
             return !$value;
         })->keys()
         ;
-        
+
         $this->filter();
-        
+
         $this->setInternalValue(array_merge(array_flip($this->toArray()), $unvaluedEntries->toArray()));
-        
+
         return $this;
     }
-    
+
     /**
      * Return value to serialize on json_encode calls
      *
@@ -320,7 +320,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return $this->toArray();
     }
-    
+
     /**
      * Apply a callback to primitive's internal value
      *
@@ -331,10 +331,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function apply(callable $callback)
     {
         $this->setInternalValue($callback($this->toArray()));
-        
+
         return $this;
     }
-    
+
     /**
      * Return a cloned primitive
      *
@@ -344,7 +344,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return clone $this;
     }
-    
+
     /**
      * Returns a Str generated from items concatenation
      *
@@ -357,10 +357,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function join($glue = ' ')
     {
         $joinedString = new Str(implode($glue, $this->toArray()));
-        
+
         return $joinedString;
     }
-    
+
     /**
      * Shunt native append() method to make it fluent
      *
@@ -373,10 +373,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         foreach ($values as $value) {
             $this[] = $value;
         }
-        
+
         return $this;
     }
-    
+
     /**
      * Return normalizers
      *
@@ -386,7 +386,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return $this->normalizers;
     }
-    
+
     /**
      * Return key normalizers
      *
@@ -396,10 +396,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         // initialize normalizers collection
         $this->keyNormalizers = Collection::cast($this->keyNormalizers);
-        
+
         return $this->keyNormalizers;
     }
-    
+
     /**
      * Return validators
      *
@@ -409,7 +409,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return $this->validators;
     }
-    
+
     /**
      * Add a normalizer
      *
@@ -423,13 +423,13 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         foreach ($this->value as &$value) {
             $normalizer($value);
         }
-        
+
         // stack the new normalizer
         $this->normalizers[] = $normalizer;
-        
+
         return $this;
     }
-    
+
     /**
      * Add a key normalizer
      *
@@ -442,19 +442,19 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         // applies normalizer to currently stored entries
         $data = $this->toArray();
         $this->clear();
-        
+
         foreach ($data as $key => $value) {
             $normalizer($key);
-            
+
             $this->set($key, $value);
         }
-        
+
         // stack the new normalizer
         $this->keyNormalizers[] = $normalizer;
-        
+
         return $this;
     }
-    
+
     /**
      * Clear all normalizers
      *
@@ -463,10 +463,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function clearNormalizers()
     {
         $this->normalizers = new Collection();
-        
+
         return $this;
     }
-    
+
     /**
      * Clear all key normalizers
      *
@@ -475,10 +475,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function clearKeyNormalizers()
     {
         $this->keyNormalizers = [];
-        
+
         return $this;
     }
-    
+
     /**
      * Add a validator
      *
@@ -490,7 +490,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
      */
     public function addValidator(callable $validator)
     {
-        
+
         // match validator against currently stored entries
         foreach ($this as $key => $value) {
             if (!$validator($value)) {
@@ -499,19 +499,19 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                     case is_scalar($value):
                         $type = gettype($value);
                         break;
-                    
+
                     case is_array($value):
                         $type = 'array';
                         break;
-                    
+
                     case is_object($value):
                         $type = get_class($value);
                         break;
-                    
+
                     case is_resource($value):
                         $type = 'resource';
                         break;
-                    
+
                     default:
                         $type = 'unknown';
                         break;
@@ -520,13 +520,13 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                 throw new Exception(sprintf('Value #%s (%s) did not pass validation', $key, $type), Exception::COLLECTION_FORBIDDEN_VALUE);
             }
         }
-        
+
         // stack the validator
         $this->validators[] = $validator;
-        
+
         return $this;
     }
-    
+
     /**
      * Clear validators
      *
@@ -535,20 +535,20 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function clearValidators()
     {
         $this->validators = new Collection();
-        
+
         return $this;
     }
-    
+
     /**
      * Reset internal value to an empty array
      */
     public function clear()
     {
         $this->fromArray([]);
-        
+
         return $this;
     }
-    
+
     /**
      * Merge a collection into another
      *
@@ -559,9 +559,9 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function merge($data)
     {
         // force data conversion to array
-        $data    = Collection::cast($data)->toArray();
+        $data = Collection::cast($data)->toArray();
         $mergers = $this->getMergers();
-        
+
         if (!$mergers->isEmpty()) {
             // prepare data by manually merging some keys
             foreach ($mergers as $key => $merger) {
@@ -570,12 +570,12 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                 }
             }
         }
-        
+
         $this->setInternalValue(array_merge($this->toArray(), $data));
-        
+
         return $this;
     }
-    
+
     /**
      * Add a collection
      *
@@ -589,12 +589,12 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         // force data conversion to array
         $data = Collection::cast($data)->toArray();
-        
+
         $this->setInternalValue($this->toArray() + $data);
-        
+
         return $this;
     }
-    
+
     /**
      * Return a new collection with a numeric index
      *
@@ -604,7 +604,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return new Collection(array_values($this->toArray()));
     }
-    
+
     /**
      * Return a new Collection with current keys as values
      */
@@ -612,7 +612,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return new Collection(array_keys($this->toArray()));
     }
-    
+
     /**
      * Is a given index set on the Collection?
      *
@@ -624,7 +624,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return $this->offsetExists($key);
     }
-    
+
     /**
      * Return the value matching the requested key or a default value
      *
@@ -643,10 +643,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                 throw new Exception(sprintf('Cannot read forbidden key: "%s"', $key), Exception::COLLECTION_FORBIDDEN_KEY);
             }
         }
-        
+
         return $this->has($key) ? $this->getInternalValue()[$key] : $default;
     }
-    
+
     /**
      * Define a key and associate a value to it
      *
@@ -658,8 +658,8 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
      */
     public function set($key, $value)
     {
-        
-        
+
+
         // normalize value
         if ($normalizers = $this->getNormalizers()) {
             /* @var $normalizer callable */
@@ -667,7 +667,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                 $normalizer($value);
             }
         }
-        
+
         // normalize key
         if ($keyNormalizers = $this->getKeyNormalizers()) {
             /* @var $normalizer callable */
@@ -675,37 +675,37 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                 $normalizer($key);
             }
         }
-        
+
         // check key validity
         if (!$this->isKeyAllowed($key)) {
             throw new Exception('Cannot set forbidden key: ' . $key, Exception::COLLECTION_FORBIDDEN_KEY);
         }
-        
+
         // validate value
-        
+
         // define value type
         switch (true) {
             case is_scalar($value):
                 $type = gettype($value);
                 break;
-            
+
             case is_array($value):
                 $type = 'array';
                 break;
-            
+
             case is_object($value):
                 $type = get_class($value);
                 break;
-            
+
             case is_resource($value):
                 $type = 'resource';
                 break;
-            
+
             default:
                 $type = 'unknown';
                 break;
         }
-        
+
         if ($validators = $this->getValidators()) {
             /* @var $validator callable */
             foreach ($validators as $validator) {
@@ -714,16 +714,16 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
                 }
             }
         }
-        
+
         if (!is_null($key)) {
             $this->value[$key] = $value;
         } else {
             $this->value[] = $value;
         }
-        
+
         return $this;
     }
-    
+
     /**
      * @param $key
      *
@@ -732,10 +732,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function delete($key)
     {
         unset($this->value[$key]);
-        
+
         return $this;
     }
-    
+
     /**
      * @param $key
      */
@@ -744,10 +744,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         while ($index = $this->search($value, $strict)) {
             $this->delete($index);
         }
-        
+
         return $this;
     }
-    
+
     /**
      * Is the given key missing in the Collection?
      *
@@ -759,7 +759,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return !$this->has($key);
     }
-    
+
     /**
      * Search a value in the Collection and return the associated key
      *
@@ -785,10 +785,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         } else {
             $values = $this;
         }
-        
-        return array_search($value, $values->toArray(), (bool)$strict);
+
+        return array_search($value, $values->toArray(), (bool) $strict);
     }
-    
+
     /**
      * Does the collection contains a given value
      *
@@ -802,7 +802,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         // array_search returns false or the first matching key
         return (is_bool($this->search($value, $strict)) ? false : true);
     }
-    
+
     /**
      * Return the first element of the collection
      *
@@ -816,10 +816,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
         $values = $this->toArray();
         reset($values);
         $lastKey = key($values);
-        
+
         return $this->get($lastKey);
     }
-    
+
     /**
      * Return the last element of the collection
      *
@@ -830,14 +830,14 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
      */
     public function last()
     {
-        
+
         $values = $this->toArray();
         end($values);
         $lastKey = key($values);
-        
+
         return $this->get($lastKey);
     }
-    
+
     /**
      * Put a value at the beginning of the collection
      *
@@ -848,10 +848,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function prepend(...$values)
     {
         $this->fromArray(array_merge($values, $this->toArray()));
-        
+
         return $this;
     }
-    
+
     /**
      * Set collection value
      *
@@ -863,33 +863,33 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
      */
     public function setInternalValue($data)
     {
-        
+
         if ($data instanceof ArrayObject) {
             $data = $data->getArrayCopy();
         }
-        
+
         if ($data instanceof \Iterator) {
             $data = iterator_to_array($data);
         }
-        
+
         // force null values conversion to empty arrays
         if (is_null($data)) {
             $data = [];
         }
-        
+
         if (!is_array($data)) {
             $data = [$data];
         }
-        
+
         $this->value = [];
-        
+
         foreach ($data as $key => $value) {
             $this->set($key, $value);
         }
-        
+
         return $this;
     }
-    
+
     /**
      * Proxy to fromArray
      *
@@ -901,7 +901,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return $this->setInternalValue($data);
     }
-    
+
     /**
      * Is the Collection empty?
      *
@@ -909,9 +909,9 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
      */
     public function isEmpty()
     {
-        return !(bool)count($this);
+        return !(bool) count($this);
     }
-    
+
     /**
      * Add a merger
      *
@@ -923,23 +923,23 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function addMerger($keys, MergerInterface $merger)
     {
         $mergers = $this->getMergers();
-        $keys    = Collection::cast($keys);
-        
+        $keys = Collection::cast($keys);
+
         foreach ($keys as $key) {
             // normalize key first
             $this->getKeyNormalizers()->each(function ($normalizer) use (&$key) {
                 $normalizer($key);
             })
             ;
-            
+
             $mergers[$key] = $merger;
         }
-        
+
         $this->mergers = $mergers;
-        
+
         return $this;
     }
-    
+
     /**
      * Return all previously added mergers
      *
@@ -949,8 +949,8 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return Collection::cast($this->mergers);
     }
-    
-    
+
+
     /**
      * Replace the value of a key by a new one
      *
@@ -963,16 +963,16 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function rename($from, $to)
     {
         $arrayCopy = $this->toArray();
-        
+
         if (!array_key_exists($from, $arrayCopy)) {
             throw new Exception(sprintf('The key %s was not found.', $from), Exception::INVALID_PARAMETER);
         }
-        
-        $keys                             = array_keys($arrayCopy);
+
+        $keys = array_keys($arrayCopy);
         $keys[array_search($from, $keys)] = $to;
-        
+
         $this->fromArray(array_combine($keys, $arrayCopy));
-        
+
         return $this;
     }
 
@@ -994,10 +994,10 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     public function offsetExists($offset)
     {
         $internalValue = $this->getInternalValue();
-        
+
         return is_null($internalValue) ? false : array_key_exists($offset, $internalValue);
     }
-    
+
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Offset to unset
@@ -1014,7 +1014,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         unset($this->value[$offset]);
     }
-    
+
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Return the current element
@@ -1026,7 +1026,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return current($this->value);
     }
-    
+
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Move forward to next element
@@ -1038,7 +1038,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         next($this->value);
     }
-    
+
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Return the key of the current element
@@ -1050,7 +1050,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return key($this->value);
     }
-    
+
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Checks if current position is valid
@@ -1063,7 +1063,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return !is_null(key($this->value));
     }
-    
+
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Rewind the Iterator to the first element
@@ -1075,7 +1075,7 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         reset($this->value);
     }
-    
+
     /**
      * @return int
      */
@@ -1083,14 +1083,14 @@ class Collection extends AbstractPrimitive implements \ArrayAccess, \Iterator, \
     {
         return count($this->value);
     }
-    
+
     /**
      * Reverse values
      */
     public function reverse()
     {
         $this->setInternalValue(array_reverse($this->getInternalValue(), true));
-        
+
         return $this;
     }
 }

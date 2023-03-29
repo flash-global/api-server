@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
-use ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
 
 interface ServiceBuilderInterface
 {

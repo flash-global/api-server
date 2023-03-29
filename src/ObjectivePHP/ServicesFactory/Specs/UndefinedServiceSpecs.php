@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs;
 
-use ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\AbstractServiceSpecs;
 
 class UndefinedServiceSpecs extends AbstractServiceSpecs
 {

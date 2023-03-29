@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Collection;
 
-use ObjectivePHP\Primitives\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Exception;
 
 /**
  * Class BreakException
@@ -11,7 +11,7 @@ use ObjectivePHP\Primitives\Exception;
  * By throwing it from the callable passed to each(), the
  * iteration will be interrupted.
  *
- * @package ObjectivePHP\Primitives\Collection
+ * @package Fei\ApiServer\ObjectivePHP\Primitives\Collection
  */
 class BreakException extends Exception
 {

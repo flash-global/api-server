@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\ObjectivePHP\Primitives;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Primitives;
 
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\AbstractPrimitive;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\AbstractPrimitive;
 
 class AbstractPrimitiveTest extends TestCase
 {

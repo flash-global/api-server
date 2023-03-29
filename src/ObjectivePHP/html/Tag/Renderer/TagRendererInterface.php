@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Tag\Renderer;
 
-use ObjectivePHP\Html\Tag\Tag;
+use Fei\ApiServer\ObjectivePHP\Html\Tag\Tag;
 
 interface TagRendererInterface
 {

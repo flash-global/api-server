@@ -2,20 +2,21 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Gateway\Entity;
 
-use ObjectivePHP\Primitives\String\Camel;
-use ObjectivePHP\Primitives\String\Snake;
+use Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Camel;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Snake;
 
 /**
  * Class Entity
  *
- * @package ObjectivePHP\Gateway\Entity
+ * @package Fei\ApiServer\ObjectivePHP\Gateway\Entity
  */
 class Entity extends \ArrayObject implements EntityInterface
 {
     protected $entityCollection = self::DEFAULT_ENTITY_COLLECTION;
 
     protected $entityIdentifier = 'id';
-    
+
     /**
      * @return string
      */
@@ -23,7 +24,7 @@ class Entity extends \ArrayObject implements EntityInterface
     {
         return $this->entityCollection;
     }
-    
+
     /**
      * @param string $entityCollection
      *
@@ -32,18 +33,18 @@ class Entity extends \ArrayObject implements EntityInterface
     public function setEntityCollection($entityCollection)
     {
         $this->entityCollection = $entityCollection;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
-    public function getEntityIdentifier() : string
+    public function getEntityIdentifier(): string
     {
         return $this->entityIdentifier;
     }
-    
+
     /**
      * @return bool
      */
@@ -51,7 +52,7 @@ class Entity extends \ArrayObject implements EntityInterface
     {
         return !$this[$this->entityIdentifier] ?? true;
     }
-    
+
     /**
      * @param mixed $index
      *
@@ -66,7 +67,7 @@ class Entity extends \ArrayObject implements EntityInterface
             return parent::offsetGet($index);
         }
     }
-    
+
     /**
      * @param mixed $index
      * @param mixed $value
@@ -82,7 +83,7 @@ class Entity extends \ArrayObject implements EntityInterface
             parent::offsetSet($index, $value);
         }
     }
-    
+
     /**
      * @param mixed $index
      *
@@ -97,7 +98,7 @@ class Entity extends \ArrayObject implements EntityInterface
             parent::offsetUnset($index);
         }
     }
-    
+
     /**
      * @param mixed $index
      *
@@ -111,7 +112,7 @@ class Entity extends \ArrayObject implements EntityInterface
             return parent::offsetExists($index);
         }
     }
-    
+
     /**
      * @return array
      */
@@ -134,7 +135,8 @@ class Entity extends \ArrayObject implements EntityInterface
                         'getIterator',
                         'getIteratorClass'
                     ]
-                )) {
+                )
+                ) {
                     continue;
                 }
 
@@ -142,7 +144,7 @@ class Entity extends \ArrayObject implements EntityInterface
                     $fields[] = Snake::case(substr($method, 3));
                 }
             }
-            
+
             return $fields;
         }
     }

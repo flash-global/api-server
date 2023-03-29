@@ -9,11 +9,11 @@
 
 namespace Tests\Primitives\Merger;
 
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\Exception;
-use ObjectivePHP\Primitives\Merger\ValueMerger;
-use ObjectivePHP\Primitives\Merger\MergePolicy;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\ValueMerger;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergePolicy;
 
 class ValueMergerTest extends TestCase
 {

@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\Descriptor;
 /**
  * Class ResultSetDescriptor
  *
- * @package ObjectivePHP\Gateway\Entity
+ * @package Fei\ApiServer\ObjectivePHP\Gateway\Entity
  */
 class ResultSetDescriptor implements ResultSetDescriptorInterface
 {

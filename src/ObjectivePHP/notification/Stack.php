@@ -2,14 +2,14 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Notification;
 
-use ObjectivePHP\Html\Message\MessageInterface;
-use ObjectivePHP\Matcher\Matcher;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Html\Message\MessageInterface;
+use Fei\ApiServer\ObjectivePHP\Matcher\Matcher;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 /**
  * Class Stack
  *
- * @package ObjectivePHP\Notification
+ * @package Fei\ApiServer\ObjectivePHP\Notification
  */
 class Stack extends Collection implements MessageInterface
 {
@@ -36,7 +36,7 @@ class Stack extends Collection implements MessageInterface
      * @param $filter
      *
      * @return Stack
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function for($filter)
     {
@@ -76,7 +76,7 @@ class Stack extends Collection implements MessageInterface
      * @param MessageInterface $message
      *
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function addMessage($key, MessageInterface $message)
     {
@@ -99,7 +99,7 @@ class Stack extends Collection implements MessageInterface
      * @param string|null $filter
      *
      * @return int
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function count($filter = null)
     {

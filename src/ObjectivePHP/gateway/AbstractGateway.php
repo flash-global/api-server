@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Gateway;
 
-use ObjectivePHP\Events\EventsHandler;
-use ObjectivePHP\Events\EventsHandlerAwareInterface;
-use ObjectivePHP\Events\EventsHandlerAwareTrait;
-use ObjectivePHP\Gateway\Entity\Entity;
-use ObjectivePHP\Gateway\Entity\EntityInterface;
-use ObjectivePHP\Gateway\Exception\GatewayException;
-use ObjectivePHP\Gateway\Projection\ProjectionInterface;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandler;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandlerAwareInterface;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandlerAwareTrait;
+use Fei\ApiServer\ObjectivePHP\Gateway\Entity\Entity;
+use Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\Exception\GatewayException;
+use Fei\ApiServer\ObjectivePHP\Gateway\Projection\ProjectionInterface;
 use Zend\Hydrator\ArraySerializable;
 use Zend\Hydrator\ClassMethods;
 use Zend\Hydrator\HydratorInterface;

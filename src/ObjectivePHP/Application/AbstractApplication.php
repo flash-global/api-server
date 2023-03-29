@@ -3,26 +3,26 @@
 namespace Fei\ApiServer\ObjectivePHP\Application;
 
 use Composer\Autoload\ClassLoader;
-use ObjectivePHP\Application\Operation\ExceptionHandler;
-use ObjectivePHP\Application\Workflow\Hook;
-use ObjectivePHP\Application\Workflow\Step;
-use ObjectivePHP\Config\Config;
-use ObjectivePHP\Config\Loader\DirectoryLoader;
-use ObjectivePHP\Events\EventsHandler;
-use ObjectivePHP\Invokable\Invokable;
-use ObjectivePHP\Invokable\InvokableInterface;
-use ObjectivePHP\Matcher\Matcher;
-use ObjectivePHP\Message\Request\RequestInterface;
-use ObjectivePHP\Message\Response\ResponseInterface;
-use ObjectivePHP\Primitives\Collection\BreakException;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\Application\Operation\ExceptionHandler;
+use Fei\ApiServer\ObjectivePHP\Application\Workflow\Hook;
+use Fei\ApiServer\ObjectivePHP\Application\Workflow\Step;
+use Fei\ApiServer\ObjectivePHP\Config\Config;
+use Fei\ApiServer\ObjectivePHP\Config\Loader\DirectoryLoader;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandler;
+use Fei\ApiServer\ObjectivePHP\Invokable\Invokable;
+use Fei\ApiServer\ObjectivePHP\Invokable\InvokableInterface;
+use Fei\ApiServer\ObjectivePHP\Matcher\Matcher;
+use Fei\ApiServer\ObjectivePHP\Message\Request\RequestInterface;
+use Fei\ApiServer\ObjectivePHP\Message\Response\ResponseInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\BreakException;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
 use Zend\Diactoros\Response;
 
 /**
  * Class AbstractApplication
  *
- * @package ObjectivePHP\Application
+ * @package Fei\ApiServer\ObjectivePHP\Application
  */
 abstract class AbstractApplication implements ApplicationInterface
 {
@@ -107,9 +107,9 @@ abstract class AbstractApplication implements ApplicationInterface
         if ($autoloader) {
             $this->setAutoloader($autoloader);
         }
-        
-        $this->steps        = (new Collection())->restrictTo(Step::class);
-        $this->params       = new Collection();
+
+        $this->steps = (new Collection())->restrictTo(Step::class);
+        $this->params = new Collection();
         $this->routeMatcher = (new Matcher())->setSeparator('/');
 
         // set default Exception Handler
@@ -122,9 +122,9 @@ abstract class AbstractApplication implements ApplicationInterface
      * @param array|\string[] ...$steps
      *
      * @return $this
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
-    public function addSteps(string ...$steps)
+    public function addSteps(string...$steps)
     {
         foreach ($steps as $step) {
             $this->steps->set($step, new Step($step));
@@ -292,7 +292,7 @@ abstract class AbstractApplication implements ApplicationInterface
      *
      * @return Step
      * @throws Exception
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function getStep($step): Step
     {
@@ -331,7 +331,7 @@ abstract class AbstractApplication implements ApplicationInterface
 
                 $this->getEventsHandler()->trigger('application.workflow.step.run', $step);
                 $this->executionTrace[$step->getName()] = [];
-                $this->currentExecutionStack            = &$this->executionTrace[$step->getName()];
+                $this->currentExecutionStack = &$this->executionTrace[$step->getName()];
 
                 $step->each(
                     function (Hook $hook) {
@@ -400,7 +400,7 @@ abstract class AbstractApplication implements ApplicationInterface
      * @param null $default
      *
      * @return mixed|null
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function getParam($param, $default = null)
     {
@@ -412,7 +412,7 @@ abstract class AbstractApplication implements ApplicationInterface
      * @param $param
      * @param $value
      *
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function setParam($param, $value)
     {

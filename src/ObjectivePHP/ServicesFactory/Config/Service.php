@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Config;
 
-use ObjectivePHP\Config\StackedValuesDirective;
+use Fei\ApiServer\ObjectivePHP\Config\StackedValuesDirective;
 
 class Service extends StackedValuesDirective
 {

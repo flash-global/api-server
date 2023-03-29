@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\ObjectivePHP\Html\Input;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Html\Input;
 
-use ObjectivePHP\Html\Tag\Input\Input;
-use ObjectivePHP\Html\Tag\Input\Select;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Html\Tag\Input\Input;
+use Fei\ApiServer\ObjectivePHP\Html\Tag\Input\Select;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class InputTest extends TestCase
 {
@@ -32,7 +32,7 @@ class InputTest extends TestCase
 
         $renderedTag = (string) $tag;
 
-        $this->assertEquals('<input type="date" id="test" name="test" value="' . $now->format($tag::getDateDefaultFormat())  . '">', $renderedTag);
+        $this->assertEquals('<input type="date" id="test" name="test" value="' . $now->format($tag::getDateDefaultFormat()) . '">', $renderedTag);
     }
 
     public function testCheckboxDefaultValueSetting()

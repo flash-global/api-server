@@ -2,14 +2,14 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Middleware\AbstractMiddleware;
-use ObjectivePHP\Message\Request\HttpRequest;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use Fei\ApiServer\ObjectivePHP\Message\Request\HttpRequest;
 
 /**
  * Class RequestWrapper
  *
- * @package ObjectivePHP\Application\Operation\Common
+ * @package Fei\ApiServer\ObjectivePHP\Application\Operation\Common
  */
 class RequestWrapper extends AbstractMiddleware
 {

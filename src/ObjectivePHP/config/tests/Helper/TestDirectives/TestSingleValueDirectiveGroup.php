@@ -2,7 +2,7 @@
 
 namespace Tests\Helper\TestDirectives;
 
-use ObjectivePHP\Config\SingleValueDirectiveGroup;
+use Fei\ApiServer\ObjectivePHP\Config\SingleValueDirectiveGroup;
 
 class TestSingleValueDirectiveGroup extends SingleValueDirectiveGroup
 {

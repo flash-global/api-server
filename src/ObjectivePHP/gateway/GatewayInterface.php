@@ -2,15 +2,15 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Gateway;
 
-use ObjectivePHP\Gateway\Entity\EntityInterface;
-use ObjectivePHP\Gateway\Projection\ProjectionInterface;
-use ObjectivePHP\Gateway\ResultSet\Descriptor\ResultSetDescriptorInterface;
-use ObjectivePHP\Gateway\ResultSet\ResultSetInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\Projection\ProjectionInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\Descriptor\ResultSetDescriptorInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\ResultSetInterface;
 
 /**
  * Interface GatewayInterface
  *
- * @package ObjectivePHP\Gateway
+ * @package Fei\ApiServer\ObjectivePHP\Gateway
  */
 interface GatewayInterface
 {

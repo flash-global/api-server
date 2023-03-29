@@ -2,10 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Workflow\Filter;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Invokable\Invokable;
-use ObjectivePHP\Invokable\InvokableInterface;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Invokable\Invokable;
+use Fei\ApiServer\ObjectivePHP\Invokable\InvokableInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 trait FiltersHandler
 {
@@ -13,7 +13,7 @@ trait FiltersHandler
      * @var Collection
      */
     protected $filters;
-    
+
     /**
      * @param $filter
      */
@@ -25,17 +25,17 @@ trait FiltersHandler
 
         $this->filters->append(Invokable::cast($filter));
     }
-    
+
     /**
      * @return $this
      */
     protected function initFiltersCollection()
     {
         $this->filters = (new Collection())->restrictTo(InvokableInterface::class);
-        
+
         return $this;
     }
-    
+
     /**
      * @param ApplicationInterface $app
      *
@@ -43,12 +43,12 @@ trait FiltersHandler
      */
     public function runFilters(ApplicationInterface $app)
     {
-        
+
         if (is_null($this->filters)) {
             // no filter has been set
             return true;
         }
-        
+
         /**
          * @var callable $filter
          */
@@ -56,15 +56,15 @@ trait FiltersHandler
             if ($filter instanceof InvokableInterface) {
                 $filter->setApplication($app);
             }
-            
+
             if (!$filter($app)) {
                 return false;
             }
         }
-        
+
         return true;
     }
-    
+
     /**
      * @return Collection
      */
@@ -72,7 +72,7 @@ trait FiltersHandler
     {
         return $this->filters;
     }
-    
+
     /**
      * @param array $filters
      *
@@ -83,7 +83,7 @@ trait FiltersHandler
         Collection::cast($filters)->each(function ($filter) {
             $this->addFilter($filter);
         });
-        
+
         return $this;
     }
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace Tests\ObjectivePHP\Events;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Events;
 
-use ObjectivePHP\Events\EventsHandler;
-use ObjectivePHP\Events\EventsHandlerAwareTrait;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandler;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandlerAwareTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class EventsHandlerAwareTraitTest
  *
- * @package Tests\ObjectivePHP\Events
+ * @package Tests\Fei\ApiServer\ObjectivePHP\Events
  */
 class EventsHandlerAwareTraitTest extends TestCase
 {

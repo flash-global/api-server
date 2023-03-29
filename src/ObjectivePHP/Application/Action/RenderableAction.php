@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
-use ObjectivePHP\Application\Middleware\AbstractMiddleware;
-use ObjectivePHP\Application\Middleware\MiddlewareInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\AbstractMiddleware;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\MiddlewareInterface;
 
 /**
  * Class DefaultAction
  *
- * @package ObjectivePHP\Application\Action
+ * @package Fei\ApiServer\ObjectivePHP\Application\Action
  */
 abstract class RenderableAction extends HttpAction implements RenderableActionInterface
 {
@@ -75,6 +75,6 @@ abstract class RenderableAction extends HttpAction implements RenderableActionIn
     public static function registerTemplateExtension($extension)
     {
         self::$viewExtensions[] = $extension;
-        self::$viewExtensions   = array_unique(self::$viewExtensions);
+        self::$viewExtensions = array_unique(self::$viewExtensions);
     }
 }

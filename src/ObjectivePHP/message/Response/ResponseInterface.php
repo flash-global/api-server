@@ -7,7 +7,7 @@ use Psr\Http\Message\StreamInterface;
 /**
  * Interface ResponseInterface
  *
- * @package ObjectivePHP\Message\Response
+ * @package Fei\ApiServer\ObjectivePHP\Message\Response
  */
 interface ResponseInterface
 {

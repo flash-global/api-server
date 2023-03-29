@@ -9,20 +9,20 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Gateway;
 
-use ObjectivePHP\Events\EventsHandlerAwareInterface;
-use ObjectivePHP\Events\EventsHandlerAwareTrait;
-use ObjectivePHP\Gateway\Entity\EntityInterface;
-use ObjectivePHP\Gateway\Event\MetaGateway\OnProxyReadingRequestException;
-use ObjectivePHP\Gateway\Event\MetaGateway\OnProxyWritingRequestException;
-use ObjectivePHP\Gateway\Exception\MetaGatewayException;
-use ObjectivePHP\Gateway\Projection\ProjectionInterface;
-use ObjectivePHP\Gateway\ResultSet\Descriptor\ResultSetDescriptorInterface;
-use ObjectivePHP\Gateway\ResultSet\ResultSetInterface;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandlerAwareInterface;
+use Fei\ApiServer\ObjectivePHP\Events\EventsHandlerAwareTrait;
+use Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\Event\MetaGateway\OnProxyReadingRequestException;
+use Fei\ApiServer\ObjectivePHP\Gateway\Event\MetaGateway\OnProxyWritingRequestException;
+use Fei\ApiServer\ObjectivePHP\Gateway\Exception\MetaGatewayException;
+use Fei\ApiServer\ObjectivePHP\Gateway\Projection\ProjectionInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\Descriptor\ResultSetDescriptorInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\ResultSetInterface;
 
 /**
  * Class MetaGateway
  *
- * @package ObjectivePHP\Gateway
+ * @package Fei\ApiServer\ObjectivePHP\Gateway
  */
 class MetaGateway implements MetaGatewayInterface, EventsHandlerAwareInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Test\ObjectivePHP\Config;
+namespace Test\Fei\ApiServer\ObjectivePHP\Config;
 
-use ObjectivePHP\Config\AbstractDirective;
-use ObjectivePHP\Config\Config;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Config\AbstractDirective;
+use Fei\ApiServer\ObjectivePHP\Config\Config;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class ConfigTest extends TestCase
 {

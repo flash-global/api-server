@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\ObjectivePHP\Matcher;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Matcher;
 
-use ObjectivePHP\Matcher\Exception;
-use ObjectivePHP\Matcher\Matcher;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Matcher\Exception;
+use Fei\ApiServer\ObjectivePHP\Matcher\Matcher;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class MatcherTest extends TestCase
 {

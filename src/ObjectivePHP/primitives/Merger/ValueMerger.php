@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Primitives\Merger;
 
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Exception;
 
 /**
  * Class ValueMerger
  *
- * @package ObjectivePHP\Primitives\Merger
+ * @package Fei\ApiServer\ObjectivePHP\Primitives\Merger
  */
 class ValueMerger extends AbstractMerger
 {

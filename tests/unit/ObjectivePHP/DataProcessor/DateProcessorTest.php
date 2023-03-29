@@ -3,8 +3,8 @@
 namespace Tests\Fei\ApiServer\ObjectivePHP\DataProcessor;
 
 
-use ObjectivePHP\DataProcessor\DataProcessingException;
-use ObjectivePHP\DataProcessor\DateProcessor;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\DataProcessingException;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\DateProcessor;
 use Codeception\Test\Unit;
 
 

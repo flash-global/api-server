@@ -4,7 +4,7 @@ namespace Fei\ApiServer\ObjectivePHP\Primitives;
 
 /**
  * Class AbstractPrimitive
- * @package ObjectivePHP\Primitives
+ * @package Fei\ApiServer\ObjectivePHP\Primitives
  */
 abstract class AbstractPrimitive implements PrimitiveInterface
 {

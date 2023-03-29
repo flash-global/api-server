@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Config;
 
-use ObjectivePHP\Config\StackedValuesDirective;
+use Fei\ApiServer\ObjectivePHP\Config\StackedValuesDirective;
 
 class ActionNamespace extends StackedValuesDirective
 {

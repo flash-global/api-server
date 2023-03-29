@@ -2,6 +2,6 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
-class Exception extends \ObjectivePHP\Application\Exception
+class Exception extends \Fei\ApiServer\ObjectivePHP\Application\Exception
 {
 }

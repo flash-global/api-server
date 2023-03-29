@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\ObjectivePHP\Primitives;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Primitives;
 
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\Exception;
-use ObjectivePHP\Primitives\Number\Number;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Exception;
+use Fei\ApiServer\ObjectivePHP\Primitives\Number\Number;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 
 class StringTest extends TestCase
 {
@@ -147,7 +147,7 @@ class StringTest extends TestCase
 
         // with accented charcaters
         $string = new Str('chaîne accentuée');
-        $sub    = $string->extract(3, 1);
+        $sub = $string->extract(3, 1);
         $this->isInstanceOf(Str::class, $sub);
         $this->assertEquals('î', $sub->getInternalValue());
     }
@@ -244,7 +244,7 @@ class StringTest extends TestCase
                 $string->insert(['array'], 30);
             }, Exception::class, null, Exception::INVALID_PARAMETER);
 
-        $string         = new Str('Objective');
+        $string = new Str('Objective');
         $extendedString = $string->insert('Keep', 0);
         $this->isInstanceOf(Str::class, $extendedString);
         $this->assertEquals('KeepObjective', $extendedString->getInternalValue());
@@ -327,7 +327,7 @@ class StringTest extends TestCase
     public function testVariableStringHandling()
     {
         // variables handling by constructor
-        $string            = (new Str('this is a string', ['those', 'are', 'variables']));
+        $string = (new Str('this is a string', ['those', 'are', 'variables']));
         $reflectedProperty = new \ReflectionProperty(Str::class, 'variables');
         $reflectedProperty->setAccessible(true);
         $stringVariables = $reflectedProperty->getValue($string);

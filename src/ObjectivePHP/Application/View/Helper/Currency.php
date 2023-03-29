@@ -8,18 +8,18 @@ namespace Fei\ApiServer\ObjectivePHP\Application\View\Helper;
  * Format a number as a displayable currency. Currency symbol and position
  * are configurable, whereas number format itself depends on locale.
  *
- * @package ObjectivePHP\Application\View\Helper
+ * @package Fei\ApiServer\ObjectivePHP\Application\View\Helper
  */
 class Currency
 {
-    const APPEND  = 'append';
+    const APPEND = 'append';
     const PREPEND = 'prepend';
 
-    protected static $defaultSymbol          = '$';
+    protected static $defaultSymbol = '$';
 
     protected static $defaultSymbolPlacement = self::PREPEND;
 
-    protected static $defaultSpacer          = '';
+    protected static $defaultSpacer = '';
 
     /**
      * @param string|number $amount    Amount to display. If a string is passed, it is displayed as is,
@@ -31,8 +31,8 @@ class Currency
      */
     public static function format($amount, $symbol = null, $symbolPlacement = null, $spacer = null)
     {
-        $amount          = is_string($amount) ?: number_format($amount);
-        $symbol          = $symbol ?: self::getDefaultSymbol();
+        $amount = is_string($amount) ?: number_format($amount);
+        $symbol = $symbol ?: self::getDefaultSymbol();
         $symbolPlacement = $symbolPlacement ?: self::getDefaultSymbolPlacement();
         $spacer = $spacer ?: self::getDefaultSpacer();
 

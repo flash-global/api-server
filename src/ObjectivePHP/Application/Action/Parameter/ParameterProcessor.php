@@ -2,12 +2,12 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action\Parameter;
 
-use ObjectivePHP\Application\ApplicationAwareInterface;
-use ObjectivePHP\Application\Exception;
-use ObjectivePHP\DataProcessor\DataProcessorInterface;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
-use ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationAwareInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Exception;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\DataProcessorInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
 
 class ParameterProcessor implements ParameterProcessorInterface
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\ObjectivePHP\ServicesFactory\Builder;
+namespace Tests\Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
 use Helpers\DependencyService;
 use Helpers\TestService;
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\ServicesFactory\Builder\ClassServiceBuilder;
-use ObjectivePHP\ServicesFactory\Exception\Exception;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
-use ObjectivePHP\ServicesFactory\ServiceReference;
-use ObjectivePHP\ServicesFactory\Specs\ClassServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder\ClassServiceBuilder;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServiceReference;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\ClassServiceSpecs;
 
 class PrefabServiceBuilderTest extends TestCase
 {

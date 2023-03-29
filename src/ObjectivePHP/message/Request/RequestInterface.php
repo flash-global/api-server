@@ -2,13 +2,13 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Request;
 
-use ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface;
-use ObjectivePHP\Router\MatchedRoute;
+use Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface;
+use Fei\ApiServer\ObjectivePHP\Router\MatchedRoute;
 
 /**
  * Interface RequestInterface
  *
- * @package ObjectivePHP\Message\Request
+ * @package Fei\ApiServer\ObjectivePHP\Message\Request
  */
 interface RequestInterface
 {

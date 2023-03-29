@@ -2,9 +2,9 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Config\Loader;
 
-use ObjectivePHP\Config\Config;
-use ObjectivePHP\Config\Exception;
-use ObjectivePHP\Config\StackedValuesDirective;
+use Fei\ApiServer\ObjectivePHP\Config\Config;
+use Fei\ApiServer\ObjectivePHP\Config\Exception;
+use Fei\ApiServer\ObjectivePHP\Config\StackedValuesDirective;
 
 class DirectoryLoader implements LoaderInterface
 {

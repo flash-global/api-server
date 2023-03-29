@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\Gateway\Exception;
 /**
  * Class ProjectionException
  *
- * @package ObjectivePHP\Gateway\Projection
+ * @package Fei\ApiServer\ObjectivePHP\Gateway\Projection
  */
 class ProjectionException extends \Exception
 {

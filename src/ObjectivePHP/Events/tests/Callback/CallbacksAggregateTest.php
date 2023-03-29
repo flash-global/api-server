@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\ObjectivePHP\Events\Callback;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Events\Callback;
 
-use ObjectivePHP\Events\Callback\AbstractCallback;
-use ObjectivePHP\Events\Callback\CallbacksAggregate;
-use ObjectivePHP\Events\Event;
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Events\Callback\AbstractCallback;
+use Fei\ApiServer\ObjectivePHP\Events\Callback\CallbacksAggregate;
+use Fei\ApiServer\ObjectivePHP\Events\Event;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 class CallbacksAggregateTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,9 +20,11 @@ class CallbacksAggregateTest extends \PHPUnit_Framework_TestCase
 
     public function testCallbacksAreSetUsingAnArrayAsConstructorParam()
     {
-        $aggregate = new CallbacksAggregate('aggreagate', [$lambda = function () {
-        }, $otherLambda = function () {
-        }]);
+        $aggregate = new CallbacksAggregate('aggreagate', [
+            $lambda = function () {
+            }, $otherLambda = function () {
+        }
+        ]);
 
         $this->assertEquals(Collection::cast([$lambda, $otherLambda]), $aggregate->getCallbacks());
     }

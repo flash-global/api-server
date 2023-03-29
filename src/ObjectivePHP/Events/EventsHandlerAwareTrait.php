@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\Events;
 /**
  * Trait EventsHandlerAwareTrait
  *
- * @package ObjectivePHP\Events
+ * @package Fei\ApiServer\ObjectivePHP\Events
  */
 trait EventsHandlerAwareTrait
 {

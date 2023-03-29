@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Html\Message;
 
-use ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
 
 class MessageStack extends Collection
 {
@@ -16,7 +16,7 @@ class MessageStack extends Collection
      * @param null $type
      *
      * @return int
-     * @throws \ObjectivePHP\Primitives\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\Primitives\Exception
      */
     public function count($type = null)
     {

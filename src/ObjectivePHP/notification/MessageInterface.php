@@ -4,7 +4,7 @@ namespace Fei\ApiServer\ObjectivePHP\Notification;
 
 /**
  * Interface MessageInterface
- * @package ObjectivePHP\Notification
+ * @package Fei\ApiServer\ObjectivePHP\Notification
  */
 interface MessageInterface
 {

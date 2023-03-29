@@ -2,9 +2,9 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\View\Helper;
 
-use ObjectivePHP\Config\ConfigInterface;
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\Config\ConfigInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 
 class Vars
 {
@@ -50,7 +50,7 @@ class Vars
     /**
      * @param $reference
      *
-     * @return \ObjectivePHP\Primitives\String\Str
+     * @return \Fei\ApiServer\ObjectivePHP\Primitives\String\Str
      */
     public static function string($reference)
     {
@@ -60,7 +60,7 @@ class Vars
     /**
      * @param $reference
      *
-     * @return \ObjectivePHP\Primitives\Collection\Collection
+     * @return \Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection
      */
     public static function collection($reference)
     {

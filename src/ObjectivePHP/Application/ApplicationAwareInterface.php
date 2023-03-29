@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\Application;
 /**
  * Interface ApplicationAwareInterface
  *
- * @package ObjectivePHP\Application
+ * @package Fei\ApiServer\ObjectivePHP\Application
  */
 interface ApplicationAwareInterface
 {

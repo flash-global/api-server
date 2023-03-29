@@ -3,11 +3,11 @@
 namespace Tests\Fei\ApiServer\ObjectivePHP\DataProcessor;
 
 
-use ObjectivePHP\DataProcessor\DataProcessingException;
-use ObjectivePHP\DataProcessor\DateProcessor;
-use ObjectivePHP\DataProcessor\StringProcessor;
-use ObjectivePHP\PHPUnit\TestCase;
-use ObjectivePHP\Primitives\String\Str;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\DataProcessingException;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\DateProcessor;
+use Fei\ApiServer\ObjectivePHP\DataProcessor\StringProcessor;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Primitives\String\Str;
 use Codeception\Test\Unit;
 
 class StringProcessorTest extends Unit

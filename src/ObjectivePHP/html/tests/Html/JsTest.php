@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\ObjectivePHP\Html;
+namespace Tests\Fei\ApiServer\ObjectivePHP\Html;
 
-use ObjectivePHP\Html\Js;
+use Fei\ApiServer\ObjectivePHP\Html\Js;
 
 class JsTest extends \PHPUnit_Framework_TestCase
 {

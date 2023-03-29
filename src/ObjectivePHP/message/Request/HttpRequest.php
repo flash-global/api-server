@@ -2,16 +2,16 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Message\Request;
 
-use ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
-use ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface;
-use ObjectivePHP\Router\MatchedRoute;
+use Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
+use Fei\ApiServer\ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface;
+use Fei\ApiServer\ObjectivePHP\Router\MatchedRoute;
 use Psr\Http\Message\StreamInterface;
 use Zend\Diactoros\Request;
 
 /**
  * Class HttpRequest
  *
- * @package ObjectivePHP\Message\Request
+ * @package Fei\ApiServer\ObjectivePHP\Message\Request
  */
 class HttpRequest extends Request implements RequestInterface
 {

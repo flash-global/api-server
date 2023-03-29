@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Config;
 
-use ObjectivePHP\Primitives\Merger\MergePolicy;
+use Fei\ApiServer\ObjectivePHP\Primitives\Merger\MergePolicy;
 
 abstract class SingleValueDirectiveGroup extends AbstractDirective
 {

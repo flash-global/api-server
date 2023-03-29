@@ -5,7 +5,7 @@ namespace Fei\ApiServer\ObjectivePHP\Config;
 /**
  * Interface DirectiveInterface
  *
- * @package ObjectivePHP\Config
+ * @package Fei\ApiServer\ObjectivePHP\Config
  */
 interface DirectiveInterface
 {

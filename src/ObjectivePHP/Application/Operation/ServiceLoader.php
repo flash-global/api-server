@@ -2,20 +2,20 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Invokable\AbstractInvokable;
-use ObjectivePHP\ServicesFactory\Config\Service;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Invokable\AbstractInvokable;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Config\Service;
 
 /**
  * Class ServiceLoader
- * @package ObjectivePHP\Application\Operation\Common
+ * @package Fei\ApiServer\ObjectivePHP\Application\Operation\Common
  */
 class ServiceLoader extends AbstractInvokable
 {
     /**
      * @param ApplicationInterface $app
      *
-     * @throws \ObjectivePHP\ServicesFactory\Exception\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception
      */
     public function run(ApplicationInterface $app)
     {
@@ -33,7 +33,7 @@ class ServiceLoader extends AbstractInvokable
     /**
      * @param ApplicationInterface $app
      *
-     * @throws \ObjectivePHP\ServicesFactory\Exception\Exception
+     * @throws \Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception
      * @internal param ApplicationInterface $application
      *
      */

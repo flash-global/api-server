@@ -2,8 +2,8 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Invokable;
 
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\ServicesFactory\ServicesFactory;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\ServicesFactory;
 
 class AbstractInvokable implements InvokableInterface
 {

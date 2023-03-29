@@ -1,12 +1,12 @@
 <?php
 
-namespace Test\ObjectivePHP\Application\Middleware;
+namespace Test\Fei\ApiServer\ObjectivePHP\Application\Middleware;
 
-use ObjectivePHP\Application\Action\SubRoutingAction;
-use ObjectivePHP\Application\ApplicationInterface;
-use ObjectivePHP\Application\Middleware\Exception;
-use ObjectivePHP\Application\Middleware\MiddlewareInterface;
-use ObjectivePHP\PHPUnit\TestCase;
+use Fei\ApiServer\ObjectivePHP\Application\Action\SubRoutingAction;
+use Fei\ApiServer\ObjectivePHP\Application\ApplicationInterface;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\Exception;
+use Fei\ApiServer\ObjectivePHP\Application\Middleware\MiddlewareInterface;
+use Fei\ApiServer\ObjectivePHP\PHPUnit\TestCase;
 
 class SubRoutingMiddlewareTest extends TestCase
 {

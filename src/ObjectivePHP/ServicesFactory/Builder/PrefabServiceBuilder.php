@@ -2,9 +2,9 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
-use ObjectivePHP\ServicesFactory\Exception\Exception;
-use ObjectivePHP\ServicesFactory\Specs\PrefabServiceSpecs;
-use ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\PrefabServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
 
 class PrefabServiceBuilder extends AbstractServiceBuilder
 {

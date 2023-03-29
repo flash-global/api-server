@@ -2,12 +2,12 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Gateway\ResultSet;
 
-use ObjectivePHP\Gateway\Entity\EntityInterface;
+use Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface;
 
 /**
  * Interface ResultSetInterface
  *
- * @package ObjectivePHP\Gateway\Entity
+ * @package Fei\ApiServer\ObjectivePHP\Gateway\Entity
  */
 interface ResultSetInterface extends \Traversable, \Countable
 {
@@ -25,5 +25,5 @@ interface ResultSetInterface extends \Traversable, \Countable
      * @param EntityInterface[] ...$entities
      * @return mixed
      */
-    public function addEntities(EntityInterface ...$entities) : ResultSetInterface;
+    public function addEntities(EntityInterface...$entities): ResultSetInterface;
 }

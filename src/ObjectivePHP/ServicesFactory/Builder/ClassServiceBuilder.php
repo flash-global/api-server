@@ -2,10 +2,10 @@
 
 namespace Fei\ApiServer\ObjectivePHP\ServicesFactory\Builder;
 
-use ObjectivePHP\Primitives\Collection\Collection;
-use ObjectivePHP\ServicesFactory\Exception\Exception;
-use ObjectivePHP\ServicesFactory\Specs\ClassServiceSpecs;
-use ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
+use Fei\ApiServer\ObjectivePHP\Primitives\Collection\Collection;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Exception\Exception;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\ClassServiceSpecs;
+use Fei\ApiServer\ObjectivePHP\ServicesFactory\Specs\ServiceSpecsInterface;
 
 class ClassServiceBuilder extends AbstractServiceBuilder
 {
