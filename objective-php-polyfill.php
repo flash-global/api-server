@@ -1,5 +1,10 @@
 <?php
 
+// Clue Gaetan
+/*
+    require autoload.php file here and check what is possible to do with the autoload object
+    The aim is to dynamically create the aliases
+*/
 if (!interface_exists('ObjectivePHP\Gateway\Entity\EntityInterface')) {
     $result = class_alias('Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface', 'ObjectivePHP\Gateway\Entity\EntityInterface');
     echo 'ENTITY INTERFACE ' . $result . PHP_EOL;

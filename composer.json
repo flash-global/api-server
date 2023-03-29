@@ -14,7 +14,7 @@
     "php": "^7.0",
     "league/fractal": "^0.14.0",
     "container-interop/container-interop": "^1.2",
-    "zendframework/zend-diactoros": "^1.8",
+    "zendframework/zend-diactoros": "1.7.2",
     "erusev/parsedown-extra": "^0.8.1",
     "erusev/parsedown": "^1.7",
     "zendframework/zend-stdlib": "^3.2",
