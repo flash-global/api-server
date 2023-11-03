@@ -9,11 +9,11 @@ use ObjectivePHP\Gateway\Entity\Entity;
 use ObjectivePHP\Gateway\Entity\EntityInterface;
 use ObjectivePHP\Gateway\Exception\GatewayException;
 use ObjectivePHP\Gateway\Projection\ProjectionInterface;
-use Zend\Hydrator\ArraySerializable;
-use Zend\Hydrator\ClassMethods;
-use Zend\Hydrator\HydratorInterface;
-use Zend\Hydrator\NamingStrategy\UnderscoreNamingStrategy;
-use Zend\Hydrator\NamingStrategyEnabledInterface;
+use Laminas\Hydrator\ArraySerializable;
+use Laminas\Hydrator\ClassMethods;
+use Laminas\Hydrator\HydratorInterface;
+use Laminas\Hydrator\NamingStrategy\UnderscoreNamingStrategy;
+use Laminas\Hydrator\NamingStrategyEnabledInterface;
 
 /**
  * Class AbstractGateway

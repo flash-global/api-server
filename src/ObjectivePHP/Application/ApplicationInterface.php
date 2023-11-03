@@ -11,7 +11,7 @@ use ObjectivePHP\Message\Request\RequestInterface;
 use ObjectivePHP\Message\Response\ResponseInterface;
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\ServicesFactory\ServicesFactory;
-use Zend\Diactoros\Response;
+use Laminas\Diactoros\Response;
 
 /**
  * Interface ApplicationInterface

@@ -1,45 +1,49 @@
 {
-  "name": "fei/api-server",
-  "description": "FEI server side API helpers",
-  "type": "library",
-  "license": "GPL-3.0",
-  "authors": [
-    {
-      "name": "Yoctu",
-      "email": "contact@yoctu.com",
-      "homepage": "http://yoctu.com/"
-    }
-  ],
-  "require": {
-    "php": "^7.0",
-    "league/fractal": "^0.14.0",
-    "container-interop/container-interop": "^1.2",
-    "zendframework/zend-diactoros": "1.7.2",
-    "erusev/parsedown-extra": "^0.8.1",
-    "erusev/parsedown": "^1.7",
-    "zendframework/zend-stdlib": "^3.2",
-    "zendframework/zend-servicemanager": "^3.4",
-    "zendframework/zend-hydrator": "^2.4",
-    "zendframework/zend-filter": "^2.9",
-    "zendframework/zend-eventmanager": "^3.2",
-    "psr/container": "^1.0"
-  },
-  "require-dev": {
-    "codeception/codeception": "^2.2",
-    "friendsofphp/php-cs-fixer": "^2",
-    "squizlabs/php_codesniffer": "^2.5"
-  },
-  "config": {
-    "platform": {
-      "php": "7.0"
-    }
-  },
-  "autoload": {
-    "files": [
-      "objective-php-polyfill.php"
+    "name": "fei/api-server",
+    "description": "FEI server side API helpers",
+    "type": "library",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Yoctu",
+            "email": "contact@yoctu.com",
+            "homepage": "http://yoctu.com/"
+        }
     ],
-    "psr-4": {
-      "Fei\\ApiServer\\": "src/"
+    "require": {
+        "php": "^7.0",
+        "league/fractal": "^0.14.0",
+        "container-interop/container-interop": "^1.2",
+        "laminas/laminas-diactoros": "1.7.2",
+        "erusev/parsedown-extra": "^0.8.1",
+        "erusev/parsedown": "^1.7",
+        "laminas/laminas-stdlib": "^3.2",
+        "laminas/laminas-servicemanager": "^3.4",
+        "laminas/laminas-hydrator": "^2.4",
+        "laminas/laminas-filter": "^2.9",
+        "laminas/laminas-eventmanager": "^3.2",
+        "psr/container": "^1.0",
+        "laminas/laminas-dependency-plugin": "^2.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.2",
+        "friendsofphp/php-cs-fixer": "^2",
+        "squizlabs/php_codesniffer": "^2.5"
+    },
+    "config": {
+        "platform": {
+            "php": "7.0"
+        },
+        "allow-plugins": {
+            "laminas/laminas-dependency-plugin": true
+        }
+    },
+    "autoload": {
+        "files": [
+            "objective-php-polyfill.php"
+        ],
+        "psr-4": {
+            "Fei\\ApiServer\\": "src/"
+        }
     }
   }
-}

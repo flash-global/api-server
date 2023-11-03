@@ -4,9 +4,9 @@ namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\Exception;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Diactoros\Response\SapiEmitter;
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\SapiEmitter;
 
 /**
  * Class ExceptionHandler

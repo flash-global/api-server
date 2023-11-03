@@ -3,7 +3,7 @@
 namespace Fei\ApiServer\ObjectivePHP\Message\Response;
 
 use ObjectivePHP\Message\Response\ResponseInterface;
-use Zend\Diactoros\Response;
+use Laminas\Diactoros\Response;
 
 /**
  * Class HttpResponse

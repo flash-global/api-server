@@ -3,7 +3,7 @@
 namespace Fei\ApiServer\ObjectivePHP\Application\Operation;
 
 use ObjectivePHP\Application\ApplicationInterface;
-use Zend\Diactoros\Response\SapiEmitter;
+use Laminas\Diactoros\Response\SapiEmitter;
 
 /**
  * Class ResponseSender

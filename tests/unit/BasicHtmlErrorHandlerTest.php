@@ -5,7 +5,7 @@ namespace Tests\ApiServer;
 use Codeception\Test\Unit;
 use Fei\ApiServer\BasicHtmlErrorHandler;
 use ObjectivePHP\Application\ApplicationInterface;
-use Zend\Diactoros\Response\SapiEmitter;
+use Laminas\Diactoros\Response\SapiEmitter;
 
 /**
  * Class BasicHtmlErrorHandlerTest

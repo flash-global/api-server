@@ -3,9 +3,9 @@
 namespace Fei\ApiServer;
 
 use ObjectivePHP\Application\ApplicationInterface;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Diactoros\Response\SapiEmitter;
-use Zend\Diactoros\Stream;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Laminas\Diactoros\Response\SapiEmitter;
+use Laminas\Diactoros\Stream;
 
 /**
  * Class BasicHtmlErrorHandler

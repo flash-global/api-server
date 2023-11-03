@@ -4,9 +4,9 @@ namespace Fei\ApiServer\Api;
 
 use ObjectivePHP\Application\ApplicationInterface;
 use ObjectivePHP\Application\Middleware\AbstractMiddleware;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\Response\JsonResponse;
-use Zend\Diactoros\Response\SapiEmitter;
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\SapiEmitter;
 
 class ApiErrorHandler extends AbstractMiddleware
 {

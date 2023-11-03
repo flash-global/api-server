@@ -2,7 +2,7 @@
 
 namespace Fei\ApiServer\ObjectivePHP\Application\Action;
 
-use Zend\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\JsonResponse;
 
 /**
  * Class AbstractRestfulAction

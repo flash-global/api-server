@@ -7,7 +7,7 @@ use ObjectivePHP\Application\View\Helper\Vars;
 use ObjectivePHP\Message\Response\HttpResponse;
 use ObjectivePHP\Primitives\Collection\Collection;
 use ObjectivePHP\Message\Response\ResponseInterface;
-use Zend\Diactoros\Response;
+use Laminas\Diactoros\Response;
 
 /**
  * Class ActionMiddleware

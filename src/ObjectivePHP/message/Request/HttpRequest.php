@@ -6,7 +6,7 @@ use ObjectivePHP\Message\Request\Parameter\Container\HttpParameterContainer;
 use ObjectivePHP\Message\Request\Parameter\Container\ParameterContainerInterface;
 use ObjectivePHP\Router\MatchedRoute;
 use Psr\Http\Message\StreamInterface;
-use Zend\Diactoros\Request;
+use Laminas\Diactoros\Request;
 
 /**
  * Class HttpRequest
