@@ -1,7 +1,5 @@
 <?php
 
-$composerClassLoader = require __DIR__ . '/vendor/autoload.php';
-
 $polyfillMap = [
     'ObjectivePHP\Gateway\Entity\EntityInterface'                           => 'Fei\ApiServer\ObjectivePHP\Gateway\Entity\EntityInterface',
     'ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface'            => 'Fei\ApiServer\ObjectivePHP\Gateway\ResultSet\PaginatedResultSetInterface',
@@ -196,10 +194,3 @@ foreach ($polyfillMap as $originalClass => $polyfillClass) {
         // echo $originalClass . ' + ' . $result . PHP_EOL;
     }
 }
-
-$composerClassLoader->addClassMap($classMap);
-
-//register custom autoloading function
-$composerClassLoader->register();
-
-return $composerClassLoader;
