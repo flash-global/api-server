@@ -14,6 +14,14 @@ use Zend\Diactoros\Stream;
  */
 class BasicHtmlErrorHandler
 {
+
+    protected $emitter;
+
+    public function __construct($emitter = null)
+    {
+        $this->emitter = $emitter ?: new SapiEmitter();
+    }
+
     /**
      * @param ApplicationInterface $app
      */
@@ -28,6 +36,6 @@ class BasicHtmlErrorHandler
         $stream = new Stream("php://memory", 'rw');
         $stream->write($res->getReasonPhrase());
 
-        (new SapiEmitter())->emit($res->withBody($stream));
+        $this->emitter->emit($res->withBody($stream));
     }
 }

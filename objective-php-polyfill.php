@@ -189,11 +189,11 @@ $polyfillMap = [
 $classMap = [];
 
 foreach ($polyfillMap as $originalClass => $polyfillClass) {
-    if (!class_exists($originalClass) && !interface_exists($originalClass)) {
+    if (!class_exists($originalClass) && !interface_exists($originalClass) && !trait_exists($originalClass)) {
         $result = class_alias($polyfillClass, $originalClass);
         $originalClassSlash = str_replace('\\', '/', $originalClass);
         $classMap[$originalClass] = __DIR__ . '/src/' . $originalClassSlash . '.php';
-        echo $originalClass . ' + ' . $result . PHP_EOL;
+        // echo $originalClass . ' + ' . $result . PHP_EOL;
     }
 }
 
@@ -202,4 +202,4 @@ $composerClassLoader->addClassMap($classMap);
 //register custom autoloading function
 $composerClassLoader->register();
 
-// var_dump($composerClassLoader->getRegisteredLoaders()); die();
+return $composerClassLoader;
