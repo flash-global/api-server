@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c7da545904e02d0a85967016b17d19f",
+    "content-hash": "3ac5b159a06e7cf3769688305d022109",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -195,16 +195,16 @@
         },
         {
             "name": "laminas/laminas-diactoros",
-            "version": "1.7.2",
+            "version": "1.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-diactoros.git",
-                "reference": "ced999e708131de967ebf0e0d931336fb3cbc204"
+                "reference": "1c2dce9d2822030d5dcfd50b709708830429c89a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/ced999e708131de967ebf0e0d931336fb3cbc204",
-                "reference": "ced999e708131de967ebf0e0d931336fb3cbc204",
+                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/1c2dce9d2822030d5dcfd50b709708830429c89a",
+                "reference": "1c2dce9d2822030d5dcfd50b709708830429c89a",
                 "shasum": ""
             },
             "require": {
@@ -222,17 +222,34 @@
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "laminas/laminas-coding-standard": "~1.0",
-                "phpunit/phpunit": "^5.7.16 || ^6.0.8"
+                "php-http/psr7-integration-tests": "dev-master",
+                "phpunit/phpunit": "^5.7.16 || ^6.0.8 || ^7.2.7"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.x-dev",
-                    "dev-develop": "1.8.x-dev",
-                    "dev-release-2.0": "2.0.x-dev"
+                    "dev-release-1.8": "1.8.x-dev"
                 }
             },
             "autoload": {
+                "files": [
+                    "src/functions/create_uploaded_file.php",
+                    "src/functions/marshal_headers_from_sapi.php",
+                    "src/functions/marshal_method_from_sapi.php",
+                    "src/functions/marshal_protocol_version_from_sapi.php",
+                    "src/functions/marshal_uri_from_sapi.php",
+                    "src/functions/normalize_server.php",
+                    "src/functions/normalize_uploaded_files.php",
+                    "src/functions/parse_cookie_header.php",
+                    "src/functions/create_uploaded_file.legacy.php",
+                    "src/functions/marshal_headers_from_sapi.legacy.php",
+                    "src/functions/marshal_method_from_sapi.legacy.php",
+                    "src/functions/marshal_protocol_version_from_sapi.legacy.php",
+                    "src/functions/marshal_uri_from_sapi.legacy.php",
+                    "src/functions/normalize_server.legacy.php",
+                    "src/functions/normalize_uploaded_files.legacy.php",
+                    "src/functions/parse_cookie_header.legacy.php"
+                ],
                 "psr-4": {
                     "Laminas\\Diactoros\\": "src/"
                 }
@@ -257,7 +274,7 @@
                 "rss": "https://github.com/laminas/laminas-diactoros/releases.atom",
                 "source": "https://github.com/laminas/laminas-diactoros"
             },
-            "time": "2019-12-31T16:41:12+00:00"
+            "time": "2019-12-31T16:41:30+00:00"
         },
         {
             "name": "laminas/laminas-eventmanager",
